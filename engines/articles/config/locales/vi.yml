@@ -1,0 +1,198 @@
+vi:
+  blog: "Bài viết - Tin tức"
+  faq: "Câu hỏi thường gặp"
+  policy: "Chính sách"
+  warranty: "Chính sách bảo hành"
+  payment: "Quy định & chính sách thanh toán"
+  delivery: "Chính sách vận chuyển, giao nhận"
+  return_refund: "Chính sách đổi trả hàng & hoàn tiền"
+  security: "Bảo mật thông tin"
+  terms_conditions: "Điều khoản & Điều kiện"
+  shopping_guide: "Hướng dẫn mua hàng"
+  operating_regulations: "Quy chế hoạt động GD TMĐT"
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          article: "Bài viết"
+          articles: "Tất cả bài viết"
+          categories: "Tất cả chuyên mục"
+          comments: "Tất cả bình luận"
+  erp:
+    articles:
+      backend:
+        articles:
+          create:
+            success: "Bài viết được tạo thành công."
+          update:
+            success: "Bài viết cập nhật thành công."
+          archive:
+            success: "Bài viết đã ngưng sử dụng thành công"
+          unarchive:
+            success: "Bài viết đã được sử dụng lại thành công"
+          archive_all:
+            success: "Bài viết đã ngưng sử dụng thành công"
+          unarchive_all:
+            success: "Bài viết đã được sử dụng lại thành công"
+          destroy:
+            success: "Bài viết đã xóa thành công"
+          destroy_all:
+            success: "Bài viết đã xóa thành công"
+          index:
+            articles: "Tất cả bài viết"
+            image: "Hình ảnh"
+            name: "Tên bài viết"
+            category: "Chuyên mục"
+            content: "Nội dung"
+            meta_keyword: "Meta Keyword"
+            meta_description: "Meta Description"
+            tags: "Thẻ"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+            archived: "Ngưng sử dụng"
+            unarchived: "Đang sử dụng"
+            create: "Tạo bài viết"
+            archive: "Ngưng sử dụng"
+            unarchive: "Sử dụng lại"
+            delete: "Xóa bài viết"
+            archive_confirm: "Bạn muốn ngưng sử dụng bài viết?"
+            unarchive_confirm: "Bạn muốn sử dụng lại bài viết?"
+            delete_confirm: "Bạn thực sự muốn xóa bài viết?"
+          list:
+            image: "Hình ảnh"
+            name: "Tên bài viết"
+            category: "Chuyên mục"
+            content: "Nội dung"
+            meta_keyword: "Meta Keyword"
+            meta_description: "Meta Description"
+            tags: "Thẻ"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+            actions: "Thao tác"
+            no_matching_records_found: "Danh sách bài viết không được tìm thấy"
+            active: "Đang sử dụng"
+            archived: "Ngưng sử dụng"
+            edit: "Chỉnh sửa"
+            archive: "Ngưng sử dụng"
+            unarchive: "Sử dụng lại"
+            delete: "Xóa bài viết"
+            archive_confirm: "Bạn muốn ngưng sử dụng bài viết?"
+            unarchive_confirm: "Bạn muốn sử dụng lại bài viết?"
+            delete_confirm: "Bạn thực sự muốn xóa bài viết?"
+          new:
+            articles: "Tất cả bài viết"
+            create: "Tạo bài viết"
+          edit:
+            articles: "Tất cả bài viết"
+            edit: "Chỉnh sửa bài viết"
+            create: "Thêm bài viết"
+          form:
+            image: "Hình ảnh"
+            name: "Tên bài viết"
+            category: "Chuyên mục"
+            content: "Nội dung"
+            meta_keyword: "Meta Keyword"
+            meta_description: "Meta Description"
+            tags: "Thẻ"
+            placeholder_article_name: "Nhập tên/tiêu đề bài viết"
+            choose_category: "Chọn chuyên mục bài viết"
+            create_category: "Thêm chuyên mục"
+            edit_category: "Sửa chuyên mục"
+            meta_keywords: "Từ khóa thẻ meta"
+            placeholder_meta_keywords: "Nhập từ khóa meta keyworks..."
+            meta_description: "Mô tả thẻ meta"
+            placeholder_meta_description: "Nhập từ khóa meta description..."
+            help_tags: "Các thẻ phân tách nhau bởi dấu phẩy , hoặc ;"
+            placeholder_tags: "Nhập danh sách các thẻ cho bài viết"
+        categories:
+          create:
+            success: "Chuyên mục đã được tạo thành công"
+          update:
+            success: "Chuyên mục đã được cập nhật thành công"
+          archive:
+            success: "Chuyên mục đã ngưng sử dụng thành công"
+          unarchive:
+            success: "Chuyên mục đã được sử dụng lại thành công"
+          archive_all:
+            success: "Chuyên mục đã ngưng sử dụng thành công"
+          unarchive_all:
+            success: "Chuyên mục đã được sử dụng lại thành công"
+          destroy:
+            success: "Chuyên mục đã xóa thành công"
+          destroy_all:
+            success: "Chuyên mục đã xóa thành công"
+          index:
+            categories: "Tất cả chuyên mục"
+            create: "Tạo chuyên mục"
+            archive_confirm: "Bạn chắc chắn muốn ngưng sử dụng chuyên mục?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại chuyên mục?"
+            delete: "Xóa chuyên mục"
+            delete_confirm: "Bạn chắc chắn muốn xóa chuyên mục?"
+            name: "Tên chuyên mục"
+            parent_category: "Chuyên mục cha"
+          list:
+            name: "Tên chuyên mục"
+            archive_confirm: "Bạn chắc chắn muốn ngưng sử dụng chuyên mục?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại chuyên mục?"
+            delete: "Xóa chuyên mục"
+            delete_confirm: "Bạn chắc chắn muốn xóa chuyên mục?"
+            no_matching_records_found: "Không tìm thấy chuyên mục nào phù hợp"
+          new:
+            categories: "Tất cả chuyên mục"
+            create: "Tạo chuyên mục"
+          edit:
+            categories: "Tất cả chuyên mục"
+            create: "Thêm chuyên mục"
+          form:
+            name: "Tên chuyên mục"
+            parent_category: "Chuyên mục cha"
+            placeholder_name: "Nhập tên chuyên mục"
+            placeholder_parent_category: "Chọn chuyên mục cha (nếu có)"
+            create: "Thêm chuyên mục"
+            alias: "Alias chuyên mục"
+            description: "Mô tả / Ghi chú"
+            placeholder_description: "Nhập nội dung mô tả / hoặc ghi chú"
+        comments:
+          destroy:
+            success: "Xóa bình luận thành công."
+          archive:
+            success: "Ẩn bình luận thành công."
+          unarchive:
+            success: "Hiện bình luận thành công."
+          delete_all:
+            success: "Xóa bình luận thành công."
+          archive_all:
+            success: "Ẩn bình luận thành công."
+          unarchive_all:
+            success: "Hiện bình luận thành công."
+          index:
+            comments: "Tất cả bình luận"
+            name: "Người bình luận"
+            article: "Bài viết"
+            message: "Nội dung"
+            archive: "Ẩn bình luận"
+            archive_confirm: "Bạn có muốn ẩn nội dung bình luận này?"
+            unarchive: "Hiện bình luận"
+            unarchive_confirm: "Bạn có muốn hiển thị nội dung bình luận này?"
+            delete: "Xóa bình luận"
+            delete_confirm: "Bạn thực sự muốn xóa nội dung bình luận này?"
+          list:
+            name: "Người bình luận"
+            article: "Bài viết"
+            message: "Nội dung"
+            archive: "Ẩn bình luận"
+            archive_confirm: "Bạn có muốn ẩn nội dung bình luận này?"
+            unarchive: "Hiện bình luận"
+            unarchive_confirm: "Bạn có muốn hiển thị nội dung bình luận này?"
+            delete: "Xóa bình luận"
+            delete_confirm: "Bạn thực sự muốn xóa nội dung bình luận này?"
+          children_comments:
+            name: "Người trả lời"
+            message: "Nội dung"
+            status: "Trạng thái"
+            created_at: "Ngày tạo"
+            actions: "Thao tác"
+            archived: "Không hiển thị"
+            active: "Đang hiển thị"

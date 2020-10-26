@@ -1,0 +1,46 @@
+<% if newest_blogs.present? %>
+<!-- blog area start -->
+<div class="blog-area mtb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center mt-25 mb-10 wow fadeInDown" data-wow-delay="0.9s">
+                    <h2>Góc chia sẻ</h2>
+                </div>
+            </div>
+        </div>
+        <div class=" blog-active owl-carousel next-prev-style wow fadeInDown" data-wow-delay="0.9s">
+            <% newest_blogs.each do |blog| %>
+                <div class="blog-wrap text-center">
+                    <div class="blog-img fix">
+                        <a href="<%= article_link(blog) %>">
+                            <img src="<%= blog.image.thumb_370_370 %>" alt="<%= blog.name %>" />
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta d-flex justify-content-between">
+                            <span>
+                                <i class="fa fa-user" aria-hidden="true"></i> Đăng bởi Lộc Yến Nest
+                            </span>
+                            <span 
+                                title="<%= blog.created_at.strftime('%b %d, %Y - %H:%M:%S') %>">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> <%= relative_time(blog.created_at) %>
+                            </span>
+                        </div>
+                        <div class="blog-info">
+                            <h3>
+                                <%= link_to blog.name, article_link(blog) %>
+                            </h3>
+                            <p><%= short_text(blog.content, 20) %></p>
+                            <div class="readmore-btn">
+                                <a href="<%= article_link(blog) %>">Xem thêm <i class="fa fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- blog area end -->
+<% end %>

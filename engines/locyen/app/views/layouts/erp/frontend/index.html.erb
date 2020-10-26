@@ -1,0 +1,81 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title><%= content_for?(:title) ? (yield(:title) + ' - Lộc Yến') : 'Lộc Yến - Chuyên Chế Biến Và Cung Cấp Các Loại Sản Phẩm Yến Sào Cao Cấp, Đạt Chuẩn Tự Nhiên' %></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+		<link rel="shortcut icon" href="/frontend/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/frontend/favicon.ico" type="image/x-icon">
+        <!-- Place favicon.ico in the root directory -->
+		<!-- all css here -->
+		<!-- bootstrap v3.3.7 css -->
+        <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+		<!-- animate css -->
+        <link rel="stylesheet" href="/frontend/css/animate.css">
+		<!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="/frontend/css/jquery-ui.min.css">
+		<!-- meanmenu css -->
+        <link rel="stylesheet" href="/frontend/css/meanmenu.css">
+		<!-- nivo-slider css -->
+        <link rel="stylesheet" href="/frontend/css/nivo-slider.css">
+		<!-- owl.carousel.2.0.0-beta.2.4 css -->
+        <link rel="stylesheet" href="/frontend/css/owl.carousel.css">
+        <!-- magnific-popup -->
+        <link rel="stylesheet" href="/frontend/css/magnific-popup.css">
+        <!-- fancybox -->
+        <link rel="stylesheet" href="/frontend/css/jquery.fancybox.min.css" />
+		<!-- font-awesome v4.6.3 css -->
+        <link rel="stylesheet" href="/frontend/css/font-awesome.min.css">
+		<!-- style css -->
+		<link rel="stylesheet" href="/frontend/css/style.css">
+		<!-- responsive css -->
+        <link rel="stylesheet" href="/frontend/css/responsive.css">
+		<!-- modernizr css -->
+        <script src="/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- custom css -->
+		<link rel="stylesheet" href="/frontend/css/custom.css">
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <%= render "erp/locyen/frontend/modules/header/header" %>
+        
+        <%= yield %>
+        
+		<%= render "erp/locyen/frontend/modules/footer/footer" %>
+        
+		<!-- all js here -->
+		<!-- jquery latest version -->
+        <script src="/frontend/js/vendor/jquery-v3.4.1.min.js"></script>
+		<!-- bootstrap js -->
+        <script src="/frontend/js/bootstrap.min.js"></script>
+		<!-- owl.carousel.2.0.0-beta.2.4 css -->
+        <script src="/frontend/js/owl.carousel.min.js"></script>
+		<!-- meanmenu js -->
+        <script src="/frontend/js/jquery.meanmenu.js"></script>
+		<!-- jquery-ui js -->
+        <script src="/frontend/js/jquery-ui.min.js"></script>
+		<!-- nivo-slider js -->
+        <script src="/frontend/js/jquery.nivo.slider.pack.js"></script>
+		<!-- jquery countdown js -->
+        <script src="/frontend/js/jquery.countdown.min.js"></script>
+		<!-- wow js -->
+        <script src="/frontend/js/wow.min.js"></script>
+		<!-- plugins js -->
+        <script src="/frontend/js/plugins.js"></script>
+        <!-- fancybox js -->
+        <script src="/frontend/js/jquery.fancybox.min.js"></script>
+		<!-- main js -->
+        <script src="/frontend/js/main.js"></script>
+        <!-- custom js -->
+        <script src="/frontend/js/custom.js"></script>
+
+        <%= yield(:javascript) %>
+    </body>
+</html>

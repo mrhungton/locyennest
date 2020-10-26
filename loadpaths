@@ -1,0 +1,2 @@
+#!/bin/bash
+rails r 'puts ActiveSupport::Dependencies.autoload_paths'

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "SVN-Corki-Regular";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+    /* font-weight: 100; */
+}
+@font-face {
+    font-family: "SVN-Corki-Rounded";
+    src: url(../fonts/SVN-Corki-Rounded.otf);
+    /* font-weight: 100; */
+}
+@font-face {
+    font-family: "SVN-Corki-Tuscan";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+    /* font-weight: 100; */
+}
+@font-face {
+    font-family: "SVN-Corki-Tuscan-Rounded";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+    /* font-weight: 100; */
+}
+body.login {
+    font-family: 'SVN-Corki-Tuscan-Rounded';
+}
+.login {
+    background-color: #142850!important;
+}
+.login .content .login-form, .login .content .form-title, .login .content .form-control {
+    font-family: 'SVN-Corki-Tuscan-Rounded';
+    color: #142850 !important;
+}
+.login .content h3 {
+    font-size: 35px;
+}
+.login .content .form-control {
+    font-size: 150%;
+}
+.login .content .form-actions {
+    text-align: center;
+}
+.login .content .form-actions .btn {
+    background-color: #142850;
+    border-color: #142850;
+    border-radius: 20px !important;
+    font-size: 20px;
+    font-weight: 100;
+}
+.login .copyright {
+    font-size: 20px;
+}
+.login .copyright > a {
+    background: linear-gradient(#f7ec7d, #ab761c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.page-header.navbar .page-logo .logo-text, .login .logo .logo-text {
+    font-family: "SVN-Corki-Regular", SVN-Corki-Rounded, SVN-Corki-Tuscan, SVN-Corki-Tuscan-Rounded, sans-serif;
+    background: linear-gradient(#f7ec7d, #ab761c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    padding: 4px 0;
+}
+.login .logo .logo-text {
+    font-size: 60px;
+}

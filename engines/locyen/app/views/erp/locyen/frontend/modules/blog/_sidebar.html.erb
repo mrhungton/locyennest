@@ -1,0 +1,53 @@
+<div class="Search-area border-2">
+    <div class="product-title text-uppercase bg-5">
+        <h3>Tìm kiếm</h3>
+    </div>
+    <div class="search p-20">
+        <form action="#">
+            <input type="text" placeholder="Tìm bài viết theo từ khóa..." />
+            <button><i class="fa fa-paper-plane-o"></i></button>
+        </form>
+    </div>
+</div>
+
+<% if !@categories.empty? %>
+<div class="categories-area border-2 mtb-35">
+    <div class="product-title text-uppercase bg-5">
+        <h3>Chủ đề</h3>
+    </div>
+    <div class="shop-categories-menu p-20">
+        <ul>
+            <% @categories.each do |cat| %>
+                <li class="<%= 'active' if (defined?(cat_id) and cat.id == cat_id) or (cat.id == params[:cat_id].to_i) %>">
+                    <%= link_to cat.name, 
+                    erp_locyen.blog_with_category_path(cat_id: cat.id, title: url_friendly(cat.name)) %>
+                    <span class="pull-right">(<%= cat.get_articles.count %>)</span>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+<% end %>
+
+<% if !@newest_blogs.empty? %>
+<div class="recent-comment-area border-2 mtb-30">
+    <div class="product-title text-uppercase bg-5">
+        <h3>Bài viết mới nhất</h3>
+    </div>
+    <div class="comment  p-20-15 ">
+        <% @newest_blogs.each do |blog| %>
+            <div class="single-comments clear mb-20">
+                <div class="comment-img floatleft">
+                    <a href="<%= article_link(blog) %>">
+                        <img src="<%= blog.image.small %>" alt="<%= blog.name %>" />
+                    </a>
+                </div>
+                <div class="comment-info">
+                    <a href="<%= article_link(blog) %>"><%= blog.name %></a>
+                    <span><%= blog.created_at.strftime("%d/%m/%Y - %I:%M %p") %></span>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<% end %>

@@ -1,0 +1,19 @@
+<% if about.present? %>
+<!-- About area start -->
+<div class="new-arrivals-area bg-img-1 wow fadeInLeft" data-wow-delay="0.9s">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-5 col-md-7 offset-lg-6 col-lg-6 offset-sm-4 col-sm-8">
+                <div class="new-arrivals-content text-center">
+                    <h3 class="bg-gold-text"><%= about.name %></h3>
+                    <%= raw about.content %>
+                    <div class="locyen-btn new-arrivals-btn mt-35">
+                        <a href="<%= erp_locyen.about_us_path %>">Hiểu thêm về chúng tôi <i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About area end -->
+<% end %>

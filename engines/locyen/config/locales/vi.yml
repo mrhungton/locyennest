@@ -1,0 +1,8 @@
+vi:
+  articles:
+    alias:
+      blog: "Blog"
+      about_us: "About Us"
+      service: "Service"
+      home_about: "Home About"
+      footer_about: "Footer About"

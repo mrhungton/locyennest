@@ -1,0 +1,52 @@
+<%= form_for([erp_testimonials, :backend, testimonial], html: {multipart: true}) do |f| %>
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <%= erp_form_control('image', {
+                        img_src: testimonial.logo,
+                        name: 'testimonial[logo]',
+                        label: t('.logo'),
+                        width: 150,
+                        height: 150,
+                        required: true,
+                        errors: testimonial.errors.full_messages_for(:logo)
+                    }) %>
+                </div>
+                <div class="col-md-8">
+                    <%= erp_form_control("text", {
+                        name: 'testimonial[author]',
+                        value: testimonial.author,                   
+                        label: t('.author'),
+                        placeholder: t('.placeholder_author'),
+                        help: t('.help_author'),
+                        required: true,
+                        errors: testimonial.errors.full_messages_for(:author)
+                    }) %>
+                    <%= erp_form_control("text", {
+                        name: 'testimonial[workplace]',
+                        value: testimonial.workplace,                   
+                        label: t('.workplace'),
+                        placeholder: t('.placeholder_workplace'),
+                        help: t('.help_workplace')
+                    }) %>
+                    <%= erp_form_control("textarea", {
+                        name: 'testimonial[content]',
+                        value: testimonial.content,
+                        label: t('.content'),
+                        required: true,
+                        errors: testimonial.errors.full_messages_for(:content)
+                    }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_testimonials.backend_testimonials_path
+    }) %>
+<% end %>

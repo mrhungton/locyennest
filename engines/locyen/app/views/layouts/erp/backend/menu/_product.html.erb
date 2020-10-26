@@ -1,0 +1,34 @@
+<li class="nav-item <%= "active open" if ["erp/products/backend/products",
+                                          "erp/products/backend/categories",
+                                          "erp/products/backend/brands"].include?(params[:controller]) %>">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="fa fa-th"></i>
+        <span class="title">Quản lý sản phẩm</span>
+        <% if ["erp/products/backend/products",
+               "erp/products/backend/categories",
+               "erp/products/backend/brands"].include?(params[:controller]) %>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        <% else %>
+            <span class="arrow"></span>
+        <% end %>
+    </a>
+    <ul class="sub-menu">
+        <li class="nav-item <%= "active open" if ["erp/products/backend/products"].include?(params[:controller]) %>">
+            <a href="<%= erp_products.backend_products_path %>" class="nav-link ">
+                <span class="title">Danh sách sản phẩm</span>
+                <% if ["erp/products/backend/products"].include?(params[:controller]) %>
+                <span class="selected"></span>
+                <% end %>
+            </a>
+        </li>
+        <li class="nav-item <%= "active open" if ["erp/products/backend/categories"].include?(params[:controller]) %>">
+            <a href="<%= erp_products.backend_categories_path %>" class="nav-link ">
+                <span class="title">Chuyên mục/danh mục</span>
+                <% if ["erp/products/backend/categories"].include?(params[:controller]) %>
+                <span class="selected"></span>
+                <% end %>
+            </a>
+        </li>
+    </ul>
+</li>

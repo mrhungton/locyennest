@@ -1,0 +1,12 @@
+<% if @sliders.present? %>
+<!-- slider area start -->
+<div class="slider-area home3-slider-area">
+    <div id="slider-active">
+        <% sliders.each do |slider| %>
+            <img src="<%= slider.image_url.thumb %>" alt="<%= slider.name %>" />
+        <% end %>
+    </div>
+</div>
+<div class="line-bg-gradient to-left"></div>
+<!-- slider area end -->
+<% end %>

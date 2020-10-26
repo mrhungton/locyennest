@@ -1,0 +1,45 @@
+<div class="featureproduct-slider-area mt-80 mb-65 tab-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title home5-section-title text-center mb-40">
+                    <h2>Sản phẩm khuyến mãi</h2>
+                </div>
+            </div>
+        </div>
+        <div class="featureproduct-slider-active owl-carousel next-prev-style">
+            <% (1..6).each do |product| %>
+                <div class="single-product">
+                    <div class="product-img">
+                        <a href="#"><img src="/frontend/images/product/bo-qua-tang.jpg" alt="" /></a>
+                        <span class="sale">Sale</span>
+                        <div class="product-info-overlay-area clear pt-35">
+                            <div class="add-to-cart text-uppercase mr-2">
+                                <button>mua hàng</button>
+                            </div>
+                            <a class="locyen-btn ml-2" href="#">chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product-item-details text-center">
+                        <div class="product-name-review tab-product-name-review">
+                            <div class="product-name mt-30 ">
+                                <span>Sample Category</span>
+                                <strong><a href="#">Chaz Kangeroo Hoodie1</a></strong>
+                            </div>
+                            <div class="product-review">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="special-price">$ 50.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

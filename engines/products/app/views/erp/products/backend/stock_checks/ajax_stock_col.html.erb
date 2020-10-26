@@ -1,0 +1,9 @@
+<input type="hidden" class="line_stock_qty"
+    value="<%= @stock %>"
+    name="stock_check[stock_check_details_attributes][<%= @uid %>][stock]" />
+<strong><%= @stock %></strong>
+
+<script>
+    var container = $('.stock-check-details');
+    calculateQuantityLine(container);
+</script>

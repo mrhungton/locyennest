@@ -1,0 +1,129 @@
+<% content_for :title do %>
+    <%= t('.stock_checks') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="glyphicon glyphicon-oil"></i> <%= t('.stock_checks') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <% if can? :inventory_products_warehouse_checks_with_stock_create, nil %>
+        <%= erp_component('button/create', {
+            text: t('.create'),
+            href: erp_products.new_backend_stock_check_path,
+            class: 'btn-noborder'
+        }) %>
+    <% end %>
+<% end %>
+
+<% content_for :global_filter do %>
+    <div class="row top-datalist">
+        <div class="col-md-2">
+            <%= erp_form_control('date', {
+                label: 'Từ ngày',
+                name: 'from_date',
+                placeholder: 'Chọn ngày'
+            }) %>
+        </div>
+        <div class="col-md-2">
+            <%= erp_form_control('date', {
+                label: 'Đến ngày',
+                name: 'to_date',
+                placeholder: 'Chọn ngày'
+            }) %>
+        </div>
+        <div class="col-md-2">
+            <%= erp_form_control('dataselect', {
+                label: 'Mốc thời gian',
+                name: 'period',
+                value: (@period.present? ? @period.id : ''),
+                text: (@period.present? ? @period.name : ''),
+                placeholder: 'Chọn khoảng thời gian',
+                url: erp_periods.dataselect_backend_periods_path(format: 'json'),
+            }) %>
+        </div>
+    </div>
+<% end %>
+
+<%
+    actions = []
+    actions << {
+        text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+        url: erp_products.archive_all_backend_stock_checks_path,
+        data_method: 'PUT'
+    } if !Erp::Core.available?('ortho_k')
+    actions << {
+        text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+        url: erp_products.unarchive_all_backend_stock_checks_path,
+        data_method: 'PUT'
+    } if !Erp::Core.available?('ortho_k')
+    actions << { divider: true } if !Erp::Core.available?('ortho_k')
+    actions << {
+        text: '<i class="fa fa-trash"></i> '+t('.delete'),
+        url: erp_products.delete_all_backend_stock_checks_path,
+        data_method: 'DELETE',
+        data_confirm: t('delete_confirm')
+    } if !Erp::Core.available?('ortho_k')
+%>
+
+<%= erp_datalist(
+    url: erp_products.list_backend_stock_checks_path,
+    keywords: [
+        {
+            text: t('.code'), name: 'erp_products_stock_checks.code'
+        },
+        {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
+        }
+    ],
+    actions: actions,
+    filters: [
+        {
+            text: t('.draft'), name: 'erp_products_stock_checks.status', value: Erp::Products::StockCheck::STATUS_DRAFT, checked: false
+        },
+        {
+            text: t('.pending'), name: 'erp_products_stock_checks.status', value: Erp::Products::StockCheck::STATUS_PENDING, checked: true
+        },
+        {
+            text: t('.done'), name: 'erp_products_stock_checks.status', value: Erp::Products::StockCheck::STATUS_DONE, checked: true
+        },
+        {
+            text: t('.deleted'), name: 'erp_products_stock_checks.status', value: Erp::Products::StockCheck::STATUS_DELETED, checked: false
+        }
+    ],
+    columns: [
+        {
+            text: t('.code'), name: 'code', value: true, checked: true
+        },
+        {
+            text: t('.adjustment_date'), name: 'adjustment_date', value: true, checked: true
+        },
+        {
+            text: t('.warehouse'), name: 'warehouse', value: true, checked: true
+        },
+        {
+            text: t('.quantity'), name: 'quantity', value: true, checked: true
+        },
+        {
+            text: t('.employee'), name: 'employee', value: true, checked: true
+        },
+        {
+            text: t('.description'), name: 'description', value: true, checked: true
+        },
+        {
+            text: t('status'), name: 'status', value: true, checked: true
+        },
+        {
+            text: t('creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('created_at'), name: 'created_at', value: true, checked: false
+        }
+    ],
+    sort: { sort_by: 'erp_products_stock_checks.code', sort_direction: 'desc' }
+) %>    

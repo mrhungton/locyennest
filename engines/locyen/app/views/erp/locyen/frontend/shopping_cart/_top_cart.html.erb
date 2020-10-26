@@ -1,0 +1,49 @@
+<div class="maincart-wrap">
+    <a href="javascript:void(0);"><i class="fa fa-shopping-basket"></i>
+        <span><%= @cart.cart_items.number_items %></span>
+    </a>
+</div>
+<div class="cart">
+    <% if @cart.cart_items.number_items > 0 %>
+        <div class="total-items pb-20 border-bottom mb-15">
+            <div class="sub-total d-flex align-items-center justify-content-space-between">
+                <span>
+                    <span>Số lượng:</span> 
+                    <strong><%= @cart.cart_items.number_items %></strong>
+                </span>
+                
+                <span class="total">
+                    <span>Cộng tiền :</span>
+                    <strong><%= format_price(@cart.total_order) %></strong>
+                </span>
+            </div>
+            <div class="cart-btn mt-15">
+                <button>Thanh toán</button>
+            </div>
+        </div>
+        <div class="cart-items clear mb-15">
+            <% @cart.cart_items.each do |cart_item| %>
+                <div class="cart-item ptb-20 d-flex align-items-center">
+                    <div class="cart-img">
+                        <%= link_to image_tag(cart_item.product.product_images.first.image_url.small, 
+                            alt: cart_item.product_name, 
+                            title: cart_item.product_name, 
+                            class: "preview"), 
+                            product_link(cart_item.product) %>
+                    </div>
+                    <div class="cart-item-details clear">
+                        <%= link_to cart_item.product_name, product_link(cart_item.product), title: cart_item.product_name %>
+                        <div class="price"><%= format_price(cart_item.product_price) %> x <%= cart_item.quantity %></div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="organic-btn pt-20 text-center border-top">
+            <%= link_to '<i class="fa fa-shopping-bag"></i> Xem giỏ hàng'.html_safe, erp_locyen.shopping_cart_path %>
+        </div>
+    <% else %>
+        <div class="text-center">
+            <p>Hiện chưa có sản phẩm nào trong giỏ hàng của bạn.</p>
+        </div>
+    <% end %>
+</div>

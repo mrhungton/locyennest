@@ -1,0 +1,108 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("code") %>
+                <th class="sortable" sort-by='erp_products_stock_checks.code'>
+                    <%= t('.code') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("adjustment_date") %>
+                <th class="sortable" sort-by='erp_products_stock_checks.adjustment_date'>
+                    <%= t('.adjustment_date') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("warehouse") %>
+                <th>
+                    <%= t('.warehouse') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("quantity") %>
+                <th class="text-center">
+                    <%= t('.quantity') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("employee") %>
+                <th>
+                    <%= t('.employee') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("description") %>
+                <th>
+                    <%= t('.description') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('status') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center">
+                    <%= t('creator') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="sortable" sort-by='erp_products_stock_checks.created_at'>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @stock_checks.each do |stock_check| %>
+            <tr class="odd gradeX has-child-table" data-url="<%= erp_products.stock_check_details_backend_stock_checks_path(id: stock_check.id) %>">
+                <td>
+                    <%= erp_datalist_check_row(id: stock_check.id) %>
+                </td>
+                <% if get_columns(params).include?("code") %>
+                    <td>
+                        <i class="fa fa-plus expand tr-expand-button"></i>
+                        <strong><%= stock_check.code %></strong>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("adjustment_date") %>
+                    <td><%= format_date(stock_check.adjustment_date) %></td>
+                <% end %>
+                <% if get_columns(params).include?("warehouse") %>
+                    <td><%= stock_check.warehouse_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("quantity") %>
+                    <td class="text-center"><%= stock_check.total_quantity %></td>
+                <% end %>
+                <% if get_columns(params).include?("employee") %>
+                    <td><%= stock_check.employee_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("description") %>
+                    <td><%= raw stock_check.description %></td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    <%= status_label(stock_check.status) %>
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: stock_check.creator
+                        }) %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td><%= format_date(stock_check.created_at) %></td>
+                <% end %>
+                <td>
+                    <%= stock_check_dropdown_actions(stock_check) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @stock_checks.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+
+<%= erp_datalist_pagination(@stock_checks) %>

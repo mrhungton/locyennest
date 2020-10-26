@@ -1,0 +1,72 @@
+<input type="hidden" name="stock_check[stock_check_details_attributes][<%= uid %>][id]" value="<%= stock_check_detail.id %>">
+<input type="hidden" name="stock_check[stock_check_details_attributes][<%= uid %>][product_id]" value="<%= stock_check_detail.product_id %>" class="product-id">
+<input type="hidden" name="stock_check[stock_check_details_attributes][<%= uid %>][_destroy]" value="">
+<input type="hidden" name="uids[<%= uid %>]" value="<%= uid %>" />
+<td><%= stock_check_detail.product_name %></td>
+<td width='10%'>
+    <% if stock_check_detail.id.nil? %>
+        <div class="ajax-box"
+            data-url="<%= erp_products.ajax_stock_col_backend_stock_checks_path %>"
+            data-control="
+                [name='stock_check[warehouse_id]'],
+                [name='stock_check[stock_check_details_attributes][<%= uid %>][product_id]'],
+                [name='stock_check[stock_check_details_attributes][<%= uid %>][state_id]'],
+                [name='uids[<%= uid %>]']
+            "
+        >
+        </div>
+    <% else %>
+        <input type="hidden" class="line_stock_qty"
+            value="<%= stock_check_detail.stock %>"
+            name="stock_check[stock_check_details_attributes][<%= uid %>][stock]" />
+        <strong><%= stock_check_detail.stock %></strong>
+    <% end %>
+</td>
+<td width='10%'>
+    <%= erp_form_control("number", {
+        name: 'stock_check[stock_check_details_attributes][' + uid + '][real]',
+        value: stock_check_detail.real,
+        text: stock_check_detail.real,
+        class: "line_real_qty inline down-focus",
+        required: true
+    }) %>
+</td>
+<td width='10%' class="text-semibold">
+    <input class="line_difference_qty" type="hidden" value=""
+        name="stock_check[stock_check_details_attributes][<%= uid %>][quantity]" />
+    <span class="line_difference_qty"></span>
+</td>
+<td width='15%'>
+    <%= erp_form_control("dataselect", {
+        name: 'stock_check[stock_check_details_attributes][' + uid + '][state_id]',
+        value: stock_check_detail.state_id,
+        text: stock_check_detail.state_name,
+        placeholder: t('.choose_state'),
+        url: erp_products.dataselect_backend_states_path(format: 'json'),
+        errors: stock_check_detail.errors.full_messages_for(:state_id),
+        required: true
+    }) %>
+</td>
+<% if Erp::Core.available?("ortho_k") %>
+    <td width='15%'>
+        <%= erp_form_control("textarea", {
+            name: 'stock_check[stock_check_details_attributes][' + uid + '][serials]',
+            value: stock_check_detail.serials,
+            text: stock_check_detail.serials,
+            rows: 1
+        }) %>
+    </td>
+<% end %>
+<td width='15%'>
+    <%= erp_form_control("textarea", {
+        name: 'stock_check[stock_check_details_attributes][' + uid + '][note]',
+        value: stock_check_detail.note,
+        text: stock_check_detail.note,
+        rows: 1
+    }) %>
+</td>
+<td class="text-right">
+    <%= erp_form_control("addableform_remove_button", {
+        is_nested_form: true
+    }) %>
+</td>

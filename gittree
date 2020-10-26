@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "engines/$1"
+echo -e "\e[32mGit tree for $1:\e[0m"
+git log --oneline --graph --all --decorate --abbrev-commit

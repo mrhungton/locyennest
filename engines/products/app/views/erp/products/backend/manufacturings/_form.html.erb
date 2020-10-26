@@ -1,0 +1,101 @@
+<%= form_for([erp_products, :backend, manufacturing], html: {multipart: true}) do |f| %>
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'manufacturing[code]',
+                                    value: manufacturing.code,
+                                    label: t('.code'),
+                                    help: "Mã phiếu sản xuất sẽ tạo tự động nếu bỏ trống.",
+                                    placeholder: "Mã phiếu tự động"
+                                }) %>
+                                <%= erp_form_control("date", {
+                                    name: 'manufacturing[manufacturing_date]',
+                                    value: manufacturing.manufacturing_date,
+                                    label: t('.date')
+                                }) %>
+                                <%= erp_form_control("dataselect", {
+                                    name: 'manufacturing[product_id]',
+                                    value: manufacturing.product_id,
+                                    text: manufacturing.product_name,
+                                    placeholder: t('.choose_product'),
+                                    label: t('.product'),
+                                    url: erp_products.dataselect_backend_products_path(format: 'json'),
+                                    required: true,
+                                    errors: manufacturing.errors.full_messages_for(:product_id)
+                                }) %>
+                                <%= erp_form_control("number", {
+                                    name: 'manufacturing[quantity]',
+                                    value: manufacturing.quantity,
+                                    label: t('.quantity'),
+                                    help: "Chọn số lượng cần sản xuất",
+                                    placeholder: "Số lượng mặt hàng",
+                                    required: true,
+                                    errors: manufacturing.errors.full_messages_for(:quantity)
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <% if Erp::Core.available?("contacts") %>
+                                <%= erp_form_control("dataselect", {
+                                    name: 'manufacturing[responsible_id]',
+                                    value: manufacturing.responsible_id,
+                                    text: manufacturing.responsible_name,
+                                    placeholder: t('.choose_responsible'),
+                                    label: t('.responsible'),
+                                    help: t('.help_responsible'),
+                                    url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
+                                    create: {
+                                        url: erp.new_backend_user_path,
+                                        title: t('.create'),
+                                        container_selector: '.new_user',
+                                        input_selector: 'input[name="user[name]"]'
+                                    }
+                                }) %>
+                                <% end %>
+                                <%= erp_form_control('select', {
+                                    label: t('.status'),
+                                    name: 'manufacturing[status]',
+                                    value: manufacturing.status,
+                                    options: Erp::Products::Manufacturing.get_status_options()
+                                }) %>
+                                <%= erp_form_control("textarea", {
+                                    name: 'manufacturing[note]',
+                                    value: manufacturing.note,
+                                    label: t('.internal_note'),
+                                    placeholder: "Ghi chú..."
+                                }) %>
+                                <%= erp_form_control('checkbox', {
+                                    name: 'product[is_auto_reduce_part_quantity]',
+                                    id: 'is_auto_reduce_part_quantity',
+                                    value: manufacturing.is_auto_reduce_part_quantity,
+                                    not_selected_value: 'false',
+                                    options: [{value: 'true', text: t('.is_auto_reduce_part_quantity')}],
+                                    help: t('.help_is_auto_reduce_part_quantity')
+                                }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="icon-bar-chart"></i> <%= t('.consumed_materials') %></h4>
+                <%= erp_datalist(
+                    url: erp_products.list_backend_products_parts_path(product_id: manufacturing.product_id)
+                )%>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', {
+        text: t('.submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('.cancel'),
+        href: erp_products.backend_manufacturings_path
+    }) %>
+<% end %>

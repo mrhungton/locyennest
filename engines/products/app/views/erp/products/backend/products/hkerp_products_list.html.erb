@@ -1,0 +1,119 @@
+<div class="">
+    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+        <thead>
+            <tr>
+                <th width='1%'>
+                    <%= erp_datalist_check_all %>
+                </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Hkerp price</th>
+                <th>Price</th>
+                <th class="sortable" sort-by='products.stock'>Stock</th>
+                <th>Warr</th>
+                <th>Status</th>
+                <th width="7%"><%= t('.actions') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @products["products"].each do |product| %>
+                <% erp_product = Erp::Products::HkerpProduct.get_product_by_hkerp_product_id(product["id"]) %>
+                <tr class="odd gradeX">
+                    <td>
+                        <%= erp_datalist_check_row(id: erp_product.id) if erp_product.present? %>
+                    </td>
+                    <td>
+                        <%= product["id"] %>
+                    </td>
+                    <td>
+                        <%= product["display_name"] %>
+                        <% if !erp_product.nil? %>
+                            <div class="" style="color: #999"><%= erp_product.name %></div>
+                        <% end %>
+                    </td>
+                    <td class="text-nowrap text-right">
+                        <%= format_price(product["price"]) %>
+                    </td>
+                    <td class="text-nowrap text-right">
+                        <%= format_price(erp_product.price) if erp_product.present? %>
+                    </td>
+                    <td>
+                        <%= product["stock"] %>
+                    </td>
+                    <td>
+                        <%= product["warranty"] %>
+                    </td>
+                    <td>
+                        <% if erp_product.nil? %>
+                            <span class="label label-sm bg-grey">new</span>
+                        <% else %>
+                            <span class="label label-sm label-success">imported</span>
+                            <% if erp_product.price.to_f == product["price"].to_f %>
+                                <span class="label label-sm label-success">price updated</span>
+                            <% else %>
+                                <span class="label label-sm label-warning">price oudated</span>
+                            <% end %>
+                            <% if erp_product.is_sold_out %>
+                                <span class="label label-sm bg-yellow">sold_out</span>
+                            <% end %>
+                        <% end %>
+                        <% if product["out_of_date"] == true %>
+                            <span class="label label-sm label-danger">Outdated</span>
+                        <% end %>
+                        <% if product["suspended"] %>
+                            <span class="label label-sm label-danger">suspended</span>
+                        <% end %>
+                        <% if product["status"].to_i == 0 %>
+                            <span class="label label-sm bg-dark">trashed</span>
+                        <% end %>
+                    </td>
+                    <td>
+                        <% if erp_product.nil? %>
+                            <%= erp_datalist_row_actions (
+                                [
+                                    {
+                                        text: '<i class="fa fa-download"></i> Import',
+                                        href: erp_products.new_backend_product_path(hkerp_id: product["id"]),
+                                        target: '_blank'
+                                    }
+                                ]
+                            ) %>
+                        <% else %>
+                            <%= erp_datalist_row_actions (
+                                [
+                                    {
+                                        text: '<i class="fa fa-pencil"></i> Edit',
+                                        href: erp_products.edit_backend_product_path(erp_product),
+                                        target: '_blank'
+                                    },
+                                    {
+                                        text: '<i class="fa fa-dollar"></i> Update price',
+                                        url: erp_products.hkerp_update_price_backend_products_path(ids: erp_product.id),
+                                        data_method: 'PUT',
+                                        hide: erp_product.price.to_f == product["price"].to_f,
+                                        class: 'ajax-link'
+                                    },
+                                ]
+                            ) %>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% if @products.empty? %>
+        <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+    <% end %>
+</div>
+
+<ul class="pagination">
+    <li class="prev disabled"><span><i class="fa fa-angle-left"></i></span></li>
+    <% (1..(@products['total'].to_i/@products['per_page'].to_i + 0.5).round(0)).each do |number| %>
+        <% if params[:page].to_i == number.to_i %>
+            <li class="active"><span><%= number %></span></li>
+        <% else %>
+            <li><a rel="next" href="list?page=<%= number %>"><%= number %></a></li>
+        <% end %>
+    <% end %>
+    <li class="next"><a rel="next" href="/vi/backend/products/categories/list?page=2"><i class="fa fa-angle-right"></i></a></li>
+</ul>

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+APP_PATH=`pwd`
+
+# pull parent app
+printf "\e[32mGit status of $APP_PATH: \e[0m \n"
+git status
+printf "\e[32mdone!\e[0m\n\n"
+
+# loop through engine folders
+for D in "$APP_PATH/engines/"*
+do
+  cd "$D"
+  printf "\e[32mGit status of $D: \e[0m \n"
+  git status
+  printf "\e[32mdone!\e[0m\n\n"
+done

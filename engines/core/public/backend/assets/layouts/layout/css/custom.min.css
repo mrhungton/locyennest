@@ -1,0 +1,20 @@
+.pagination-style {
+	margin: 0;
+	white-space: nowrap;
+	text-align: right;
+}
+.form-horizontal .control-label {
+	text-align: left;
+}
+.radio-padding-top {
+	padding-top: 5px;
+}
+.center {
+	text-align: center;
+}
+.page-header.navbar .hor-menu .navbar-nav.home-back>li>a>i {
+	color: #fff !important;
+}
+.close {
+	margin-top: 6px;
+}

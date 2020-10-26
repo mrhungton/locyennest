@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-4">
+        <label><%= t('.unit_name') %></label>
+    </div>
+    <div class="col-md-2">
+        <label><%= t('.conversion_value') %></label>
+    </div>
+    <div class="col-md-2">
+        <label><%= t('.price') %></label>
+    </div>
+    <div class="col-md-2">
+        <label><%= t('.product_code') %></label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" name="product[products_units_attributes][<%= uid %>][id]" value="<%= products_unit.id %>">
+        <input type="hidden" name="product[products_units_attributes][<%= uid %>][_destroy]" value="">
+        <%= erp_form_control("dataselect", {
+            name: 'product[products_units_attributes][' + uid + '][unit_id]',
+            value: products_unit.unit_id,
+            text: products_unit.unit_name,
+            placeholder: t('.choose_unit'),
+            url: erp_products.dataselect_backend_units_path(format: 'json'),
+            create: {
+                url: erp_products.new_backend_unit_path,
+                title: t('.create_unit'),
+                container_selector: '.new_unit',
+                input_selector: 'input[name="unit[name]"]'
+            },
+            edit: {
+                url: erp_products.edit_backend_unit_path(id: ':value'),
+                title: t('.edit_unit'),
+                container_selector: '.edit_unit',
+            }
+        }) %>
+    </div>
+    <div class="col-md-2">
+        <%= erp_form_control("text", {
+            name: 'product[products_units_attributes][' + uid + '][conversion_value]',
+            value: products_unit.conversion_value,
+            text: products_unit.conversion_value
+        }) %>
+    </div>
+    <div class="col-md-2">
+        <%= erp_form_control("text", {
+            name: 'product[products_units_attributes][' + uid + '][price]',
+            value: products_unit.price,
+            text: products_unit.price
+        }) %>
+    </div>
+    <div class="col-md-2">
+        <%= erp_form_control("text", {
+            name: 'product[products_units_attributes][' + uid + '][code]',
+            value: products_unit.code,
+            text: products_unit.code,
+            help: t('.help_product_code'),
+            placeholder: t('.placeholder_product_code')
+        }) %>
+    </div>
+    <div class="col-md-2">        
+        <%= erp_form_control("addableform_remove_button", {
+            is_nested_form: true
+        }) %>
+    </div>
+</div>

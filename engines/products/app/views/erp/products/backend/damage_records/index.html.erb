@@ -1,0 +1,128 @@
+<% content_for :title do %>
+    <%= t('.damage_records') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="glyphicon glyphicon-floppy-remove"></i> <%= t('.damage_records') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <% if can? :inventory_products_warehouse_checks_with_damage_create, nil %>
+        <%= erp_component('button/create', {
+            text: t('.create'),
+            href: erp_products.new_backend_damage_record_path,
+            class: 'btn-noborder'
+        }) %>
+    <% end %>
+<% end %>
+
+<% content_for :global_filter do %>
+    <div class="row top-datalist">
+        <div class="col-md-2">
+            <%= erp_form_control('date', {
+                label: 'Từ ngày',
+                name: 'from_date',
+                placeholder: 'Chọn ngày'
+            }) %>
+        </div>
+        <div class="col-md-2">
+            <%= erp_form_control('date', {
+                label: 'Đến ngày',
+                name: 'to_date',
+                placeholder: 'Chọn ngày'
+            }) %>
+        </div>
+        <div class="col-md-2">
+            <%= erp_form_control('dataselect', {
+                label: 'Mốc thời gian',
+                name: 'period',
+                value: (@period.present? ? @period.id : ''),
+                text: (@period.present? ? @period.name : ''),
+                placeholder: 'Chọn khoảng thời gian',
+                url: erp_periods.dataselect_backend_periods_path(format: 'json'),
+            }) %>
+        </div>
+    </div>
+<% end %>
+
+<%
+    actions = []
+    actions << {
+        text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+        url: erp_products.archive_all_backend_damage_records_path,
+        data_method: 'PUT'
+    } if !Erp::Core.available?('ortho_k')
+    actions << {
+        text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+        url: erp_products.unarchive_all_backend_damage_records_path,
+        data_method: 'PUT'
+    } if !Erp::Core.available?('ortho_k')
+    actions << {
+        divider: true
+    } if !Erp::Core.available?('ortho_k')
+    actions << {
+        text: '<i class="fa fa-trash"></i> '+t('.delete'),
+        url: erp_products.delete_all_backend_damage_records_path,
+        data_method: 'DELETE',
+        data_confirm: t('delete_confirm')
+    } if !Erp::Core.available?('ortho_k')
+%>
+
+<%= erp_datalist(
+    url: erp_products.list_backend_damage_records_path,
+    keywords: [
+        {
+            text: t('.code'), name: 'erp_products_damage_records.code'
+        },
+        {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
+        }
+    ],
+    actions: actions,
+    filters: [
+        {
+            text: t('.draft'), name: 'erp_products_damage_records.status', value: Erp::Products::DamageRecord::STATUS_DRAFT, checked: false
+        },
+        {
+            text: t('.pending'), name: 'erp_products_damage_records.status', value: Erp::Products::DamageRecord::STATUS_PENDING, checked: true
+        },
+        {
+            text: t('.done'), name: 'erp_products_damage_records.status', value: Erp::Products::DamageRecord::STATUS_DONE, checked: true
+        },
+        {
+            text: t('.deleted'), name: 'erp_products_damage_records.status', value: Erp::Products::DamageRecord::STATUS_DELETED, checked: false
+        }
+    ],
+    columns: [
+        {
+            text: t('.code'), name: 'code', value: true, checked: true
+        },
+        {
+            text: t('.date'), name: 'date', value: true, checked: true
+        },
+        {
+            text: t('.warehouse'), name: 'warehouse', value: true, checked: true
+        },
+        {
+            text: t('.employee'), name: 'employee', value: true, checked: true
+        },
+        {
+            text: t('.description'), name: 'description', value: true, checked: true
+        },
+        {
+            text: t('.status'), name: 'status', value: true, checked: true
+        },
+        {
+            text: t('creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('created_at'), name: 'created_at', value: true, checked: false
+        }
+    ],
+    sort: { sort_by: 'erp_products_damage_records.created_at', sort_direction: 'desc' }
+) %>    

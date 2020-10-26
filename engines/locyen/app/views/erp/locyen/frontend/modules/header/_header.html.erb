@@ -1,0 +1,96 @@
+<!-- header start -->
+<header class="header-area ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="logo">
+                    <%= link_to image_tag("/frontend/img/logo/main-logo.png",
+                        title: "Lộc Yến - Lọc của mọi nhà",
+                        alt: "Lộc Yến - Lọc của mọi nhà"),
+                        erp_locyen.root_path,
+                        title: "Lộc Yến - Lọc của mọi nhà" 
+                    %>
+                </div>
+            </div>
+            <div class="col-lg-8 col-10">
+                <div class="mainmenu-area">
+                    <div class="top-bar clear">
+                        <div class="top-bar-left pull-left">
+                            <div class="hotline pull-left d-none d-lg-block">
+                                <p>Hotline hỗ trợ : 0896 995 686</p>
+                            </div>
+                        </div>
+                        <div class="top-bar-right pull-right">
+                            <div class="search-box d-none d-lg-block">
+                                <form action="#">
+                                    <input type="search" placeholder="Tìm kiếm theo từ khóa"/>
+                                    <button><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainmenu dropdown d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
+                                    <%= link_to 'Trang chủ', erp_locyen.root_path %>
+                                </li>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/about_us' %>">
+                                    <%= link_to 'Giới thiệu', erp_locyen.about_us_path %>
+                                </li>
+                                <% Erp::Menus::Menu.get_menus.each do |category| %>
+                                    <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
+                                                    (defined?(menu_id) and category.id == menu_id) ||
+                                                    (category.id == params[:menu_id].to_i) %>">
+                                        <%= link_to category.name, menu_link(category) %>
+                                    </li>
+                                <% end %>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
+                                    <%= link_to 'Góc chia sẻ', erp_locyen.blog_path %>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-2">
+                <div class="cart-area" data-url="<%= erp_locyen.top_cart_path %>">
+                    <%= render 'erp/locyen/frontend/shopping_cart/top_cart' %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobail-menu -->
+    <div class="mobail-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-none d-sm-block d-md-none">
+                    <div class="mobail-menu-active">
+                        <nav>
+                            <ul>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
+                                    <%= link_to 'Trang chủ', erp_locyen.root_path %>
+                                </li>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/about_us' %>">
+                                    <%= link_to 'Giới thiệu', erp_locyen.about_us_path %>
+                                </li>
+                                <% Erp::Menus::Menu.get_menus.each do |category| %>
+                                    <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
+                                                    (defined?(menu_id) and category.id == menu_id) ||
+                                                    (category.id == params[:menu_id].to_i) %>">
+                                        <%= link_to category.name, menu_link(category) %>
+                                    </li>
+                                <% end %>
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
+                                    <%= link_to 'Góc chia sẻ', erp_locyen.blog_path %>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="line-bg-gradient"></div>
+<!-- header end -->

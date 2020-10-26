@@ -1,0 +1,36 @@
+<% content_for :title do %>
+    <%= t('.newsletters') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="fa fa-archive"></i> <%= t('.newsletters') %>
+<% end %>
+
+<%= erp_datalist(
+    url: erp_newsletters.list_backend_newsletters_path,
+    keywords: [
+        {
+            text: t('.email'), name: 'erp_newsletters_newsletters.email'
+        }
+    ],
+    actions: [
+        {
+            text: '<i class="fa fa-trash"></i> '+t('.delete'),
+            url: erp_newsletters.delete_all_backend_newsletters_path,
+            data_method: 'DELETE',
+            data_confirm: t('.delete_confirm')
+        }
+    ],
+    filters: [
+        
+    ],
+    columns: [
+        {
+            text: t('.email'), name: 'email', value: true, checked: true
+        },
+        {
+            text: t('.created_at'), name: 'created_at', value: true, checked: true
+        }
+    ],
+    sort: { sort_by: 'erp_newsletters_newsletters.created_at', sort_direction: 'desc' }
+) %>    

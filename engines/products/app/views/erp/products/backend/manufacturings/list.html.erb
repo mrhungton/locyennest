@@ -1,0 +1,151 @@
+<div class="">
+    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+        <thead>
+            <tr>
+                <th width='1%'>
+                    <%= erp_datalist_check_all %>
+                </th>
+                <% if get_columns(params).include?("manufacturing_code") %>
+                    <th>
+                        <%= t('.manufacturing_code') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("manufacturing_date") %>
+                    <th>
+                        <%= t('.manufacturing_date') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("product_code") %>
+                    <th>
+                        <%= t('.product_code') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("product") %>
+                    <th>
+                        <%= t('.product') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("quantity") %>
+                    <th>
+                        <%= t('.quantity') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("responsible") %>
+                    <th>
+                        <%= t('.responsible') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                    <th>
+                        <%= t('.status') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <th>
+                        <%= t('.creator') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <th>
+                        <%= t('.created_at') %>
+                    </th>
+                <% end %>
+                <th width="7%"><%= t('.actions') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @manufacturings.each do |manufacturing| %>
+                <tr class="odd gradeX">
+                    <td>
+                        <%= erp_datalist_check_row(id: manufacturing.id) %>
+                    </td>
+                    <% if get_columns(params).include?("manufacturing_code") %>
+                        <td><%= manufacturing.code %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("manufacturing_date") %>
+                        <td><%= manufacturing.manufacturing_date.present? ? manufacturing.manufacturing_date.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %I:%M") : '' %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("product_code") %>
+                        <td></td>
+                    <% end %>
+                    <% if get_columns(params).include?("product") %>
+                        <td><%= manufacturing.product_name %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("quantity") %>
+                        <td><%= manufacturing.quantity %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("responsible") %>
+                        <td><%= link_to manufacturing.responsible_name,'' %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("status") %>
+                        <td>
+                            <% if manufacturing.status == Erp::Products::Manufacturing::STATUS_DRAFT %>
+                            <span class="label label-sm label-default"><%= t('.draft') %></span>
+                            <% elsif manufacturing.status == Erp::Products::Manufacturing::STATUS_MANUFACTURING %>
+                            <span class="label label-sm label-info"><%= t('.manufacturing') %></span>
+                            <% else %>
+                            <span class="label label-sm label-success"><%= t('.finished') %></span>
+                            <% end %> 
+                        </td>
+                    <% end %>
+                    <% if get_columns(params).include?("creator") %>
+                        <td>
+                            <%= erp_component('avatar', {
+                                user: manufacturing.creator
+                            }) %>
+                        </td>
+                    <% end %>
+                    <% if get_columns(params).include?("created_at") %>
+                        <td><%= manufacturing.created_at.strftime("%d/%m/%Y") %></td>
+                    <% end %>
+                    <td>
+                        <%= erp_datalist_row_actions(
+                            [
+                                {
+                                    text: '<i class="fa fa-edit"></i> '+t('.edit'),
+                                    href: erp_products.edit_backend_manufacturing_path(manufacturing)
+                                },
+                                {
+                                    text: '<i class="fa fa-clipboard"></i> '+t('.btn_draft'),
+                                    url: erp_products.draft_backend_manufacturings_path(id: manufacturing),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.draft_confirm')
+                                },
+                                {
+                                    text: '<i class="fa fa-gears"></i> '+t('.btn_manufacturing'),
+                                    url: erp_products.manufacturing_backend_manufacturings_path(id: manufacturing),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.manufacturing_confirm')
+                                },
+                                {
+                                    text: '<i class="fa fa-check"></i> '+t('.btn_finished'),
+                                    url: erp_products.finished_backend_manufacturings_path(id: manufacturing),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.finished_confirm')
+                                },
+                                {
+                                    divider: true
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                    url: erp_products.backend_manufacturing_path(manufacturing),
+                                    data_method: 'DELETE',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.delete_confirm')
+                                }
+                            ]
+                        ) %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% if @manufacturings.empty? %>
+        <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+    <% end %>
+</div>
+        
+<%= erp_datalist_pagination(@manufacturings) %>

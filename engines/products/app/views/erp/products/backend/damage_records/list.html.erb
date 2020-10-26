@@ -1,0 +1,102 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("code") %>
+                <th class="sortable" sort-by='erp_products_damage_records.code'>
+                    <%= t('.code') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("date") %>
+                <th>
+                    <%= t('.date') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("warehouse") %>
+                <th>
+                    <%= t('.warehouse') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("employee") %>
+                <th>
+                    <%= t('.employee') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("description") %>
+                <th>
+                    <%= t('.description') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('status') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center">
+                    <%= t('creator') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="sortable" sort-by='erp_product_damage_records.created_at'>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @damage_records.each do |damage_record| %>
+            <tr class="<%= 'blurred' if damage_record.is_deleted? %> odd gradeX has-child-table" data-url="<%= erp_products.damage_record_details_backend_damage_records_path(id: damage_record.id) %>">
+                <td>
+                    <%= erp_datalist_check_row(id: damage_record.id) %>
+                </td>
+                <% if get_columns(params).include?("code") %>
+                    <td>
+                        <i class="fa fa-plus expand tr-expand-button"></i>
+                        <strong>
+                            <%= link_to damage_record.code, erp_products.edit_backend_damage_record_path(damage_record) %>
+                        </strong>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("date") %>
+                    <td><%= format_date(damage_record.date) %></td>
+                <% end %>
+                <% if get_columns(params).include?("warehouse") %>
+                    <td><%= damage_record.warehouse_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("employee") %>
+                    <td><%= damage_record.employee_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("description") %>
+                    <td><%= raw damage_record.description %></td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    <%= status_label(damage_record.status) %> 
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: damage_record.creator
+                        }) %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td><%= format_date(damage_record.created_at) %></td>
+                <% end %>
+                <td>
+                    <%= damage_record_dropdown_actions(damage_record) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @damage_records.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@damage_records) %>

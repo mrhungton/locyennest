@@ -1,0 +1,29 @@
+vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          newsletter: "Đăng ký nhận tin"
+          newsletters: "Danh sách đăng ký"
+  erp:
+    newsletters:
+      backend:
+        newsletters:
+          delete_all:
+            success: "Xóa email đăng ký nhận tin thành công"
+          destroy:
+            success: "Xóa email đăng ký nhận tin thành công"
+          index:
+            newsletters: "Danh sách đăng ký nhận tin"
+            delete: "Xóa email đăng ký"
+            delete_confirm: "Bạn có chắc muốn xóa email đăng ký?"
+            email: "Email đăng ký"
+            created_at: "Ngày đăng ký"
+          list:
+            email: "Email đăng ký"
+            created_at: "Ngày đăng ký"
+            actions: "Thao tác"
+            edit: "Chỉnh sửa"
+            delete: "Xóa email đăng ký"
+            delete_confirm: "Bạn có chắc muốn xóa đăng ký này?"
+            no_matching_records_found: "Danh sách không được tìm thấy"

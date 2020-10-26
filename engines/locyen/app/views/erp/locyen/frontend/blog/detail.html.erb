@@ -1,0 +1,73 @@
+<!-- blog-area start -->
+<div class="breadcrumbs-area bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="woocommerce-breadcrumb mtb-15">
+                    <div class="menu">
+                        <ul>
+                            <li><a href="<%= erp_locyen.root_path %>">Trang chủ</a></li>
+                            <li><a href="<%= erp_locyen.blog_path %>">Góc chia sẻ</a></li>
+                            <li class="active"><a href="javascript:void(0);"><%= @blog.name %></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="line-bg-gradient to-left"></div>
+<div class="blog-details ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-content single-blog-content text-justify">
+                    <div class="entry-meta">
+                        <span>
+                            <i class="fa fa-user" aria-hidden="true"></i> Đăng bởi Lộc Yến Nest
+                        </span>
+                        <span 
+                            title="<%= @blog.created_at.strftime('%b %d, %Y - %H:%M:%S') %>">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> <%= relative_time(@blog.created_at) %>
+                        </span>
+                    </div>
+                    <h3 class="blog-title" style="text-align: justify; margin-top: 0;"><%= @blog.name %></h3>
+                    <%= @blog.content.html_safe %>
+                    <div class="entry-meta-category-tag border-bottom border-top ptb-20 mt-30">
+                        <div class="category">
+                            <i class="fa fa-bookmark"></i>
+                            <% if @blog.get_tags.empty? %>
+                                <a href="#">lộc yến nest</a>,
+                                <a href="#">yến chưng tươi</a>,
+                                <a href="#">tổ yến</a>,
+                                <a href="#">quà tặng</a>,
+                                <a href="#">yến thượng hạng</a>
+                            <% else %>
+                                <%= safe_join(@blog.get_tags.map{|tag| ('<a href="#">' + tag + '</a>').html_safe}, ", ") %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+
+                <% if @newest_blogs.present? %>
+                    <div class="related-articles">
+                        <h5 class="box-title">Có thể bạn quan tâm:</h5>
+                        <ul>
+                            <% @newest_blogs.each do |blog| %>
+                                <li>
+                                    <a class="btn-link" href="<%= article_link(blog) %>">
+                                        <%= blog.name %>
+                                    </a>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+            </div>
+            <div class="col-lg-4">
+                <%= render "erp/locyen/frontend/modules/blog/sidebar" %>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer area start -->

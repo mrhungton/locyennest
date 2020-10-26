@@ -1,0 +1,24 @@
+<% if certificates.present? %>
+<!-- certification-area start -->
+<div class="brand-area text-center wow fadeInDown" data-wow-delay="0.3s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center mb-50">
+                    <h2 class="bg-gold-text">Chứng nhận</h2>
+                </div>
+            </div>
+        </div>
+        <div class="brand-active owl-carousel next-prev-style d-flex justify-content-center">
+            <% certificates.each do |certificate| %>
+                <div class="single-brand">
+                    <a href="<%= certificate.image_url %>" data-fancybox="certificates" data-caption="<%= certificate.name %>">
+                        <img src="<%= certificate.image_url.thumb %>" alt="" />
+                    </a>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- certification-area end -->
+<% end %>

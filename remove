@@ -1,0 +1,41 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+  then
+    echo -e "\e[31mNo engine name supplied\e[0m"
+    exit 1
+fi
+
+# current path
+APP_PATH=`pwd`
+
+# check engine exists
+for var in "$@"    
+do
+    exist=false
+    while IFS='' read -r line || [[ -n "$line" ]]; do
+        if [ "$line" == "gem 'erp_$var', path: 'engines/$var'" ]; then
+            exist=true
+        fi
+    done < "$APP_PATH/Gemfile"
+    
+    if ! $exist ; then
+        if [ ! -d "$APP_PATH/engines/$var" ]; then
+            echo -e "\e[31mEngine '$var' not found\e[0m"
+            continue
+        fi
+    fi
+    
+    # remove line from Gemfile
+    sed -i "/erp_$var/d" "$APP_PATH/Gemfile"
+    
+    # remove files folders
+    rm -rf "$APP_PATH/engines/$var"
+    
+    echo -e "\n\e[32mEngine '$var' removed\e[0m\n"
+done
+
+# bundle install
+cd "$APP_PATH"
+bundle install
+    
+echo -e "\n\e[32mEngine(s) removed\e[0m"

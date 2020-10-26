@@ -1,0 +1,68 @@
+<%= form_for([erp_articles, :backend, category]) do |f| %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= erp_form_control("dataselect", {
+                                name: 'category[parent_id]',
+                                value: category.parent_id,
+                                text: category.parent_name,
+                                placeholder: t('.placeholder_parent_category'),
+                                label: t('.parent_category'),
+                                url: erp_articles.dataselect_backend_categories_path(format: 'json'),
+                                create: {
+                                    url: erp_articles.new_backend_category_path,
+                                    title: t('.create'),
+                                    container_selector: '.new_category',
+                                    input_selector: 'input[name="category[name]"]'
+                                }
+                            }) %>
+                        </div>
+                        <div class="col-md-4">
+                            <%= erp_form_control("text", {
+                                name: 'category[name]',
+                                value: category.name,                   
+                                label: t('.name'),
+                                placeholder: t('.placeholder_name'),
+                                required: true,
+                                errors: category.errors.full_messages_for(:name)
+                            }) %>
+                        </div>
+                        <div class="col-md-4">
+                            <%= erp_form_control('select', {
+                                label: t('.alias'),
+                                name: 'category[alias]',
+                                value: category.alias,
+                                options: Erp::Articles::Category.get_alias_options()
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <%= erp_form_control("textarea", {
+                        name: 'category[description]',
+                        value: category.description,
+                        label: t('.description'),
+                        placeholder: t('.placeholder_description'),
+                        rows: 5
+                    }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_articles.backend_categories_path
+    }) %>
+<% end %>

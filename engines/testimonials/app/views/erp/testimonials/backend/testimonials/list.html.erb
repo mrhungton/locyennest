@@ -1,0 +1,77 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("author") %>
+                <th  width='20%' class="sortable" sort-by='erp_testimonials_testimonials.author'>
+                    <%= t('.author') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("content") %>
+                <th>
+                    <%= t('.content') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th>
+                    <%= t('creator') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="sortable" sort-by='erp_testimonials_testimonials.created_at'>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @testimonials.each do |testimonial| %>
+            <tr class="odd gradeX">
+                <td>
+                    <%= erp_datalist_check_row(id: testimonial.id) %>
+                </td>
+                <% if get_columns(params).include?("author") %>
+                    <td>
+                        <% if can? :edit, testimonial %>
+                            <%= link_to(testimonial.author, edit_backend_testimonial_path(testimonial)) %>
+                        <% else %>
+                            <%= testimonial.author %>
+                        <% end %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("content") %>
+                <td><%= testimonial.content %></td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td><%= testimonial.created_at.strftime("%d/%m/%Y") %></td>
+                <% end %>
+                <td class="text-right">
+                    <%
+                        actions = []
+                        actions << {
+                                text: '<i class="fa fa-edit"></i> '+t('edit'),
+                                href: erp_testimonials.edit_backend_testimonial_path(testimonial)
+                            } if can? :edit, testimonial
+                        actions << {
+                                text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                url: erp_testimonials.backend_testimonial_path(testimonial),
+                                data_method: 'DELETE',
+                                class: 'ajax-link',
+                                data_confirm: t('delete_confirm')
+                            } if can? :delete, testimonial
+                    %>
+                    <%= erp_datalist_row_actions(actions) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<% if @testimonials.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@testimonials) %>

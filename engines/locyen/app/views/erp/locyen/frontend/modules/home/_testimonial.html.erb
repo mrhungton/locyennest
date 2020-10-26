@@ -1,0 +1,39 @@
+<!-- testmonial area start -->
+<div class="testimonial-main-area clear">
+    <div class="testimonial bg-img-2 clear pull-left wow fadeInRight" data-wow-delay="0.5s">
+        <div class="testimo-slider pull-right">
+            <div class="test-active owl-carousel next-prev-style">
+                <% testimonials.each do |testimonial| %>
+                    <div class="single-test text-center pt-60">
+                        <div class="test-img">
+                            <a href="javascript:void(0)">
+                                <img src="<%= testimonial.logo.large %>" />
+                            </a>
+                        </div>
+                        <div class="test-content plr-55">
+                            <p><%= testimonial.content %></p>
+                            <div class="test-info mt-30">
+                                <a href="#"><%= testimonial.author %></a>
+                                <span>- <%= testimonial.workplace %> -</span>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="Newsletter-area pull-right bg-img-3 ptl-100 wow fadeInLeft" data-wow-delay="0.5s">
+        <div class="news-taitle">
+            <h3>Đăng ký nhận</h3>
+            <h2 class="bg-gold-text">Bản tin và khuyến mãi</h2>
+        </div>
+        <div class="newsletter">
+            <%= form_for Erp::Newsletters::Newsletter.new, url: erp_newsletters.newsletters_path, html: {class: "btn-group form-inline signup"} do |f| %>
+                <input type="text" name="newsletter[email]"
+                    placeholder="Nhập địa chỉ email của bạn" /><br />
+                <button type="submit">Đăng ký <i class="fa fa-long-arrow-right"></i></button>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- testmonial area end -->

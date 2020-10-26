@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20201026032230_add_reaction_id_to_patient_allergies.rb

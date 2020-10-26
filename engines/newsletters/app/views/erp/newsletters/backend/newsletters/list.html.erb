@@ -1,0 +1,62 @@
+<div class="">
+    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+        <thead>
+            <tr>
+                <th width='1%'>
+                    <%= erp_datalist_check_all %>
+                </th>
+                <% if get_columns(params).include?("email") %>
+                    <th class="sortable" sort-by='erp_newsletters_newsletters.email'>
+                        <%= t('.email') %>
+                    </th>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <th class="sortable" sort-by='erp_newsletters_newsletters.created_at'>
+                        <%= t('.created_at') %>
+                    </th>
+                <% end %>
+                <th width="7%"><%= t('.actions') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @newsletters.each do |newsletter| %>
+                <tr class="odd gradeX">
+                    <td>
+                        <%= erp_datalist_check_row(id: newsletter.id) %>
+                    </td>
+                    <% if get_columns(params).include?("email") %>
+                        <td><%= newsletter.email %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("created_at") %>
+                        <td><%= newsletter.created_at.strftime("%d/%m/%Y") %></td>
+                    <% end %>
+                    <td>
+                        <%= erp_datalist_row_actions(
+                            [
+                                {
+                                    text: '<i class="fa fa-edit"></i> '+t('.edit'),
+                                    href: erp_newsletters.edit_backend_newsletter_path(newsletter)
+                                },
+                                {
+                                    divider: true
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                    url: erp_newsletters.backend_newsletter_path(newsletter),
+                                    data_method: 'DELETE',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.delete_confirm')
+                                }
+                            ]
+                        ) %>
+                    </td>
+                </tr>            
+            <% end %>
+        </tbody>
+    </table>
+    <% if @newsletters.empty? %>
+        <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+    <% end %>
+</div>
+        
+<%= erp_datalist_pagination(@newsletters) %>

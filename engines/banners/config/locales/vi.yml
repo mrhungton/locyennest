@@ -1,0 +1,144 @@
+vi:
+  fit: "fit"
+  fill: "fill"
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          banner: "Quản lý hình ảnh"
+          banners: "Tất cả hình ảnh"
+          categories: "Chuyên mục/chủ đề"
+  erp:
+    banners:
+      backend:
+        banners:
+          create:
+            success: "Thêm hình ảnh thành công."
+          update:
+            success: "Hình ảnh đã được cập nhật."
+          destroy:
+            success: "Xóa hình ảnh thành công."
+          delete_all:
+            success: "Các hình ảnh vừa chọn đã được xóa thành công."
+          archive: 
+            success: "Hình ảnh đã được ngưng sử dụng."
+          unarchive: 
+            success: "Hình ảnh đã sẵn sàng để sử dụng lại."
+          archive_all: 
+            success: "Các hình ảnh vừa chọn đã được ngưng sử dụng."
+          unarchive_all: 
+            success: "Các hình ảnh vừa chọn đã sẵn sàng để sử dụng lại."
+          index:
+            banners: "Tất cả hình ảnh"
+            create: "Thêm hình ảnh"
+            image: "Hình ảnh"
+            name: "Tên hình ảnh"
+            link_url: "Link URL"
+            category: "Chuyên mục/Vị trí"
+            archive_confirm: "Bạn có muốn ngừng sử dụng các hình ảnh này?"
+            unarchive_confirm: "Bạn có muốn sử dụng lại các hình ảnh này?"
+            delete: "Xóa hình ảnh"
+          list:
+            image: "Hình ảnh"
+            name: "Tên hình ảnh"
+            link_url: "Linh URL"
+            category: "Chuyên mục/Vị trí"
+            no_matching_records_found: "Danh sách hình ảnh không được tìm thấy"
+            archive_confirm: "Bạn có muốn ngừng sử dụng hình ảnh này?"
+            unarchive_confirm: "Bạn có muốn sử dụng lại hình ảnh này?"
+            delete: "Xóa hình ảnh"
+          new:
+            banners: "Tất cả hình ảnh"
+            create: "Thêm hình ảnh"
+          edit:
+            banners: "Tất cả hình ảnh"
+            create: "Thêm hình ảnh"
+          form:
+            name: "Tên hình ảnh"
+            enter_name: "Nhập tên cho hình ảnh"
+            category: "Chuyên mục/kiểu kích thước"
+            link_url: "Link URL"
+            enter_link_url: "Nhập URL cần để gắn vào hình ảnh"
+            choose_category: "Chọn chuyên mục/kiểu tỉ lệ cho hình ảnh"
+            note: "Ghi chú"
+            enter_note: "Nhập nội dung ghi chú"
+        categories:
+          create:
+            success: "Thêm chuyên mục thành công."
+          update:
+            success: "Chuyên mục đã được cập nhật."
+          destroy:
+            success: "Xóa chuyên mục thành công."
+          delete_all:
+            success: "Các chuyên mục vừa chọn đã được xóa thành công."
+          archive: 
+            success: "Chuyên mục đã được ngưng sử dụng thành công."
+          unarchive: 
+            success: "Chuyên mục đã được sử dụng lại thành công."
+          archive_all: 
+            success: "Các chuyên mục vừa chọn đã ngưng sử dụng thành công."
+          unarchive_all: 
+            success: "Các chuyên mục vừa chọn đã được sử dụng lại thành công."
+          index:
+            categories: "Tất cả chuyên mục"
+            archive_confirm: "Bạn có muốn ngưng sử dụng các chuyên mục đã chọn?"
+            unarchive_confirm: "Bạn có muốn sử dụng lại các chuyên mục đã chọn?"
+            delete: "Xóa chuyên mục"
+            create: "Thêm chuyên mục"
+            name: "Tên chuyên mục"
+            size: "Kích thước"
+          list:
+            name: "Tên chuyên mục"
+            size: "Kích thước"
+            archive_confirm: "Bạn có muốn ngưng sử dụng chuyên mục này?"
+            unarchive_confirm: "Bạn có muốn sử dụng lại chuyên mục này?"
+            delete: "Xóa chuyên mục"
+            no_matching_records_found: "Danh sách chuyên mục không được tìm thấy"
+          new:
+            categories: "Tất cả chuyên mục"
+            create: "Thêm chuyên mục"
+          edit:
+            categories: "Tất cả chuyên mục"
+            create: "Thêm chuyên mục"
+          form:
+            name: "Tên chuyên mục"
+            image_scale: "Kiểu tỉ lệ"
+            width: "Chiều rộng (Width)"
+            placeholder_width: "Nhập tỉ lệ chiều rộng của hình"
+            height: "Chiều cao (Height)"
+            placeholder_height: "Nhập tỉ lệ chiều cao của hình"
+            placeholder_name: "Nhập tên chuyên mục cho banner"
+  activerecord:
+    attributes:
+      erp/banners/banner:
+        image: "Hình ảnh"
+        name: "Tên hình ảnh"
+        scale: "Chuyên mục/Kiểu hình ảnh"
+        image_url: "URL hình ảnh"
+      erp/banners/category:
+        name: "Tên chuyên mục"
+        width: "Chiều rộng"
+        height: "Chiều cao"
+        image_scale: "Kiểu tỉ lệ"
+    errors:
+      models:
+        erp/banners/banner:
+          attributes:
+            image:
+              blank: "không được để trống"
+            name:
+              blank: "không được để trống"
+            scale: 
+              blank: "không được để trống"
+            image_url: 
+              blank: "không được để trống"
+        erp/banners/category:
+          attributes:
+            name:
+              blank: "không được để trống"
+            width:
+              blank: "không được để trống"
+            height:
+              blank: "không được để trống"
+            image_scale:
+              blank: "không được để trống"

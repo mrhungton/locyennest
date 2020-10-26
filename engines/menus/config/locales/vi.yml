@@ -1,0 +1,108 @@
+vi:
+  erp_menus_menus:
+    dark_cyan: "Dark Cyan"
+    outrageous_orange: "Outrageous Orange"
+    fruit_salad: "Fruit Salad"
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          menus: "Danh sách menu"
+          menu: "Menu"
+  erp:
+    menus:
+      backend:
+        menus:
+          create:
+            success: "Thêm menu thành công."
+          update:
+            success: "Cập nhật menu thành công."
+          destroy:
+            success: "Xóa menu thành công."
+          delete_all:
+            success: "Xóa menu được chọn thành công."
+          archive:
+            success: "Ẩn menu thành công."
+          unarchive:
+            success: "Hiện menu thành công."
+          archive_all:
+            success: "Ẩn menu được chọn thành công."
+          unarchive_all:
+            success: "Hiện menu được chọn thành công."
+          index:
+            menus: "Danh sách menu"
+            name: "Tên"
+            parent_menu: "Menu cha"
+            create: "Thêm menu"
+            delete: "Xóa menu"
+          list:
+            name: "Tên"
+            seo_success: "Đã SEO với"
+            no_matching_records_found: "Danh sách menu hiện tại đang trống."
+          new:
+            menus: "Danh sách menu"
+            create: "Thêm menu"
+          edit:
+            menus: "Danh sách menu"
+            create: "Thêm menu"
+          form:
+            name: "Tên"
+            enter_name: "Nhập tên menu"
+            parent_menu: "Menu cha"
+            choose_parent_menu: "Chọn menu cha"
+            add_category: "Thêm chuyên mục"
+            create_category: "Tạo chuyên mục"
+            is_hot: "Đây là Menu Hot"
+            menu_is_hot: "Menu HOT"
+            created_menu: "Tạo menu"
+            related_categories: "Chuyên mục liên quan"
+            choose_related_categories: "Chọn chuyên mục liên quan"
+            related_menu: "Menu liên quan"
+            help_menu: "Chọn menu liên quan để hiển thị"
+            create_menu: "Thêm menu"
+            edit_menu: "Chỉnh sửa menu"
+            choose_related_menu: "Chọn menu liên quan"
+            add: "Thêm"
+            description: "Mô tả menu"
+            enter_description: "Nhập mô tả"
+            meta_keywords: "Từ khóa thẻ Meta"
+            enter_meta_keywords: "Nhập từ khóa thẻ Meta"
+            meta_description: "Mô tả thẻ Meta"
+            enter_meta_description: "Nhập mô tả thẻ Meta"
+            image_1: "Hình số 1"
+            image_menu_link_1: "Liên kết hình 1"
+            enter_image_menu_link_1: "Đưa liên kết cần chèn cho hình ảnh 1"
+            image_2: "Hình số 2"
+            image_menu_link_2: "Liên kết hình 2"
+            enter_image_menu_link_2: "Đưa liên kết cần chèn cho hình ảnh 2"
+            choose_brand_group: "Chọn nhóm thương hiệu"
+            brand_group: "Nhóm thương hiệu"
+            help_brand_group: "Chọn nhóm thương hiệu để phục vục việc tìm kiếm"
+            help_brand: "Chọn thương hiệu cho menu (Menu tách biệt theo nhóm)"
+            choose_brand: "Chọn thương hiệu"
+            brand: "Thương hiệu"
+            menu_icon: "Icon cho menu"
+            image_menu: "Hình ảnh cho menu"
+            image_menu_title: "Tiêu đề cho hình ảnh menu..."
+            enter_image_menu_title: "Nhập tiêu đề cho hình ảnh menu..."
+            image_menu_link: "Link cho hình ảnh menu chính"
+            enter_image_menu_link: "Nhập link cho hình ảnh menu..."
+            menu_is_show_detail: "Chi tiết của sản phẩm"
+            is_show_detail: Hiển thị chi tiết
+            number_per_page: "Số sản phẩm"
+            help_number_per_page: "Số sản phẩm hiển thị trên 1 trang"
+            menu_use_filter: "Hiển thị bộ lọc"
+            use_filter: "Hiển thị"
+  activerecord:
+    errors:
+      models:
+        erp/menus/menu:
+          attributes:
+            name:
+              blank: "không được để trống."
+            menu_type:
+              blank: "không được để trống."
+    attributes:
+      erp/menus/menu:
+        name: "Tên"
+        menu_type: "Loại menu"

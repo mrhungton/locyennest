@@ -1,0 +1,151 @@
+<%= form_for([erp_products, :backend, damage_record], html: {multipart: true}) do |f| %>
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'damage_record[code]',
+                                    value: damage_record.code,                   
+                                    label: t('.code'),
+                                    help: t('.help_code'),
+                                    required: (damage_record.id.nil? ? false : true),
+                                    errors: damage_record.errors.full_messages_for(:code)
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control('datetime', {
+                                    label: t('.date'),
+                                    name: 'damage_record[date]',
+                                    value: damage_record.date,
+                                    placeholder: t('.choose_date'),
+                                    required: true,
+                                    errors: damage_record.errors.full_messages_for(:date)
+                                }) %>
+                            </div>
+                        </div>
+                        <% if Erp::Core.available?("warehouses") %>
+                            <%= erp_form_control("dataselect", {
+                                name: 'damage_record[warehouse_id]',
+                                value: damage_record.warehouse_id,
+                                text: damage_record.warehouse_name,
+                                placeholder: t('.choose_warehouse'),
+                                label: t('.warehouse'),
+                                url: erp_warehouses.dataselect_backend_warehouses_path(format: 'json'),
+                                required: true,
+                                errors: damage_record.errors.full_messages_for(:warehouse_id)
+                            }) %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <%= erp_form_control("dataselect", {
+                            name: 'damage_record[employee_id]',
+                            value: damage_record.employee_id,
+                            text: damage_record.employee_name,
+                            placeholder: t('.choose_employee'),
+                            label: t('.employee'),
+                            url: erp.dataselect_backend_users_path(format: 'json'),
+                            required: true,
+                            errors: damage_record.errors.full_messages_for(:employee_id)
+                        }) %>
+                        <%= erp_form_control("textarea", {
+                            name: 'damage_record[description]',
+                            value: damage_record.description,
+                            label: t('.description'),
+                            placeholder: t('.placeholder_description'),
+                            rows: '1'
+                        }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-custom ">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#tab_5_1" data-toggle="tab"> <%= t('.damage_record_details') %> </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_5_1">
+                            <% if Erp::Core.available?("ortho_k") %>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <%= erp_form_control("dataselect", {
+                                        name: 'default_state',
+                                        value: '',
+                                        text: '',
+                                        label: 'Tình trạng mặc định',
+                                        placeholder: 'Chọn tình trạng',
+                                        url: erp_products.dataselect_backend_states_path(format: 'json'),
+                                    }) %>
+                                  </div>
+                                </div>
+                            <% end %>
+                            <div class="add-items-line">
+                                <%= erp_form_control("addableform", {
+                                    type: 'table',
+                                    add_button: t('.add'),
+                                    partial: 'erp/products/backend/damage_record_details/damage_record_line_form',
+                                    partial_url: erp_products.damage_record_line_form_backend_damage_record_details_path,
+                                    items: @damage_record.damage_record_details,
+                                    item: :damage_record_detail,
+                                    add_control_selector: "input[name='product_id']",
+                                    add_control: erp_form_control("dataselect", {
+                                        name: 'product_id',
+                                        placeholder: t('.choose_product'),
+                                        label: t('.product'),
+                                        help: t('.help_product'),
+                                        url: erp_products.dataselect_backend_products_path(format: 'json'),
+                                        create: {
+                                            url: erp_products.new_backend_product_path,
+                                            title: t('.create_product'),
+                                            container_selector: '.new_product',
+                                            input_selector: 'input[name="product[name]"]'
+                                        },
+                                        edit: {
+                                            url: erp_products.edit_backend_product_path(id: ':value'),
+                                            title: t('.edit_product'),
+                                            container_selector: '.edit_product',
+                                        }
+                                    }),
+                                    thead: "<th>#{t('.product_code')}</th>
+                                            <th>#{t('.product_name')}</th>
+                                            <th>#{t('.quantity')}</th>
+                                            <th>#{t('.state')}</th>
+                                            <th>#{t('.note')}</th>
+                                            <th></th>"
+                                }) %>
+
+                                <table class="table">
+                                    <tr>
+                                        <td width="90%" class="text-right text-semibold"><%= t(".quantity_total") %>:</td>
+                                        <td class="text-right">
+                                            <h4>
+                                                <span class="quantity_total text-bold"></span>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_products.backend_damage_records_path
+    }) %>
+<% end %>

@@ -1,0 +1,62 @@
+<%= form_for([erp_products, :backend, property]) do |f| %>    
+    <%= erp_form_control("text", {
+        name: 'property[name]',
+        value: property.name,                   
+        label: t('.name'),
+        required: true,
+        errors: property.errors.full_messages_for(:name)
+    }) %>
+    <div class="row">
+        <div class="col-md-6">
+            <%= erp_form_control('checkbox', {
+                name: 'property[is_show_list]',
+                value: property.is_show_list,
+                not_selected_value: 'false',
+                label: t('.property_is_show_list'),
+                options: [{value: 'true', text: t('.is_show_list')}]
+            }) %>
+        </div>
+        <div class="col-md-6">
+            <%= erp_form_control('checkbox', {
+                name: 'property[is_show_detail]',
+                value: property.is_show_detail,
+                not_selected_value: 'false',
+                label: t('.property_is_show_detail'),
+                options: [{value: 'true', text: t('.is_show_detail')}]
+            }) %>
+        </div>
+    </div>
+    <%= erp_form_control('checkbox', {
+        name: 'property[is_show_website]',
+        id: 'property_is_show_website',
+        value: property.is_show_website,
+        not_selected_value: 'false',
+        options: [{value: 'true', text: t('.is_show_website')}],
+        help: t('.help_is_show_website')
+    }) %>
+    <%= erp_form_control("dataselect", {
+        name: 'property[property_group_id]',
+        value: property.property_group_id,
+        text: property.property_group_name,
+        placeholder: t('.choose_property_group'),
+        label: t('.property_group'),
+        help: t('.help_property_group'),
+        url: erp_products.dataselect_backend_property_groups_path(format: 'json'),
+        create: {
+            url: erp_products.new_backend_property_group_path,
+            title: t('.create_property_group'),
+            container_selector: '.new_property_group',
+            input_selector: 'input[name="property_group[name]"]'
+        },
+        required: true,
+        errors: property.errors.full_messages_for(:property_group_id)
+    }) %>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_products.backend_properties_path
+    }) %>
+<% end %>

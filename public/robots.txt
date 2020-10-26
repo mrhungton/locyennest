@@ -1,0 +1,23 @@
+# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# To ban all spiders from the entire site uncomment the next two lines:
+
+Sitemap: http://timhangcongnghe.com/sitemap.xml.gz
+
+User-agent: *
+Disallow: /backend/
+Disallow: /users/
+Disallow: /cart_items/
+Disallow: /gio-hang.html
+Disallow: /dat-hang.html
+Disallow: /dat-hang/
+Disallow: /topcart.html
+Disallow: /so-sanh-san-pham.html
+Disallow: /tim-kiem.html
+Disallow: /tai-khoan/
+Disallow: /dat-hang-truc-tuyen.html
+Disallow: /dat-hang-truc-tuyen/
+Disallow: /xem-nhanh/
+Disallow: /binh-luan-san-pham/
+Disallow: /binh-luan-san-pham.html
+Disallow: /binh-luan-bai-viet/
+Disallow: /dang-ky-nhan-tin.html

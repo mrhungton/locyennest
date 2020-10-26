@@ -1,0 +1,105 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("name") %>
+                <th>
+                    <%= t('.name') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("description") %>
+                <th>
+                    <%= t('.description') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('.status') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center">
+                    <%= t('creator') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @user_groups.each do |user_group| %>
+            <tr class="odd gradeX">
+                <td>
+                    <%= erp_datalist_check_row(id: user_group.id) %>
+                </td>
+                <% if get_columns(params).include?("name") %>
+                    <td><%= user_group.name %></td>
+                <% end %>
+                <% if get_columns(params).include?("description") %>
+                    <td><%= user_group.description %></td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    <% if user_group.active == false %>
+                        <%= erp_component('label/danger', {
+                            text: t('.inactive')
+                        }) %>
+                    <% else %>
+                        <%= erp_component('label/success', {
+                            text: t('.active')
+                        }) %>
+                    <% end %>
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: user_group.creator
+                        }) %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td class="center"><%= user_group.created_at.strftime("%d/%m/%Y") %></td>
+                <% end %>
+                <td>
+                    <%=
+                    actions = []
+                    
+                    actions << {
+                        text: '<i class="fa fa-edit"></i> '+t('edit'),
+                        href: erp.edit_backend_user_group_path(user_group)
+                    } if can? :update, user_group
+                        
+                    actions << {
+                        text: '<i class="fa fa-lock"></i> Vô hiệu hóa quyền',
+                        href: erp.deactivate_backend_user_groups_path(id: user_group),
+                        data_method: 'PUT',
+                        class: 'ajax-link',
+                        data_confirm: 'Các chính sách sẽ bị vô hiệu cho những người dùng đang thuộc nhóm quyền này. Bạn chắc chắn vẫn muốn tiếp tục?'
+                    } if can? :deactivate, user_group
+                    
+                    actions << {
+                        text: '<i class="fa fa-unlock"></i> Kích hoạt quyền',
+                        href: erp.activate_backend_user_groups_path(id: user_group),
+                        data_method: 'PUT',
+                        class: 'ajax-link',
+                        data_confirm: 'Bạn có chắc muốn kích hoạt nhóm quyền này?'
+                    } if can? :activate, user_group
+                    
+                    erp_datalist_row_actions(actions) if !actions.empty? %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @user_groups.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@user_groups) %>

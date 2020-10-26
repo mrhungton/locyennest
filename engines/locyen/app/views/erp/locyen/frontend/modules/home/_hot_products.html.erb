@@ -1,0 +1,58 @@
+<% if bestseller_products.present? %>
+<!-- product area start -->
+<div class="product-area bg-1 pattern-bg-fixed ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center text-uppercase mb-50 wow fadeInUp" data-wow-delay="0.5s">
+                    <h2 class="bg-gold-text">Sản phẩm nổi bật</h2>
+                </div>
+            </div>
+        </div>
+        <div class="product-active owl-carousel next-prev-style wow fadeInUp" data-wow-delay="0.7s">
+            <% bestseller_products.each do |product| %>
+                <% product_images = product.product_images %>
+                <div class="single-product">
+                    <div class="product-img">
+                        <%= link_to image_tag(
+                            product_images.first.image_url.large,
+                            title: product.product_name,
+                            alt: product.product_name),
+                            product_link(product),
+                            title: product.product_name
+                        %>
+                        <span class="sale">Khuyến mãi</span>
+                        <div class="product-info-overlay-area clear pt-35 flex-direction-column">
+                            <div class="add-to-cart text-uppercase mtb-5">
+                                <button><i class="fa fa-cart-plus"></i> thêm vào giỏ hàng</button>
+                            </div>
+                            <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn mtb-5' %>
+                        </div>
+                    </div>
+                    <div class="product-item-details text-center">
+                        <div class="product-name-review tab-product-name-review">
+                            <div class="product-name mt-30 ">
+                                <span><%= link_to product.find_menu.name, menu_link(product.find_menu) %></span>
+                                <strong><%= link_to product.name, product_link(product) %></strong>
+                            </div>
+                            <div class="product-review">
+                                <% if false %>
+                                    <ul>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                <% end %>
+                                <span class="special-price"><%= format_price(product.price) %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- product area end -->
+<% end %>

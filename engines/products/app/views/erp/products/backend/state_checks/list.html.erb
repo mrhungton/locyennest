@@ -1,0 +1,86 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("code") %>
+                <th><%= t('.code') %></th>
+            <% end %>
+            <% if get_columns(params).include?("check_date") %>
+                <th class="sortable" sort-by='erp_products_state_checks.check_date'>
+                    <%= t('.check_date') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("warehouse") %>
+                <th><%= t('.warehouse') %></th>
+            <% end %>
+            <% if get_columns(params).include?("employee") %>
+                <th><%= t('.employee') %></th>
+            <% end %>
+            <% if get_columns(params).include?("note") %>
+                <th><%= t('.note') %></th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th><%= t('status') %></th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center"><%= t('creator') %></th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th><%= t('created_at') %></th>
+            <% end %>
+            <th class="text-right" width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @state_checks.each do |state_check| %>
+            <tr class="odd gradeX has-child-table" data-url="<%= erp_products.state_check_details_backend_state_checks_path(id: state_check.id) %>">
+                <td>
+                    <%= erp_datalist_check_row(id: state_check.id) %>
+                </td>
+                <% if get_columns(params).include?("code") %>
+                    <td>
+                        <i class="fa fa-plus expand tr-expand-button"></i>
+                        <strong><%= state_check.code %></strong>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("check_date") %>
+                    <td><%= format_date(state_check.check_date) %></td>
+                <% end %>
+                <% if get_columns(params).include?("warehouse") %>
+                    <td><%= state_check.warehouse_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("employee") %>
+                    <td><%= state_check.employee_name %></td>
+                <% end %>
+                <% if get_columns(params).include?("note") %>
+                    <td><%= raw state_check.note %></td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                <td>
+                    <%= status_label(state_check.status) %>
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: state_check.creator
+                        }) %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td><%= format_date(state_check.created_at) %></td>
+                <% end %>
+                <td>
+                    <%= state_check_dropdown_actions(state_check) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @state_checks.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
+        
+<%= erp_datalist_pagination(@state_checks) %>

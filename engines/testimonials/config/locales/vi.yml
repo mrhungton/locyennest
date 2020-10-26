@@ -1,0 +1,44 @@
+vi:
+  erp:
+    testimonials:
+      backend:
+        testimonials:
+          destroy:
+            success: "Testimonial đã xóa thành công"
+          delete_all:
+            success: "Testimonials đã xóa thành công"
+          index:
+            testimonials: "Testimonials"
+            create: "Thêm testimonials"
+            delete: "Xóa testimonial"
+            logo: "Hình ảnh"
+            author: "Tác giả"
+            content: "Nội dung"
+          list:
+            logo: "Hình ảnh"
+            author: "Tác giả"
+            content: "Nội dung"
+            delete: "Xóa testimonial"
+            no_matching_records_found: "Danh sách không tìm thấy"
+          new:
+            testimonials: "Testimonials"
+            create: "Thêm testimonials"
+          edit:
+            testimonials: "Testimonial"
+            create: "Thêm testimonials"
+          form:
+            logo: "Hình ảnh / Logo"
+            author: "Tác giả"
+            workplace: "Nơi làm việc/Đến từ"
+            content: "Nội dung"
+            placeholder_author: "Nhập tên tác giả"
+            help_author: "Tên chủ của lời nhận xét, đóng góp"
+            placeholder_workplace: "Nhập tên nơi làm việc (công ty/nơi ở,...)"
+            help_workplace: "Người nhận xét đến từ đâu?"
+  activerecord:
+    errors:
+      models:
+        erp/testimonials/testimonial:
+          attributes:
+            logo:
+              blank: "không được để trống"
