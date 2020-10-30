@@ -1,0 +1,144 @@
+<% title "Đặt Hàng" %>
+
+<div class="checkout-area ptb-50" onmouseout="loadTopCart();">
+    <div class="container">
+        <%= form_for '', url: erp_locyen.quick_order_path, html: {class: 'checkout_form content bv-form'} do |f| %>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="account-title mb-30 text-center">
+                    <h2>ĐẶT HÀNG</h2>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 pad-right-0">
+                <div class="box-login-register-arround">
+                    <div class="register-content">
+                        <div id="login-form" class="register-comm-for" style="display: block;">
+                            <h4>Thông tin đặt hàng</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group has-feedback has-success">
+                                        <label class="control-label">Họ và tên <span>(*)</span></label>
+                                        <input type="text" id="input-lastname" name="quick_order[customer_name]"
+                                            class="form-control required" placeholder="Họ và tên...">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group has-feedback has-success">
+                                        <label class="control-label">Số điện thoại <span>(*)</span></label>
+                                        <input type="tel" id="input-telephone" name="quick_order[phone]"
+                                            class="form-control required" placeholder="Số điện thoại...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-feedback has-success">
+                                <label class="control-label">Địa chỉ email <span>(*)</span></label>
+                                <input type="email" id="input-email" name="quick_order[email]"
+                                    class="form-control required" placeholder="Địa chỉ email...">
+                            </div>
+                            <div class="form-group has-feedback has-success">
+                                <label class="control-label">Địa chỉ giao hàng <span>(*)</span></label>
+                                <input type="text" id="input-address" name="quick_order[address]"
+                                    class="form-control required" placeholder="Địa chỉ giao hàng...">
+                            </div>
+                            <div class="form-group has-feedback has-success" style="padding:5px 0;">
+                                <label class="control-label">Ghi chú (Bạn muốn nhắn gửi chúng tôi điều gì thì ghi chú vào đây nhé!)</label>
+                                <textarea class="form-control" name="quick_order[note]"
+                                    placeholder="Nội dung ghi chú..."></textarea>
+                            </div>
+                            <div class="form-group has-feedback has-success" style="padding:5px 0;">
+                                <h4>Phương thức giao hàng</h4>
+                                <div class="checkboxes_list">
+                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
+                                        value="1" checked />
+                                    <label for="quick_order_invoice">Giao tận nơi</label>
+                                </div>
+                                <div class="checkboxes_list">
+                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
+                                        value="1" />
+                                    <label for="quick_order_invoice">Tự đến lấy tại cửa hàng</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group has-feedback has-success" style="padding:5px 0;">
+                                <h4>Phương thức thanh toán</h4>
+                                <div class="checkboxes_list">
+                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
+                                        value="1" checked />
+                                    <label for="quick_order_invoice1">Thanh toán khi nhận hàng (COD)</label>
+                                </div>
+                                <div class="checkboxes_list">
+                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
+                                        value="1" />
+                                    <label for="quick_order_invoice1">Thanh toán chuyển khoản</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">document.querySelector('input[id=input-lastname]').focus()</script>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div id="panel-cart">
+                    <div class="panel panel-default cart-detail">
+                        <div class="panel-body">
+                            <div class="order">
+                                <span class="title">Danh sách</span><span class="title">
+                                    (<%= @cart.cart_items.number_items %> sản phẩm)</span>
+                                <%= link_to "Sửa giỏ hàng", erp_locyen.shopping_cart_path, class: "btn btn-default btn-back-cart" %>
+                            </div>
+                            <div class="product">
+                                <% @cart.cart_items.each do |cart_item| %>
+                                <div class="row item">
+                                    <div class="col-sm-8 d-flex align-items-center">
+                                        <div class="image">
+                                            <%= link_to image_tag(cart_item.product.product_images.first.image_url.small, alt: cart_item.product_name, class: "img-thumbnail"), product_link(cart_item.product), title: cart_item.product_name, target: '_blank' %>
+                                        </div>
+                                        <p class="title">
+                                            <strong><%= cart_item.quantity %> x </strong>
+                                            <%= link_to cart_item.product_name, product_link(cart_item.product), class: "cart_product_name top_cart_list", title: cart_item.product_name %>
+                                            <br>
+                                            <small class="tooltiptext">
+                                                (Vị: Táo, Hạt chia)
+                                            </small>
+                                            <% if cart_item.product.gifts.count > 0 %>
+                                            | <span class="tooltip-col">
+                                                <i class="fa fa-gift" aria-hidden="true"></i>
+                                                <small class="tooltiptext">
+                                                    <em>Tặng kèm: </em><% gift_names = [] %>
+                                                    <% cart_item.product.gifts.each do |gift| %><% gift_names << gift.product_name.to_s %><% end %><%= gift_names.join(', ') %>
+                                                </small>
+                                            </span>
+                                            <% end %>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="price text-right">
+                                            <span><%= format_price(cart_item.total_price) %></span></p>
+                                    </div>
+                                </div>
+                                <% end %>
+                            </div>
+                            <div class="coupon mb-10">
+                                <input name="coupon_code" class="input-text" id="coupon_code" value=""
+                                    placeholder="Mã giảm giá" type="text">
+                                <input class="button" name="apply_coupon" value="Áp dụng" type="submit">
+                            </div>
+                            <div class="total">
+                                <p>Tạm tính:<span> <%= format_price(@cart.total_order) %></span></p>
+                                <p>Giảm giá:<span> <%= format_price(@cart.total_order) %></span></p>
+                                <p>Phí vận chuyển:<span> -</span></p>
+                            </div>
+                            <div class="total2">
+                                <p>Thành tiền:<span> <%= format_price(@cart.total_order) %></span></p>
+                            </div>
+                            <div class="form-group last"><button type="submit" id="login_popup_submit"
+                                    class="btn btn-info btn-block">Xác Nhận Đặt Hàng</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
+        <!-- <script>loadTopCart(function () { });</script> -->
+    </div>
+</div>

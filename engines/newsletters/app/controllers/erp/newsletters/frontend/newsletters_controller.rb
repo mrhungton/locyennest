@@ -12,8 +12,8 @@ module Erp
             }
           else
             render json: {
-              status: 'warning',
-              message: 'Email này đã được đăng ký hoặc nhập sai định dạng.'
+              status: 'error',
+              message: 'Đăng ký không thành công. Có vẻ như email này đã được đăng ký trước đó; hoặc bạn đã gõ sai định dạng.'
             }
           end
         end

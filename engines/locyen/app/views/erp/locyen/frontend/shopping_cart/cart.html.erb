@@ -1,0 +1,114 @@
+<div class="breadcrumbs-area ptb-10 bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="woocommerce-breadcrumb mtb-15">
+                    <div class="menu">
+                        <ul>
+                            <li><a href="<%= erp_locyen.root_path %>">Trang chủ</a></li>
+                            <li class="active"><a href="javascript:void(0);">Giỏ hàng</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="line-bg-gradient to-left"></div>
+
+<div class="shopping-cart-area mtb-40" data-url="<%= erp_locyen.shopping_cart_path %>">
+    <div class="container">
+        <% if @cart.cart_items.number_items > 0 %>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="account-title mb-30 text-center">
+                    <h2>Giỏ hàng của bạn</h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="cart-table">
+                    <%= form_for([erp_locyen, :frontend, @cart], html: {class: "shopping_cart_form quick-view-form"}) do |f| %>
+                    <div class="table-content table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td class="no-border-bottom text-center">Hình ảnh</td>
+                                    <td class="no-border-bottom text-left">Tên sản phẩm</td>
+                                    <td class="no-border-bottom text-center">Số lượng</td>
+                                    <td class="no-border-bottom text-center">Giá</td>
+                                    <td class="no-border-bottom text-center">Thành tiền</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @cart.cart_items.order(:id).each do |cart_item| %>
+                                <tr>
+                                    <td class="text-center img-center">
+                                        <%= link_to image_tag(cart_item.product.product_images.first.image_url.small, alt: cart_item.product_name, class: "img-thumbnail", width: "90"), product_link(cart_item.product), title: cart_item.product_name, target: '_blank' %>
+                                    </td>
+                                    <td class="text-left vertical">
+                                        <strong><%= link_to cart_item.product_name, product_link(cart_item.product), title: cart_item.product_name, target: '_blank' %></strong>
+                                    </td>
+                                    <td class="text-center vertical">
+                                        <strong class="price"><%= format_price(cart_item.product_price) %></strong>
+                                    </td>
+                                    <td class="text-center vertical" width="150px">
+                                        <div class="input-group btn-block quantity-control quantity" unselectable="on"
+                                            style="-webkit-user-select: none;">
+                                            <strong><input class="form-control item-qty" type="text"
+                                                    name="quantities[<%= cart_item.id %>]"
+                                                    value="<%= cart_item.quantity %>"></strong>
+                                            <span class="input-group-btn">
+                                                <button type="submit" data-toggle="tooltip" title="Cập nhật số lượng"
+                                                    class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+                                                <%= link_to '<i class="fa fa-times-circle"></i>'.html_safe, erp_locyen.remove_cart_item_frontend_cart_items_path(cart_item_id: cart_item.id), class: "btn btn-danger cart-item-delete", title: "Xóa sản phẩm" %>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center vertical">
+                                        <strong class="price"><%= format_price(cart_item.total_price) %></strong>
+                                    </td>
+                                </tr>
+                                <% end %>
+                                <!-- <tr>
+                                    <td colspan="6" class="actions clear">
+                                        <div class="coupon mb-10 floatright">
+                                            <input name="coupon_code" class="input-text" id="coupon_code" value=""
+                                                placeholder="Mã giảm giá" type="text">
+                                            <input class="button" name="apply_coupon" value="Áp dụng"
+                                                type="submit">
+                                        </div>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <% end %>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-8">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td class="text-right"><strong>TỔNG TIỀN HÀNG:</strong></td>
+                                    <td class="text-right price"><%= format_price(@cart.total_order) %></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="pull-left">
+                            <%= link_to '<span class="fa fa-angle-double-left"></span> Tiếp Tục Mua Hàng'.html_safe, erp_locyen.root_path, class: "btn btn-default shopping-continue" %>
+                        </div>
+                        <div class="pull-right">
+                            <%= link_to 'Tiến Hành Đặt Hàng <span class="fa fa-angle-double-right"></span>'.html_safe, erp_locyen.quick_order_path, class: "btn btn-primary shopping-order" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% else %>
+        <div class="empty-cart mtb-50">
+            <h2 class="title">Giỏ hàng của bạn hiện chưa có sản phẩm nào cả!</h2>
+            <%= link_to "Tiếp tục mua hàng", erp_locyen.root_path, class: "btn btn-default shopping-continue" %>
+        </div>
+        <% end %>
+    </div>
+</div>

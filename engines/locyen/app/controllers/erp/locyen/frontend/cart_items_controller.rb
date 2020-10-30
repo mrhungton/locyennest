@@ -16,7 +16,7 @@ module Erp
 
         def remove_cart_item
           @cart.remove_cart_item(params[:cart_item_id])
-          redirect_to erp_online_store.shopping_cart_path, notice: 'Xóa sản phẩm khỏi giỏ hàng thành công.'
+          redirect_to erp_locyen.shopping_cart_path, notice: 'Xóa sản phẩm khỏi giỏ hàng thành công.'
         end
       end
     end

@@ -21,8 +21,11 @@ Erp::Locyen::Engine.routes.draw do
     get "/:product_name-pid:product_id" => "frontend/product#detail", as: :product_detail
 
     # Shopping cart
-    get "topcart.html" => "frontend/shopping_cart#top_cart", as: :top_cart
-    get "gio-hang.html" => "frontend/shopping_cart#shopping_cart", as: :shopping_cart
+    get "top-cart" => "frontend/shopping_cart#top_cart", as: :top_cart
+    get "gio-hang" => "frontend/shopping_cart#cart", as: :shopping_cart
+    get "dat-hang" => "frontend/quick_order#quick_order", as: :quick_order
+    post "dat-hang" => "frontend/quick_order#quick_order"
+    get "dat-hang/thanh-cong" => "frontend/shopping_cart#success", as: :checkout_completed
     
     # Search
     get "search" => "frontend/product#search", as: :search
