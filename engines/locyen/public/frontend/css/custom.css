@@ -743,6 +743,7 @@ a.locyen-btn {
 }
 .jGrowl-closer {
     width: auto;
+    background-color: #607D8B;
 }
 .jGrowl-notification .jGrowl-header {
     font-size: 1.2em;
@@ -993,4 +994,43 @@ a.btn.btn-complete {
     background: linear-gradient(#ffffa5, #ab761c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.checkout_form .bank-card-body {
+    padding: 16px;
+    background-color: rgb(230, 238, 247);
+    margin-top: 24px;
+}
+.checkout_form .bank-card-body .block-title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.54;
+    color: rgb(13, 92, 182);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.checkout_form .bank-card-body .bank-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 8px;
+}
+.checkout_form .bank-card-body .bank-list .bank-item {
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px 0px;
+    padding: 8px 12px;
+    position: relative;
+    cursor: pointer;
+}
+.checkout_form .bank-card-body .bank-list .bank-item span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgb(13, 92, 182);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* -webkit-box-orient: vertical;
+    overflow: hidden; */
 }

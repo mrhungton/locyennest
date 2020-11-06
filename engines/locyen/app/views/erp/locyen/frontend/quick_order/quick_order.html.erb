@@ -1,6 +1,6 @@
 <% title "Đặt Hàng" %>
 
-<div class="checkout-area ptb-50" onmouseout="loadTopCart();">
+<div class="checkout-area ptb-50">
     <div class="container">
         <%= form_for '', url: erp_locyen.quick_order_path, html: {class: 'checkout_form content bv-form'} do |f| %>
         <div class="row">
@@ -47,29 +47,36 @@
                             </div>
                             <div class="form-group has-feedback has-success" style="padding:5px 0;">
                                 <h4>Phương thức giao hàng</h4>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
-                                        value="1" checked />
-                                    <label for="quick_order_invoice">Giao tận nơi</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="delivery" checked
+                                        name="quick_order[shipping_method]"
+                                        value="delivery" />
+                                    <label for="delivery">Giao hàng tận nơi (theo địa chỉ ở trên)</label>
                                 </div>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
-                                        value="1" />
-                                    <label for="quick_order_invoice">Tự đến lấy tại cửa hàng</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="pickup" 
+                                        name="quick_order[shipping_method]"
+                                        value="pickup" />
+                                    <label for="pickup">Tự đến lấy tại cửa hàng của Lộc Yến (Số 240/7 Lê Thánh Tôn, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh)</label>
                                 </div>
                             </div>
                             
                             <div class="form-group has-feedback has-success" style="padding:5px 0;">
                                 <h4>Phương thức thanh toán</h4>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
-                                        value="1" checked />
-                                    <label for="quick_order_invoice1">Thanh toán khi nhận hàng (COD)</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="cod" checked
+                                        name="quick_order[payment_method]"
+                                        value="cod" />
+                                    <label for="cod">Thanh toán khi nhận hàng (COD - thu hộ)</label>
                                 </div>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
-                                        value="1" />
-                                    <label for="quick_order_invoice1">Thanh toán chuyển khoản</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="bank-transfer" 
+                                        name="quick_order[payment_method]"
+                                        value="transfer" />
+                                    <label for="bank-transfer">Thanh toán chuyển khoản qua ngân hàng (Internet Banking)</label>
+                                </div>
+                                <div class="bank-account-info">
+                                    
                                 </div>
                             </div>
                         </div>
