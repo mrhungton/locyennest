@@ -240,11 +240,13 @@ $(document).ready(function () {
     showBankAccount();
 
     $('.ajax-link').fancybox({
-        closeClickOutside : true,
+        closeClickOutside: true,
+        clickSlide: false,
+        clickOutside: false,
+        touch: false,
         afterLoad: function() {
             loadTopCart();
             showBankAccount();
         }
     });
-
 });
