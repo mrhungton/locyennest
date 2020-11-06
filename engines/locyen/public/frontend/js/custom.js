@@ -74,11 +74,40 @@ function btnOpenCartFixed() {
     }
 }
 
+// show or hide bank account
+function showBankAccount() {
+    var appended = $(`
+        <div class="bank-card-body">
+            <div class="block-title">Thông tin chuyển khoản ngân hàng</div>
+            <div class="bank-list">
+                <div class="bank-item">
+                    <span class="account-name">Đặng Ngọc Thùy Trang</span>
+                    <span class="account-number">1903 0185 213029</span>
+                    <span class="bank-name">Ngân hàng Techcombank - chi nhánh Sài Gòn</span>
+                </div>
+                <div class="bank-item">
+                    <span class="account-name">Đặng Ngọc Thùy Trang</span>
+                    <span class="account-number">1401 000 1157307</span>
+                    <span class="bank-name">Ngân hàng BIDV - chi nhánh Sài Gòn</span>
+                </div>
+            </div>
+        </div>`, 
+        {
+            'id': 'appended'
+        }
+    );
+
+    $('input:radio[name="quick_order[payment_method]"]').change(function() {
+        if ($(this).val() == 'transfer') {
+            $(appended).appendTo('.bank-account-info');
+        } else {
+            $(appended).remove();
+        }
+    });
+}
+
 $(window).scroll(function () {
-    // toogleFixedNav();
-    // toogleServicesNav();
     btnOpenCartFixed();
-    // showHideMenuFixed();
 });
 
 $(document).ready(function () {
@@ -149,37 +178,6 @@ $(document).ready(function () {
         });
     });
 
-    // Quick view form
-    // $(document).on('submit', '.quick-view-form', function(e) {
-    //     e.preventDefault();
-  
-    //     var form = $(this);
-    //     var url = form.attr('action');
-    //     var method = form.attr('method');
-        
-    //     form.addClass('loading');
-        
-    //     $.ajax({
-    //         url: url,
-    //         method: method,
-    //         data: form.serialize(),
-    //     }).done(function(){
-    //         var url = $('.shopping-cart-area').attr('data-url');
-    //         $.ajax({
-    //             url: url
-    //         }).done(function( html ) {
-    //             console.log(html);
-    //             showNotice('success', 'Thành công', 'Giỏ hàng đã được cập nhật');
-    //             $('.shopping-cart-area .table-responsive').html($('<div>').html(html).find('.shopping-cart-area .table-responsive').html());
-    //             loadTopCart();
-    //         });
-    //     }).fail(function(err) {
-    //         showNotice('success', 'Lỗi', 'Cập nhật giỏ hàng thất bại');
-    //     });
-  
-    //     return false;
-    // });
-
     $(document).on('submit', '.quick-view-form', function(e) {
         e.preventDefault();
   
@@ -222,9 +220,6 @@ $(document).ready(function () {
             }).done(function( html ) {
                 showNotice('success', 'Thành công', 'Giỏ hàng đã được cập nhật');
                 $('.shopping-cart-area .table-responsive').html($('<div>').html(html).find('.shopping-cart-area .table-responsive').html());
-                // if (!$('<div>').html(html).find('.shopping-cart-area .table-responsive.form-group').length) {
-                //     $.fancybox.close();
-                // }
                 loadTopCart();
             });
         });
@@ -240,4 +235,16 @@ $(document).ready(function () {
     $(document).on('submit', '.checkout_form', function(e) {
         return $(this).valid();
     });
+
+    // show bank account
+    showBankAccount();
+
+    $('.ajax-link').fancybox({
+        closeClickOutside : true,
+        afterLoad: function() {
+            loadTopCart();
+            showBankAccount();
+        }
+    });
+
 });

@@ -1,6 +1,6 @@
 <% title "Đặt Hàng" %>
 
-<div class="checkout-area ptb-50" onmouseout="loadTopCart();">
+<div class="checkout-area ptb-50">
     <div class="container">
         <%= form_for '', url: erp_locyen.quick_order_path, html: {class: 'checkout_form content bv-form'} do |f| %>
         <div class="row">
@@ -41,35 +41,41 @@
                                     class="form-control required" placeholder="Địa chỉ giao hàng...">
                             </div>
                             <div class="form-group has-feedback has-success" style="padding:5px 0;">
-                                <label class="control-label">Ghi chú (Bạn muốn nhắn gửi chúng tôi điều gì thì ghi chú vào đây nhé!)</label>
+                                <label class="control-label">Ghi chú (Bạn muốn nhắn gửi chúng tôi điều gì thì ghi chú
+                                    vào đây nhé!)</label>
                                 <textarea class="form-control" name="quick_order[note]"
                                     placeholder="Nội dung ghi chú..."></textarea>
                             </div>
                             <div class="form-group has-feedback has-success" style="padding:5px 0;">
                                 <h4>Phương thức giao hàng</h4>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
-                                        value="1" checked />
-                                    <label for="quick_order_invoice">Giao tận nơi</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="delivery" checked name="quick_order[shipping_method]"
+                                        value="delivery" />
+                                    <label for="delivery">Giao hàng tận nơi (theo địa chỉ ở trên)</label>
                                 </div>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice" name="quick_order[invoice]" type="radio"
-                                        value="1" />
-                                    <label for="quick_order_invoice">Tự đến lấy tại cửa hàng</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="pickup" name="quick_order[shipping_method]"
+                                        value="pickup" />
+                                    <label for="pickup">Tự đến lấy tại cửa hàng của Lộc Yến (Số 240/7 Lê Thánh Tôn,
+                                        Phường Bến Thành, Quận 1, TP. Hồ Chí Minh)</label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group has-feedback has-success" style="padding:5px 0;">
                                 <h4>Phương thức thanh toán</h4>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
-                                        value="1" checked />
-                                    <label for="quick_order_invoice1">Thanh toán khi nhận hàng (COD)</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="cod" checked name="quick_order[payment_method]"
+                                        value="cod" />
+                                    <label for="cod">Thanh toán khi nhận hàng (COD - thu hộ)</label>
                                 </div>
-                                <div class="checkboxes_list">
-                                    <input id="quick_order_invoice1" name="quick_order[invoice]" type="radio"
-                                        value="1" />
-                                    <label for="quick_order_invoice1">Thanh toán chuyển khoản</label>
+                                <div class="icheck-material-bluegrey">
+                                    <input type="radio" id="bank-transfer" name="quick_order[payment_method]"
+                                        value="transfer" />
+                                    <label for="bank-transfer">Thanh toán chuyển khoản qua ngân hàng (Internet
+                                        Banking)</label>
+                                </div>
+                                <div class="bank-account-info">
+
                                 </div>
                             </div>
                         </div>
@@ -84,7 +90,7 @@
                             <div class="order">
                                 <span class="title">Danh sách</span><span class="title">
                                     (<%= @cart.cart_items.number_items %> sản phẩm)</span>
-                                <%= link_to "Sửa giỏ hàng", erp_locyen.shopping_cart_path, class: "btn btn-default btn-back-cart" %>
+                                <%= link_to "Sửa", erp_locyen.shopping_cart_path, class: "btn btn-default btn-back-cart" %>
                             </div>
                             <div class="product">
                                 <% @cart.cart_items.each do |cart_item| %>
@@ -121,18 +127,22 @@
                             <div class="coupon mb-10">
                                 <input name="coupon_code" class="input-text" id="coupon_code" value=""
                                     placeholder="Mã giảm giá" type="text">
-                                <input class="button" name="apply_coupon" value="Áp dụng" type="submit">
+                                <%= link_to 'Áp dụng', '#', class: 'button apply_coupon' %>
                             </div>
                             <div class="total">
                                 <p>Tạm tính:<span> <%= format_price(@cart.total_order) %></span></p>
-                                <p>Giảm giá:<span> <%= format_price(@cart.total_order) %></span></p>
+                                <p>Giảm giá:<span> <span style="font-family:sans-serif;">0₫</span></span></p>
                                 <p>Phí vận chuyển:<span> -</span></p>
                             </div>
                             <div class="total2">
                                 <p>Thành tiền:<span> <%= format_price(@cart.total_order) %></span></p>
                             </div>
-                            <div class="form-group last"><button type="submit" id="login_popup_submit"
-                                    class="btn btn-info btn-block">Xác Nhận Đặt Hàng</button></div>
+                            <div class="form-group last mt-4">
+                                <small class="form-text text-muted mb-2">(*) Vui lòng kiểm tra kỹ thông tin đơn hàng
+                                    trước khi bấm xác nhận.</small>
+                                <button type="submit" id="login_popup_submit" class="btn btn-info btn-block">Xác Nhận
+                                    Đặt Hàng</button>
+                            </div>
                         </div>
                     </div>
                 </div>

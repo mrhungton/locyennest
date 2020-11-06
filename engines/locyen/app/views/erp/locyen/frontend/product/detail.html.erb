@@ -114,7 +114,7 @@
                         <% end %>
                         <div class="quick-cart">
                             <%= link_to 'Đặt hàng ngay',
-                                '',
+                                erp_locyen.quick_order_path(product_id: @product.id),
                                 class: "ml-3 text-center border-top add-to-quick-cart add-to-cart quick-buy-ajax ajax-link",
                                 'data-type': 'ajax' %>
                         </div>
