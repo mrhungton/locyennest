@@ -823,6 +823,18 @@ input#coupon_code::placeholder {
 input:focus {
     outline: none;
 }
+.coupon .button.apply_coupon {
+    background: #cf963e none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 25px;
+    padding: 5px 15px;
+    transition: all .5s;
+    width: 100%;
+    text-align: center;
+}
 @media (min-width: 768px) {
     .col-sm-offset-8 {
         margin-left: 66.66666667%;
@@ -913,7 +925,7 @@ input:focus {
     display: flex;
 }
 .checkout-area .cart-detail .coupon input {
-    text-transform: capitalize;
+    text-transform: inherit;
     width: 100%;
 }
 .checkout-area .cart-detail .total {
