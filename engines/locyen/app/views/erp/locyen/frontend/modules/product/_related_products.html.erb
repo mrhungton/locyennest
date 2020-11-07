@@ -22,9 +22,7 @@
                         %>
                         <!-- <span class="sale">Khuyến mãi</span> -->
                         <div class="product-info-overlay-area clear pt-35 flex-direction-column">
-                            <div class="add-to-cart text-uppercase mtb-5">
-                                <button><i class="fa fa-cart-plus"></i> thêm vào giỏ hàng</button>
-                            </div>
+                            <%= add_to_cart_button(product) %>
                             <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn mtb-5' %>
                         </div>
                     </div>

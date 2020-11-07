@@ -41,18 +41,18 @@ module Erp
 
           @menu = params[:menu_id].present? ? Erp::Menus::Menu.find(params[:menu_id]) : @product.find_menu
           
-          # @meta_keywords = @product.meta_keywords
-          # @meta_description = @product.meta_description
+          @meta_keywords = @product.meta_keywords
+          @meta_description = @product.meta_description
           
-          # if @menu.present?
-          #   if !@product.meta_keywords.present?
-          #     @meta_keywords = @menu.meta_keywords
-          #   end
+          if @menu.present?
+            if !@product.meta_keywords.present?
+              @meta_keywords = @menu.meta_keywords
+            end
             
-          #   if !@product.meta_description.present?
-          #     @meta_description = @menu.meta_description
-          #   end
-          # end
+            if !@product.meta_description.present?
+              @meta_description = @menu.meta_description
+            end
+          end
         end
         
       end

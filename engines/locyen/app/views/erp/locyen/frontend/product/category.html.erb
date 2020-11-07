@@ -58,10 +58,8 @@
                                         %>
                                         <!-- <span class="sale">Khuyến mãi</span> -->
                                         <!-- <span class="new">New</span> -->
-                                        <div class="product-info-overlay-area clear pt-35">
-                                            <div class="add-to-cart text-uppercase mr-2">
-                                                <button><i class="fa fa-cart-plus"></i> mua hàng</button>
-                                            </div>
+                                        <div class="product-info-overlay-area clear pt-35 flex-direction-column">
+                                            <%= add_to_cart_button(product) %>
                                             <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn ml-2' %>
                                         </div>
                                     </div>

@@ -10,7 +10,7 @@ module Erp
           @cart_item = @cart.add_product(product.id, quantity)
 
           if @cart_item.save
-            render plain: 'Thêm sản phẩm vào giỏ hàng thành công.'
+            render plain: "Sản phẩm \"#{product.name}\" đã được thêm vào giỏ hàng."
           end
         end
 

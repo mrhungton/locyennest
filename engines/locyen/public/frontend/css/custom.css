@@ -1046,3 +1046,13 @@ a.btn.btn-complete {
     /* -webkit-box-orient: vertical;
     overflow: hidden; */
 }
+button.add-to-cart {
+    background: #142850 none repeat scroll 0 0;
+    color: #fff;
+    border: 1px solid #142850;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 25px;
+    transition: all .5s;
+}

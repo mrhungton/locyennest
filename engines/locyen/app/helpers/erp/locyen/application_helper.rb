@@ -34,6 +34,15 @@ module Erp
       def product_link(product)
         erp_locyen.product_detail_path(product_id: product.id, product_name: product.alias)
       end
+
+      # add to cart button
+      def add_to_cart_button(product)
+        "<button class=\"add-to-cart text-uppercase mtb-5\"
+          data-url=\"#{erp_locyen.add_to_cart_frontend_cart_items_path}\"
+          data-id=\"#{product.id}\" >
+          <i class=\"fa fa-cart-plus\"></i> thêm vào giỏ hàng
+        </button>".html_safe
+      end
     end
   end
 end

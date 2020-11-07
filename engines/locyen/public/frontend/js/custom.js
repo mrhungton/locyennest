@@ -178,6 +178,23 @@ $(document).ready(function () {
         });
     });
 
+    // Add to cart button
+    $(document).on('click', 'button.add-to-cart', function(e) {
+        e.preventDefault();
+        button = $(this);
+        var url = button.data('url');
+        var pid = button.data('id');
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {product_id: pid, quantity: 1}
+        }).done(function( data ) {
+            showNotice('success', 'Thành công', data);
+            loadTopCart();
+        });
+    });
+
     $(document).on('submit', '.quick-view-form', function(e) {
         e.preventDefault();
   
