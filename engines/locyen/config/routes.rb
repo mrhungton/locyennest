@@ -28,8 +28,7 @@ Erp::Locyen::Engine.routes.draw do
     get "dat-hang/thanh-cong" => "frontend/shopping_cart#success", as: :checkout_completed
     
     # Search
-    get "search" => "frontend/product#search", as: :search
-    # get "search" => "frontend/product#search", as: :search
+    get "search" => "frontend/search#search", as: :search
 
     # Information
     get "ho-tro/cau-hoi-thuong-gap" => "frontend/support#faq", as: :faq

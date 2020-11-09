@@ -103,7 +103,7 @@
                                             <%= link_to cart_item.product_name, product_link(cart_item.product), class: "cart_product_name top_cart_list", title: cart_item.product_name %>
                                             <br>
                                             <small class="tooltiptext">
-                                                (Vị: Táo, Hạt chia)
+                                                <!-- (Vị: Táo, Hạt chia) -->
                                             </small>
                                             <% if cart_item.product.gifts.count > 0 %>
                                             | <span class="tooltip-col">
@@ -126,7 +126,7 @@
                             <div class="coupon mb-10">
                                 <input name="coupon_code" class="input-text" id="coupon_code" value=""
                                     placeholder="Mã giảm giá" type="text">
-                                <%= link_to 'Áp dụng', '#', class: 'button apply_coupon' %>
+                                <%= link_to 'Áp dụng', 'javascript:void(0)', class: 'button apply_coupon' %>
                             </div>
                             <div class="total">
                                 <p>Tạm tính:<span> <%= format_price(@cart.total_order) %></span></p>

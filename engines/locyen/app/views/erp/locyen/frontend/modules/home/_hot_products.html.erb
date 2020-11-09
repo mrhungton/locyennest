@@ -11,43 +11,57 @@
         </div>
         <div class="product-active owl-carousel next-prev-style wow fadeInUp" data-wow-delay="0.7s">
             <% bestseller_products.each do |product| %>
-                <% product_images = product.product_images %>
-                <div class="single-product">
-                    <div class="product-img">
-                        <%= link_to image_tag(
-                            product_images.first.image_url.large,
-                            title: product.product_name,
-                            alt: product.product_name),
-                            product_link(product),
-                            title: product.product_name
-                        %>
-                        <span class="sale">Khuyến mãi</span>
-                        <div class="product-info-overlay-area clear pt-35 flex-direction-column">
-                            <%= add_to_cart_button(product) %>
-                            <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn mtb-5' %>
-                        </div>
+            <% product_images = product.product_images %>
+            <div class="single-product">
+                <div class="product-img">
+                    <%= link_to image_tag(
+                        product_images.first.image_url.large,
+                        title: product.product_name,
+                        alt: product.product_name),
+                        product_link(product),
+                        title: product.product_name
+                    %>
+                    <div class="product-info-overlay-area clear pt-35 flex-direction-column">
+                        <%= add_to_cart_button(product) %>
+                        <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn mtb-5' %>
                     </div>
-                    <div class="product-item-details text-center">
-                        <div class="product-name-review tab-product-name-review">
-                            <div class="product-name mt-30 ">
-                                <span><%= link_to product.find_menu.name, menu_link(product.find_menu) %></span>
-                                <strong><%= link_to product.name, product_link(product) %></strong>
-                            </div>
-                            <div class="product-review">
-                                <% if false %>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+                </div>
+                <div class="product-item-details text-center">
+                    <div class="product-name-review tab-product-name-review">
+                        <div class="product-name mt-20 ">
+                            <% if false %>
+                            <span><%= link_to product.find_menu.name, menu_link(product.find_menu) %></span>
+                            <% end %>
+                            <strong><%= link_to product.name, product_link(product) %></strong>
+                        </div>
+                        <div class="product-review">
+                            <% if false %>
+                            <ul>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                            <% end %>
+                            <!-- price -->
+                            <% if product.is_call? %>
+                            <span class="price">Giá liên hệ</span>
+                            <% else %>
+                            <span class="price">
+                                <%= format_price(product.product_price) %>
+                                <% if product.is_deal? %>
+                                <span class="old-price">
+                                    <%= format_price(product.price) %>
+                                </span>
+                                <span class="percent deal">-<%= product.deal_percent %>%</span>
                                 <% end %>
-                                <span class="special-price"><%= format_price(product.price) %></span>
-                            </div>
+                            </span>
+                            <% end %>
                         </div>
                     </div>
                 </div>
+            </div>
             <% end %>
         </div>
     </div>

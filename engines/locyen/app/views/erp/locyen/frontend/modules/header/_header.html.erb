@@ -22,8 +22,8 @@
                         </div>
                         <div class="top-bar-right pull-right">
                             <div class="search-box d-none d-lg-block">
-                                <form action="#">
-                                    <input type="search" placeholder="Tìm kiếm theo từ khóa"/>
+                                <form class="autosearch-form" method="GET" action="<%= erp_locyen.search_path %>">
+                                    <input class="autosearch-input form-control" type="text" value="<%= @keyword %>" size="50" autocomplete="off" placeholder="Tìm kiếm theo từ khóa..." name="keyword">
                                     <button><i class="fa fa-search"></i></button>
                                 </form>
                             </div>

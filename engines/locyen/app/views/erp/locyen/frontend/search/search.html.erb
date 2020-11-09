@@ -1,0 +1,150 @@
+<!-- product-area start -->
+<div class="breadcrumbs-area ptb-10 bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="woocommerce-breadcrumb mtb-15">
+                    <div class="menu">
+                        <ul>
+                            <li><a href="/"><i class="fa fa-home"></i></a></li>
+                            <li class="active"><a href="javascript:void(0);">Kết quả tìm kiếm</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="line-bg-gradient to-left"></div>
+
+<div class="search-area ptb-50">
+    <div class="container">
+        <div class="row">
+            <!-- product-vew area start -->
+            <div class="col-xl-12 col-lg-12">
+                <div class="tab-area">
+                    <div class="tab-menu-area mb-30">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-6 col-xs-12">
+                                <div class="shop-taitle">
+                                    <h2 class="text-capitalize">Kết quả tìm kiếm</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="card search-info">
+                                    <div class="card-block">
+                                        <ul class="nav">
+                                            <li><a class="active" href="#products-list" data-toggle="tab">Sản phẩm</a>
+                                            </li>
+                                            <li><a class="" href="#articles-list" data-toggle="tab">Bài viết</a></li>
+                                        </ul>
+                                        <p><i class="fa fa-search"></i>Tìm kiếm với từ khóa: <strong>"<%= @keyword %>"
+                                            </strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="products-list">
+                            <div class="row">
+                                <% if @products.empty? %>
+                                <div class="col-xs-12 col-md-12">
+                                    <p>Không tìm thấy sản phẩm theo từ khóa bạn yêu cầu.</p>
+                                </div>
+                                <% else %>
+                                <% @products.each do |product| %>
+                                <% product_images = product.product_images %>
+                                <div class="col-xl-4 col-md-6 col-sm-6">
+                                    <div class="single-product mb-30 wow zoomIn" data-wow-delay="0.3s">
+                                        <div class="product-img">
+                                            <%= link_to image_tag(
+                                            product_images.first.image_url.large,
+                                            title: product.product_name,
+                                            alt: product.product_name),
+                                            product_link(product),
+                                            title: product.product_name
+                                        %>
+                                            <!-- <span class="sale">Khuyến mãi</span> -->
+                                            <!-- <span class="new">New</span> -->
+                                            <div class="product-info-overlay-area clear pt-35 flex-direction-column">
+                                                <%= add_to_cart_button(product) %>
+                                                <%= link_to '<i class="fa fa-eye"></i> xem chi tiết'.html_safe, product_link(product), class: 'locyen-btn ml-2' %>
+                                            </div>
+                                        </div>
+                                        <div class="product-item-details text-center">
+                                            <div class="product-name-review tab-product-name-review">
+                                                <div class="product-name mt-20 ">
+                                                    <strong>
+                                                        <%= link_to product.name, product_link(product) %>
+                                                    </strong>
+                                                </div>
+                                                <div class="product-review">
+                                                    <!-- <ul>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                    <li><i class="fa fa-star"></i></li>
+                                                </ul> -->
+                                                    <span
+                                                        class="special-price"><%= format_price(product.price) %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="articles-list">
+                            <div class="row">
+                                <% if @articles.empty? %>
+                                <div class="col-xs-12 col-md-12">
+                                    <p>Không tìm thấy bài viết theo từ khóa bạn yêu cầu.</p>
+                                </div>
+                                <% else %>
+                                <% @articles.each do |blog| %>
+                                <div class="col-xl-4 col-md-6 col-sm-6">
+                                    <div class="blog-wrap text-center mb-35">
+                                        <div class="blog-img fix">
+                                            <a href="<%= article_link(blog) %>">
+                                                <img src="<%= blog.image.medium %>" alt="<%= blog.name %>" />
+                                            </a>
+                                        </div>
+                                        <div class="blog-content">
+                                            <div class="blog-meta d-flex justify-content-between">
+                                                <span>
+                                                    <i class="fa fa-user" aria-hidden="true"></i> Lộc Yến
+                                                </span>
+                                                <span title="<%= blog.created_at.strftime('%b %d, %Y - %H:%M:%S') %>">
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                    <%= relative_time(blog.created_at) %>
+                                                </span>
+                                            </div>
+                                            <div class="blog-info">
+                                                <h3>
+                                                    <a href="<%= article_link(blog) %>"><%= blog.name %></a>
+                                                </h3>
+                                                <p><%= short_text(blog.content, 20) %></p>
+                                                <div class="readmore-btn">
+                                                    <a href="<%= article_link(blog) %>">Xem thêm <i
+                                                            class="fa fa-long-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% end %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

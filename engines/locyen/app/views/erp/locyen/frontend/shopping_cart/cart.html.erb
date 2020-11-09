@@ -5,7 +5,7 @@
                 <div class="woocommerce-breadcrumb mtb-15">
                     <div class="menu">
                         <ul>
-                            <li><a href="<%= erp_locyen.root_path %>">Trang chủ</a></li>
+                            <li><a href="<%= erp_locyen.root_path %>"><i class="fa fa-home"></i></a></li>
                             <li class="active"><a href="javascript:void(0);">Giỏ hàng</a></li>
                         </ul>
                     </div>
@@ -93,13 +93,13 @@
                             </table>
                         </div>
                     </div>
-                    <div class="buttons">
-                        <div class="pull-left">
-                            <%= link_to '<span class="fa fa-angle-double-left"></span> Tiếp Tục Mua Hàng'.html_safe, erp_locyen.root_path, class: "btn btn-default shopping-continue" %>
-                        </div>
-                        <div class="pull-right">
-                            <%= link_to 'Tiến Hành Đặt Hàng <span class="fa fa-angle-double-right"></span>'.html_safe, erp_locyen.quick_order_path, class: "btn btn-primary shopping-order" %>
-                        </div>
+                </div>
+                <div class="buttons">
+                    <div class="pull-left">
+                        <%= link_to '<span class="fa fa-angle-double-left"></span> Tiếp Tục Mua Hàng'.html_safe, erp_locyen.root_path, class: "btn btn-default shopping-continue" %>
+                    </div>
+                    <div class="pull-right">
+                        <%= link_to 'Tiến Hành Đặt Hàng <span class="fa fa-angle-double-right"></span>'.html_safe, erp_locyen.quick_order_path, class: "btn btn-primary shopping-order" %>
                     </div>
                 </div>
             </div>

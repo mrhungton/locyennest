@@ -39,7 +39,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3"> -->
                                 <%= erp_form_control('checkbox', {
                                     name: 'product[published]',
                                     id: 'product_published',
@@ -48,7 +48,7 @@
                                     label: t('publish'),
                                     options: [{value: 'true', text: t('published')}]
                                 }) if false %>
-                            </div>
+                            <!-- </div> -->
                             <div class="col-md-3">
                                 <%= erp_form_control('checkbox', {
                                     name: 'product[is_new]',
@@ -77,6 +77,16 @@
                                     not_selected_value: 'false',
                                     label: t('.product_is_call'),
                                     options: [{value: 'true', text: t('.is_call')}]
+                                }) %>
+                            </div>
+                            <div class="col-md-3">
+                                <%= erp_form_control('checkbox', {
+                                    name: 'product[is_deal]',
+                                    id: 'product_is_deal',
+                                    value: product.is_deal,
+                                    not_selected_value: 'false',
+                                    label: t('.product_is_deal'),
+                                    options: [{value: 'true', text: t('.is_deal')}]
                                 }) %>
                             </div>
                         </div>
@@ -166,7 +176,45 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_5_2">
-                            Đang cập nhật
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <%= erp_form_control("number", {
+                                        name: 'product[deal_price]',
+                                        value: product.deal_price,
+                                        label: t('.deal_price'),
+                                        help: t('.help_deal_price'),
+                                        placeholder: t('.placeholder_deal_price'),
+                                        errors: product.errors.full_messages_for(:deal_price)
+                                    }) %>
+                                </div>
+                                <div class="col-md-3">
+                                    <%= erp_form_control("number", {
+                                        name: 'product[deal_percent]',
+                                        value: product.deal_percent,
+                                        label: t('.deal_percent'),
+                                        help: t('.help_deal_percent'),
+                                        placeholder: t('.placeholder_deal_percent'),
+                                        errors: product.errors.full_messages_for(:deal_percent)
+                                    }) %>
+                                </div>
+                                <div class="col-md-3">
+                                    <%= erp_form_control('date', {
+                                        label: t('.deal_from_date'),
+                                        name: 'product[deal_from_date]',
+                                        value: product.deal_from_date,
+                                        placeholder: t('.choose_deal_from_date')
+                                    }) %>
+                                </div>
+                                <div class="col-md-3">
+                                    <%= erp_form_control('date', {
+                                        label: t('.deal_to_date'),
+                                        name: 'product[deal_to_date]',
+                                        value: product.deal_to_date,
+                                        placeholder: t('.choose_deal_to_date'),
+                                        errors: product.errors.full_messages_for(:deal_to_date)
+                                    }) %>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_5_3">
                             <h4><%= t('.short_description') %> (kế bên hình ảnh)</h4>

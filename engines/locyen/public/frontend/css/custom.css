@@ -23,6 +23,22 @@
   src: url(../fonts/SVN-Lobster.ttf);
   font-weight: 500;
 }
+@font-face {
+    font-family: "SVN-Corki-Regular";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+}
+@font-face {
+    font-family: "SVN-Corki-Rounded";
+    src: url(../fonts/SVN-Corki-Rounded.otf);
+}
+@font-face {
+    font-family: "SVN-Corki-Tuscan";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+}
+@font-face {
+    font-family: "SVN-Corki-Tuscan-Rounded";
+    src: url(../fonts/SVN-Corki-Regular.otf);
+}
 h1, h2, h3 {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
@@ -81,7 +97,10 @@ h1, h2, h3 {
 	color: #fff;
 	margin-bottom: 10px;
 }
-.menu ul li.active a, .menu ul li::before {
+.menu ul li a, .single-product .product-name a {
+    color: #142850;
+}
+.menu ul li.active a, .menu ul li::before, .menu ul li a:hover, .single-product .product-name a:hover {
     color: #c1a349;
 }
 .mainmenu ul li>a {
@@ -113,6 +132,10 @@ h1, h2, h3 {
 .single-product .product-info-overlay-area button > i.fa,
 .single-product .product-info-overlay-area a > i.fa {
     padding-right: 5px;
+}
+.cart-items {
+    height: auto;
+    max-height: 280px;
 }
 .cart-btn button {
     font-size: 1.2rem;
@@ -260,6 +283,9 @@ h1, h2, h3 {
 }
 .search form input, .search-box input {
     outline: none;
+}
+.search-box input {
+    border-radius: 20px;
 }
 .brand-area {
     background: #142850 url(../img/bg/pattern-02.svg);
@@ -1055,4 +1081,127 @@ button.add-to-cart {
     font-weight: 700;
     padding: 11px 25px;
     transition: all .5s;
+}
+.search-area .single-product {
+    box-shadow: 0px 0px 3.92px 0.08px rgba(0,0,0,.16);
+}
+.search-info {
+    background-color: #fafafa;
+}
+.card-block {
+    padding: .875rem;
+}
+.card-block ul.nav li a.active {
+    background-color: #142850;
+    border: 1px solid #ddd;
+    color: #fff;
+    font-weight: 700;
+}
+.card-block ul.nav li a {
+    color: #999;
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-family: "Open Sans","Helvatica Neue",Arial,san-serif;
+    border-radius: 20px;
+    padding: .5rem 1rem;
+    display: inline-block;
+    line-height: 1.25;
+    border: 1px solid transparent;
+}
+.card-block p {
+    margin-bottom: 0;
+    font-size: .875rem;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.card-block p i {
+    padding-right: 10px;
+}
+.search-area .tab-area .tab-content .single-product {
+    margin: 0;
+}
+.head-logo {
+    font-family: SVN-Corki-Rounded;
+    font-weight: 600;
+}
+.head-logo::before {
+    content: '';
+    background: #142850 url(../img/logo/main-logo.png);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    background-size: cover;
+    background-position: center;
+    margin-right: 5px;
+    border: 1px solid #142850;
+}
+.breadcrumbs-area .menu ul li {
+    text-transform: capitalize;
+}
+.percent.deal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 1px 0px 0px;
+    padding-bottom: 4px;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    width: 40px;
+    height: 36px;
+    background-image: url(../images/tags/deal-tag.png);
+    background-size: 40px 36px;
+    background-position: 0px 0px;
+    font-size: 13px;
+}
+.price .old-price span {
+    font-size: 15px !important;
+    text-decoration-line: line-through;
+    color: #999;
+}
+/* .simple-product-review .deal .price.old-price span {
+    text-decoration-line: line-through;
+    color: #999 !important;
+} */
+.symple-product .product-price {
+    flex-direction: column;
+    border-radius: 4px;
+    background-color: rgb(250, 250, 250);
+    padding: 12px 16px;
+}
+.symple-product .product-price .price {
+    color: #ce9d4b;
+    font-size: 30px;
+    margin: 5px 0;
+    line-height: 30px;
+}
+.symple-product .product-price .price > span {
+    font-weight: 600;
+}
+.symple-product .product-price .sub-price {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+.symple-product .product-price .sub-price .label.label-percent {
+    font-size: 80%;
+    background: #F44336;
+    color: #fff;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 20px;
+    line-height: 1;
+}
+.symple-product .product-price .sub-price .old-price {
+    text-decoration-line: line-through;
+    color: #9E9E9E !important;
 }

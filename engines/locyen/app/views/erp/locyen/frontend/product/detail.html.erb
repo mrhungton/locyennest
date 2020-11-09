@@ -8,7 +8,7 @@
                 <div class="woocommerce-breadcrumb mtb-15">
                     <div class="menu">
                         <ul>
-                            <li><a href="<%= erp_locyen.root_path %>">Trang chủ</a></li>
+                            <li><a href="<%= erp_locyen.root_path %>"><i class="fa fa-home"></i></a></li>
                             <li><a href="<%= menu_link(@menu) %>"><%= @menu.name %></a></li>
                             <li class="active"><a href="javascript:void(0);"><%= @product.name %></a></li>
                         </ul>
@@ -62,6 +62,19 @@
             <div class="col-lg-7">
                 <div class="symple-product p-20 mb-30">
                     <h3><%= @product.get_long_name %></h3>
+                    <div class="product-price">
+                        <div class="price">
+                            <%= format_price(@product.product_price) %>
+                        </div>
+                        <% if @product.is_deal? %>
+                            <div class="sub-price">
+                                <% if !@product.deal_percent.nil? %>
+                                    <span class="label label-percent">-<%= @product.deal_percent %>%</span>
+                                <% end %>
+                                <span class="old-price pl-2"><%= format_price(@product.price) %></span>
+                            </div>
+                        <% end %>
+                    </div>
                     <div class="product-review simple-product-review">
                         <% if false %>
                             <ul>
@@ -73,17 +86,6 @@
                             </ul>
                             <a href="#">(3 customer reviews)</a><br/>
                         <% end %>
-                        <% if @product.is_sold_out? || @product.is_call? %>
-                            <span class="price price-sold-out sold_out_true">Liên hệ: 0896 995 686 - 0906 998 865</span>
-                        <% elsif @product.product_price.nil? %>
-                            <span class="price price-sold-out price-updated">Đang cập nhật giá</span>
-                        <% else %>
-                            <span class="price special-price"><%= format_price(@product.product_price) %></span>
-                            <% if @product.is_deal? %>
-                                <span class="price old-price"><del></del><%= format_price(@product.price) %></del></span>
-                                <% if !@product.deal_percent.nil? %><span class="label label-percent">-<%= @product.deal_percent %>%</span><% end %>
-                            <% end %>
-                        <% end %>
                     </div>
                     <div class="product-short-description mb-3">
                         <%= raw(@product.short_description) if @product.short_description.present? %>
@@ -92,10 +94,10 @@
                         <% if @product.code.present? %>
                             <b>Mã hàng:</b> <span><%= @product.code %></span>
                         <% end %>
-                        <div class="category mb-10">
+                        <!-- <div class="category mb-10">
                             <b>Khối lượng (hoặc dung tích):</b>
                             <span>100 gr</span>
-                        </div>
+                        </div> -->
                         <div class="single-blog-tag category bb pb-10">
                             <b>Chuyên mục:</b>
                             <%= link_to @menu.name, menu_link(@menu) %>
@@ -129,19 +131,19 @@
                         <div class="simple-product-tab">
                             <div class="simple-product-tab-menu clear">
                                 <ul class="nav">
-                                    <li><a class="active" href="#description" data-toggle="tab">THÔNG TIN MÔ TẢ</a></li>
-                                    <li><a href="#description_2" data-toggle="tab">CHI TIẾT SẢN PHẨM</a></li>
+                                    <li><a class="active" href="#description" data-toggle="tab">THÔNG TIN SẢN PHẨM</a></li>
+                                    <li><a href="#description_2" data-toggle="tab">HƯỚNG DẪN SỬ DỤNG</a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="description">
                                     <div class="product-description ptb-30">
-                                        <%= @product.description.present? ? @product.description.html_safe : 'Thông tin mô tả đang cập nhật' %>
+                                        <%= @product.description.present? ? @product.description.html_safe : 'Thông tin sản phẩm đang cập nhật' %>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="description_2">
                                     <div class="product-description ptb-30">
-                                        <%= @product.description_2.present? ? @product.description_2.html_safe : 'Chi tiết sản phẩm đang cập nhật' %>
+                                        <%= @product.description_2.present? ? @product.description_2.html_safe : 'Hướng dẫn sử dụng đang cập nhật' %>
                                     </div>
                                 </div>
                             </div>

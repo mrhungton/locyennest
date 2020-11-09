@@ -213,7 +213,7 @@ $(document).ready(function () {
               }).done(function( html ) {
                   console.log(html);
                   showNotice('success', 'Thành công', 'Giỏ hàng đã được cập nhật');
-                  $('.shopping-cart-area .table-responsive').html($('<div>').html(html).find('.shopping-cart-area .table-responsive').html());
+                  $('.shopping-cart-area .cart-table').html($('<div>').html(html).find('.shopping-cart-area .cart-table').html());
                   loadTopCart();
               });
         });
@@ -244,7 +244,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $(".shopping_cart_form").on("keypress", function(e) {
+    $(".shopping_cart_form, .checkout_form").on("keypress", function(e) {
         return 13 != e.keyCode
     })
 
@@ -264,6 +264,18 @@ $(document).ready(function () {
         afterLoad: function() {
             loadTopCart();
             showBankAccount();
+        }
+    });
+
+    // prevent autosearch-form
+    $(document).on('submit', '.autosearch-form', function(e) {
+        var val = $(this).find('input[name=keyword]').val();
+
+        if (val.trim() === '') {
+            e.preventDefault();
+            return false;
+        } else {
+            return true;
         }
     });
 });
