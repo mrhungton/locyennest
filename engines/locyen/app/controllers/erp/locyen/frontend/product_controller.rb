@@ -53,6 +53,9 @@ module Erp
               @meta_description = @menu.meta_description
             end
           end
+
+          @categories = Erp::Articles::Category.get_categories_by_alias_blog
+          @newest_blogs = Erp::Articles::Article.newest_articles(10)
         end
         
       end

@@ -23,109 +23,109 @@
 <div class="simple-product-area pt-50">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5">
-                <div class="symple-product mb-35">
-                    <div class="single-product-tab">
-                        <div class="tab-content">
-                            <% if product_images.count == 0 %>
-                                <!---------       --------->
-                            <% elsif product_images.count > 0 %>
-                                <% product_images.each_with_index do |image,index| %>
-                                    <div role="tabpanel" 
-                                        class="tab-pane <%= 'active' if image.is_main? %>" 
-                                        id="ProductImage<%= index %>"
-                                    >
-                                        <a href="<%= image.image_url %>" data-fancybox="productDetails" data-caption="<%= image.description %>">
-                                            <img src="<%= image.image_url.big %>" alt="<%= image.description %>" />
-                                        </a>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="symple-product mb-35">
+                            <div class="single-product-tab">
+                                <div class="tab-content">
+                                    <% if product_images.count == 0 %>
+                                        <!---------       --------->
+                                    <% elsif product_images.count > 0 %>
+                                        <% product_images.each_with_index do |image,index| %>
+                                            <div role="tabpanel" 
+                                                class="tab-pane <%= 'active' if image.is_main? %>" 
+                                                id="ProductImage<%= index %>"
+                                            >
+                                                <a href="<%= image.image_url %>" data-fancybox="productDetails" data-caption="<%= image.description %>">
+                                                    <img src="<%= image.image_url.big %>" alt="<%= image.description %>" />
+                                                </a>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            
+                            <% if product_images.count > 0 %>
+                                <div class="single-product-menu mb-30">
+                                    <div class="single-product-active clear owl-carousel next-prev-style">
+                                        <% product_images.each_with_index do |image,index| %>
+                                            <div class="single-img floatleft">
+                                                <a href="#ProductImage<%= index %>" data-toggle="tab">
+                                                    <img src="<%= image.image_url.small %>" alt="<%= image.description %>" />
+                                                </a>
+                                            </div>
+                                        <% end %>
                                     </div>
-                                <% end %>
+                                </div>
                             <% end %>
                         </div>
                     </div>
-                    
-                    <% if product_images.count > 0 %>
-                        <div class="single-product-menu mb-30">
-                            <div class="single-product-active clear owl-carousel next-prev-style">
-                                <% product_images.each_with_index do |image,index| %>
-                                    <div class="single-img floatleft">
-                                        <a href="#ProductImage<%= index %>" data-toggle="tab">
-                                            <img src="<%= image.image_url.small %>" alt="<%= image.description %>" />
-                                        </a>
+                    <div class="col-lg-7">
+                        <div class="symple-product p-20 mb-30">
+                            <h3><%= @product.get_long_name %></h3>
+                            <div class="product-price">
+                                <div class="price">
+                                    <%= format_price(@product.product_price) %>
+                                </div>
+                                <% if @product.is_deal? %>
+                                    <div class="sub-price">
+                                        <% if !@product.deal_percent.nil? %>
+                                            <span class="label label-percent">-<%= @product.deal_percent %>%</span>
+                                        <% end %>
+                                        <span class="old-price pl-2"><%= format_price(@product.price) %></span>
                                     </div>
                                 <% end %>
                             </div>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <div class="symple-product p-20 mb-30">
-                    <h3><%= @product.get_long_name %></h3>
-                    <div class="product-price">
-                        <div class="price">
-                            <%= format_price(@product.product_price) %>
-                        </div>
-                        <% if @product.is_deal? %>
-                            <div class="sub-price">
-                                <% if !@product.deal_percent.nil? %>
-                                    <span class="label label-percent">-<%= @product.deal_percent %>%</span>
+                            <div class="product-review simple-product-review">
+                                <% if false %>
+                                    <ul>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                    <a href="#">(3 customer reviews)</a><br/>
                                 <% end %>
-                                <span class="old-price pl-2"><%= format_price(@product.price) %></span>
                             </div>
-                        <% end %>
-                    </div>
-                    <div class="product-review simple-product-review">
-                        <% if false %>
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                            <a href="#">(3 customer reviews)</a><br/>
-                        <% end %>
-                    </div>
-                    <div class="product-short-description mb-3">
-                        <%= raw(@product.short_description) if @product.short_description.present? %>
-                    </div>
-                    <div class="product_meta">
-                        <% if @product.code.present? %>
-                            <b>Mã hàng:</b> <span><%= @product.code %></span>
-                        <% end %>
-                        <!-- <div class="category mb-10">
-                            <b>Khối lượng (hoặc dung tích):</b>
-                            <span>100 gr</span>
-                        </div> -->
-                        <div class="single-blog-tag category bb pb-10">
-                            <b>Chuyên mục:</b>
-                            <%= link_to @menu.name, menu_link(@menu) %>
-                        </div>
-                    </div>
-                    <div class="simple-product-form mtb-20">
-                        <%= form_tag erp_locyen.add_to_cart_frontend_cart_items_path, class: 'add-cart-form' do %>
-                            <%= hidden_field_tag "product_id", @product.id %>
-                            <div class="qty-item mb-4">
-                                <b>Số lượng: </b>
-                                <input min="1" max="1000" name="quantity" value="1" type="number">
+                            <div class="product-short-description mb-3">
+                                <%= raw(@product.short_description) if @product.short_description.present? %>
                             </div>
-                            <div class="add-cart">
-                                <button><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                            <div class="product_meta">
+                                <% if @product.code.present? %>
+                                    <b>Mã hàng:</b> <span><%= @product.code %></span>
+                                <% end %>
+                                <!-- <div class="category mb-10">
+                                    <b>Khối lượng (hoặc dung tích):</b>
+                                    <span>100 gr</span>
+                                </div> -->
+                                <div class="single-blog-tag category bb pb-10">
+                                    <b>Chuyên mục:</b>
+                                    <%= link_to @menu.name, menu_link(@menu) %>
+                                </div>
                             </div>
-                        <% end %>
-                        <div class="quick-cart">
-                            <%= link_to 'Đặt hàng ngay',
-                                erp_locyen.quick_order_path(product_id: @product.id),
-                                class: "ml-3 text-center border-top add-to-quick-cart add-to-cart quick-buy-ajax ajax-link",
-                                'data-type': 'ajax' %>
+                            <div class="simple-product-form mtb-20">
+                                <%= form_tag erp_locyen.add_to_cart_frontend_cart_items_path, class: 'add-cart-form' do %>
+                                    <%= hidden_field_tag "product_id", @product.id %>
+                                    <div class="qty-item mb-4">
+                                        <b>Số lượng: </b>
+                                        <input min="1" max="1000" name="quantity" value="1" type="number">
+                                    </div>
+                                    <div class="add-cart">
+                                        <button><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    </div>
+                                <% end %>
+                                <div class="quick-cart">
+                                    <%= link_to 'Đặt hàng ngay',
+                                        erp_locyen.quick_order_path(product_id: @product.id),
+                                        class: "ml-3 text-center border-top add-to-quick-cart add-to-cart quick-buy-ajax ajax-link",
+                                        'data-type': 'ajax' %>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- <div class="row">
-            <div class="col-lg-9"> -->
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="simple-product-tab">
@@ -150,9 +150,11 @@
                         </div>
                     </div>
                 </div>
-            <!-- </div>
-            <div class="col-lg-3"></div>
-        </div> -->
+            </div>
+            <div class="col-lg-3">
+                <%= render "erp/locyen/frontend/modules/blog/sidebar" %>
+            </div>
+        </div>
     </div>
 </div>
 
