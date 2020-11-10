@@ -1,0 +1,32 @@
+<% content_for :title do %>
+    <%= @country.name %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href="<%= erp_areas.backend_countries_path %>">
+    <i class="fa fa-flag-checkered"></i> <%= t('.countries') %>
+    </a> / <%= @country.name %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_areas.new_backend_country_path
+    }) %>
+<% end %>
+
+<div class="row">
+    <div class="col-md-6">
+        <% if @country.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <%= render 'form', country: @country %>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>

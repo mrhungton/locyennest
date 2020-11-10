@@ -1,0 +1,81 @@
+<% content_for :title do %>
+    <%= t('.states') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="fa fa-map"></i> <%= t('.states') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_areas.new_backend_state_path,
+        class: 'btn-noborder'
+    }) %>
+<% end %>
+
+<%= erp_datalist(
+    url: erp_areas.list_backend_states_path,
+    keywords: [
+        {
+            text: t('.name'), name: 'erp_areas_states.name'
+        },
+        {
+            text: t('.code'), name: 'erp_areas_states.code'
+        },
+        {
+            text: t('.country'),
+            name: 'erp_areas_countries.name',
+            select: {
+                name: 'erp_areas_countries.id',
+                data_url: erp_areas.dataselect_backend_countries_path
+            }
+        }
+    ],
+    actions: [
+        {
+            text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+            url: erp_areas.archive_all_backend_states_path,
+            data_method: 'PUT',
+            data_confirm: t('.archive_confirm')
+        },
+        {
+            text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+            url: erp_areas.unarchive_all_backend_states_path,
+            data_method: 'PUT',
+            data_confirm: t('.unarchive_confirm')
+        },
+        {
+            divider: true
+        },
+        {
+            text: '<i class="fa fa-trash"></i> '+t('.delete'),
+            url: erp_areas.delete_all_backend_states_path,
+            data_method: 'DELETE',
+            data_confirm: t('delete_confirm')
+        }
+    ],
+    filters: [
+        {
+            text: t('archived'), name: 'show_archived', value: true, checked: false
+        },
+    ],
+    columns: [
+        {
+            text: t('.name'), name: 'name', value: true, checked: true
+        },
+        {
+            text: t('.code'), name: 'code', value: true, checked: true
+        },
+        {
+            text: t('status'), name: 'status', value: true, checked: true
+        },
+        {
+            text: t('creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('created_at'), name: 'created_at', value: true, checked: false
+        }
+    ],
+    sort: { sort_by: 'erp_areas_states.name', sort_direction: 'asc' }
+) %>    

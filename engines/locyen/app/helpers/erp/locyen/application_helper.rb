@@ -6,11 +6,11 @@ module Erp
       end
 
       # display full address
-      def full_address(contact)
+      def full_address(obj)
         str = []
-        str << contact.address if contact.address.present?
-        str << contact.district_name if contact.district_name.present?
-        str << contact.state_name if contact.state_name.present?
+        str << obj.address if obj.address.present?
+        str << obj.district_name if obj.district_name.present?
+        str << obj.state_name if obj.state_name.present?
         str.join(", ")
       end
 

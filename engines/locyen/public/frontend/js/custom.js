@@ -278,4 +278,87 @@ $(document).ready(function () {
             return true;
         }
     });
+
+    // Select2 ajax
+    // $(".select-ajax").each(function() {
+    //     var url = $(this).attr('data-url');
+    //     var placeholder = $(this).attr('data-placeholder');
+
+    //     if(typeof(placeholder) === 'undefined') {
+    //         placeholder = '';
+    //     }
+
+    //     $(this).select2({
+    //         ajax: {
+    //           url: url,
+    //           dataType: 'json',
+    //           delay: 250,
+    //           data: function (params) {
+    //             return {
+    //               q: params.term, // search term
+    //               page: params.page
+    //             };
+    //           },
+    //           processResults: function (data) {
+    //             return {
+    //                 results: $.map(data.items, function (item) {
+    //                     return {
+    //                         text: item.text,
+    //                         id: item.value
+    //                     }
+    //                 })
+    //             };
+    //           },
+    //           cache: true
+    //         },
+    //         escapeMarkup: function (markup) {
+    //           return markup;
+    //         }, // let our custom formatter work
+    //         minimumInputLength: 0,
+    //         language: "vi",
+    //         allowClear: true,
+    //         placeholder: placeholder
+    //     });
+    // });
+
+    $('select').each(function() {
+        var placeholder = $(this).attr('placeholder');
+
+        if (typeof(placeholder) == 'undefined') {
+            placeholder = false;
+        }
+
+        $(this).select2({
+            minimumResultsForSearch: 10,
+            dropdownAutoWidth: 'true',
+            language: "vi",
+            placeholder: placeholder,
+        });
+    });
+
+    // Ajax content
+    $(document).on('change', '.ajax-content-control', function() {
+        var container = $($(this).attr('data-content-selector'));
+        var url = $(this).attr('data-url');
+        var value = $(this).val();
+
+        container.html('');
+
+        $.ajax({
+            url: url,
+            data: {
+                state_id: value
+            }
+        }).done(function( data ) {
+            container.html(data);
+            if (!container.parents('.fancybox-inner').length) {
+              container.find('select').select2({
+                  minimumResultsForSearch: 10,
+                  dropdownAutoWidth: 'true',
+                  language: "vi"
+              });
+            }
+        });
+    });
+    $('.ajax-content-control').trigger('change');
 });

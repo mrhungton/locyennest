@@ -1,0 +1,126 @@
+vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          area: "Khu vực"
+          states: "Tất cả khu vực"
+          countries: "Tất cả quốc gia"
+  erp:
+    areas: 
+      backend:
+        countries:
+          create:
+            success: "Thêm thông tin quốc gia thành công."
+          update:
+            success: "Cập nhật thông tin quốc gia thành công."
+          destroy:
+            success: "Xóa thông tin quốc gia thành công."
+          archive:
+            success: "Thông tin quốc gia đã ngưng sử dụng."
+          unarchive:
+            success: "Thông tin quốc gia đã được sử dụng trở lại."
+          delete_all:
+            success: "Xóa thông tin quốc gia được chọn thành công."
+          archive_all:
+            success: "Thông tin quốc gia đã ngưng sử dụng."
+          unarchive_all:
+            success: "Thông tin quốc gia đã được sử dụng trở lại."
+          index:
+            countries: "Tất cả quốc gia"
+            create: "Thêm thông tin quốc gia"
+            delete: "Xóa thông tin quốc gia"
+            name: "Tên quốc gia"
+            code: "Mã quốc gia"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thông tin quốc gia này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thông tin quốc gia này?"
+          list:
+            name: "Tên quốc gia"
+            code: "Mã quốc gia"
+            delete: "Xóa thông tin quốc gia"
+            no_matching_records_found: "Danh sách quốc gia hiện tại đang trống."
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thông tin quốc gia này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thông tin quốc gia này?"
+          new:
+            countries: "Tất cả quốc gia"
+            create: "Thêm thông tin quốc gia"
+          edit:
+            countries: "Tất cả quốc gia"
+            create: "Thêm thông tin quốc gia"
+          form:
+            name: "Tên quốc gia"
+            enter_country_name: "Nhập tên quốc gia..."
+            code: "Mã quốc gia"
+            enter_country_code: "Nhập mã quốc gia..."
+        states:
+          create:
+            success: "Thêm thông tin khu vực thành công."
+          update:
+            success: "Cập nhật thông tin khu vực thành công."
+          destroy:
+            success: "Xóa thông tin khu vực thành công."
+          archive:
+            success: "Thông tin khu vực đã ngưng sử dụng."
+          unarchive:
+            success: "Thông tin khu vực đã được sử dụng trở lại."
+          delete_all:
+            success: "Xóa thông tin khu vực được chọn thành công."
+          archive_all:
+            success: "Thông tin khu vực đã ngưng sử dụng."
+          unarchive_all:
+            success: "Thông tin khu vực đã được sử dụng trở lại."
+          index:
+            states: "Tất cả khu vực"
+            create: "Thêm thông tin khu vực"
+            delete: "Xóa quốc gia"
+            name: "Tên khu vực"
+            code: "Mã khu vực"
+            country: "Quốc gia"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thông tin khu vực này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thông tin khu vực này?"
+          list:
+            delete: "Xóa thông tin khu vực"
+            name: "Tên khu vực"
+            code: "Mã khu vực"
+            no_matching_records_found: "Danh sách khu vực hiện tại đang trống."
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thông tin khu vực này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thông tin khu vực này?"
+          new:
+            states: "Tất cả khu vực"
+            create: "Thêm thông tin khu vực"
+          edit:
+            states: "Tất cả khu vực"
+            create: "Thêm thông tin khu vực"
+          form:
+            name: "Tên khu vực"
+            enter_state_name: "Nhập tên khu vực..."
+            code: "Mã khu vực"
+            enter_state_code: "Nhập mã khu vực..."
+            country: "Quốc gia"
+            choose_country: "Chọn quốc gia"
+            create: "Thêm thông tin quốc gia"
+  activerecord:
+    errors:
+      models:
+        erp/areas/country:
+          attributes:
+            name:
+              blank: "không được để trống."
+            code:
+              blank: "không được để trống."
+        erp/areas/state:
+          attributes:
+            name:
+              blank: "không được để trống."
+            code:
+              blank: "không được để trống."
+            country_id:
+              blank: "không được để trống."
+    attributes:
+      erp/areas/country:
+        name: "Tên quốc gia"
+        code: "Mã quốc gia"
+      erp/areas/state:
+        name: "Tên khu vực"
+        code: "Mã khu vực"
+        country_id: "Quốc gia"

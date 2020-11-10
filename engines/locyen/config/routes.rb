@@ -35,6 +35,9 @@ Erp::Locyen::Engine.routes.draw do
     # get "ho-tro/quy-dinh-chinh-sach" => "frontend/support#terms_and_conditions", as: :terms_and_conditions
     get "ho-tro/:category_id(/:title)" => "frontend/support#policy", as: :policy
     get "site-map" => "frontend/support#site_map", as: :site_map
+
+    # AREA
+	  get "district-select-box.html" => "frontend/area#district_select", as: :district_select
   end
 
   Erp::Newsletters::Engine.routes.draw do

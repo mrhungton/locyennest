@@ -16,7 +16,7 @@ module Erp
           end
           
           @quick_order = Erp::QuickOrders::Order.new
-      
+          
           if params[:quick_order].present?
             @quick_order = Erp::QuickOrders::Order.new(quick_order_params)
             if @quick_order.save
@@ -38,7 +38,7 @@ module Erp
 
         private
           def quick_order_params
-            params.fetch(:quick_order, {}).permit(:customer_name, :phone, :email, :address, :note, :invoice)
+            params.fetch(:quick_order, {}).permit(:customer_name, :phone, :email, :address, :state_id, :district_id, :note, :invoice)
           end
       end
     end

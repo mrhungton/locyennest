@@ -42,7 +42,12 @@
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("customer") %>
-                    <td><%= order.customer_name %></td>
+                    <td>
+                        <%= order.customer_name %><br>
+                        <span class="text-muted">
+                            <i class="fa fa-location-arrow"></i> <%= full_address(order) %>
+                        </span>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("phone") %>
                     <td><%= order.phone %></td>

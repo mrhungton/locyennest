@@ -1,0 +1,32 @@
+<% content_for :title do %>
+    <%= @state.name %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href="<%= erp_areas.backend_states_path %>">
+    <i class="fa fa-map"></i> <%= t('.states') %>
+    </a> / <%= @state.name %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_areas.new_backend_state_path
+    }) %>
+<% end %>
+
+<div class="row">
+    <div class="col-md-6">
+        <% if @state.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <%= render 'form', state: @state %>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>
