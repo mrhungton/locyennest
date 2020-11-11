@@ -384,7 +384,5 @@ $(document).ready(function () {
         $(".screen-overlay").removeClass("show");
         $(".mobile-offcanvas").removeClass("show");
         $("body").removeClass("offcanvas-active");
-
-
     }); 
 });

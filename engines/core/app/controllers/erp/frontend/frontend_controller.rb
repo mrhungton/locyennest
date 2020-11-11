@@ -8,8 +8,8 @@ module Erp::Frontend
 		before_action :redirect_subdomain
 	
 		def redirect_subdomain
-			if request.host == 'www.timhangcongnghe.com'
-				redirect_to 'http://timhangcongnghe.com' + request.fullpath, :status => 301
+			if request.host == 'www.locyennest.com'
+				redirect_to 'http://locyennest.com' + request.fullpath, :status => 301
 			end
 		end
 

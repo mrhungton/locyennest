@@ -1,18 +1,20 @@
 module Erp::QuickOrders
   class QuickOrderMailer < Erp::ApplicationMailer
     helper Erp::ApplicationHelper
-    helper Erp::OnlineStore::ApplicationHelper
-    
+    helper Erp::Locyen::ApplicationHelper
+
     def sending_admin_email_order_confirmation(quick_order)
-      @recipients = ['Hùng Nguyễn <hungnt@hoangkhang.com.vn>', 'Luân Phạm <luanpm@hoangkhang.com.vn>', 'Sơn Nguyễn <sonnn@hoangkhang.com.vn>']
+      @recipients = ['LỘC YẾN <locyennest@gmail.com>']
+      @cc_mails = ['LocYenNest <contact@locyennest.com>']
+      @bcc_mails = []
       
       @quick_order = quick_order
-      send_email(@recipients.join("; "), "[THCN] -#{Time.current.strftime('%Y%m%d')}- YÊU CẦU ĐẶT HÀNG TRÊN TÌM HÀNG CÔNG NGHỆ")
+      send_email(@recipients.join("; "), @cc_mails.join("; "), @bcc_mails.join("; "), "[LocYenNest] -#{Time.current.strftime('%Y%m%d')}- Thông báo đơn đặt hàng trên website")
     end
     
     def sending_customer_email_order_confirmation(quick_order)
       @quick_order = quick_order
-      send_email(@quick_order.email, "#{Time.current.strftime('%Y%m%d')} - XÁC NHẬN ĐƠN ĐẶT HÀNG")
+      send_email(@quick_order.email, '', '', "#{Time.current.strftime('%Y%m%d')} - Xác nhận đặt hàng tại Locyennest.com")
     end
   end
 end
