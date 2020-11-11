@@ -1,8 +1,8 @@
 <!-- header start -->
-<header class="header-area ptb-20">
+<header class="header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-2 col-sm-12 col-12">
                 <div class="logo">
                     <%= link_to image_tag("/frontend/img/logo/main-logo.png",
                         title: "Lộc Yến - Lọc của mọi nhà",
@@ -12,24 +12,26 @@
                     %>
                 </div>
             </div>
-            <div class="col-lg-8 col-10">
+            <div class="col-lg-8 col-md-9 col-sm-0 col-0 d-none d-lg-block d-md-block">
                 <div class="mainmenu-area">
                     <div class="top-bar clear">
                         <div class="top-bar-left pull-left">
-                            <div class="hotline pull-left d-none d-lg-block">
+                            <div class="hotline pull-left d-none d-lg-block d-md-block">
                                 <p>Hotline hỗ trợ : 0896 995 686</p>
                             </div>
                         </div>
                         <div class="top-bar-right pull-right">
-                            <div class="search-box d-none d-lg-block">
+                            <div class="search-box d-none d-lg-block d-md-block">
                                 <form class="autosearch-form" method="GET" action="<%= erp_locyen.search_path %>">
-                                    <input class="autosearch-input form-control" type="text" value="<%= @keyword %>" size="50" autocomplete="off" placeholder="Tìm kiếm theo từ khóa..." name="keyword">
+                                    <input class="autosearch-input form-control" type="text" value="<%= @keyword %>"
+                                        size="50" autocomplete="off" placeholder="Tìm kiếm theo từ khóa..."
+                                        name="keyword">
                                     <button><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="mainmenu dropdown d-none d-lg-block">
+                    <div class="mainmenu dropdown d-none d-lg-block d-md-block">
                         <nav>
                             <ul>
                                 <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
@@ -39,11 +41,11 @@
                                     <%= link_to 'Giới thiệu', erp_locyen.about_us_path %>
                                 </li>
                                 <% Erp::Menus::Menu.get_menus.each do |category| %>
-                                    <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
+                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
                                                     (defined?(menu_id) and category.id == menu_id) ||
                                                     (category.id == params[:menu_id].to_i) %>">
-                                        <%= link_to category.name, menu_link(category) %>
-                                    </li>
+                                    <%= link_to category.name, menu_link(category) %>
+                                </li>
                                 <% end %>
                                 <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
                                     <%= link_to 'Góc chia sẻ', erp_locyen.blog_path %>
@@ -53,42 +55,68 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1 col-2">
+            <div class="col-lg-1 col-md-1 col-sm-0 col-0 d-none d-lg-block d-md-block">
                 <div class="top-cart-area" data-url="<%= erp_locyen.top_cart_path %>">
                     <%= render 'erp/locyen/frontend/shopping_cart/top_cart' %>
                 </div>
             </div>
         </div>
     </div>
-    <!-- mobail-menu -->
-    <div class="mobail-menu-area">
+    <!-- mobile-menu -->
+    <div class="mobile-menu-area">
         <div class="container">
-            <div class="row">
-                <div class="col-12 d-none d-sm-block d-md-none">
-                    <div class="mobail-menu-active">
-                        <nav>
-                            <ul>
-                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
-                                    <%= link_to 'Trang chủ', erp_locyen.root_path %>
-                                </li>
-                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/about_us' %>">
-                                    <%= link_to 'Giới thiệu', erp_locyen.about_us_path %>
-                                </li>
-                                <% Erp::Menus::Menu.get_menus.each do |category| %>
-                                    <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
-                                                    (defined?(menu_id) and category.id == menu_id) ||
-                                                    (category.id == params[:menu_id].to_i) %>">
-                                        <%= link_to category.name, menu_link(category) %>
-                                    </li>
-                                <% end %>
-                                <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
-                                    <%= link_to 'Góc chia sẻ', erp_locyen.blog_path %>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+            <div class="menu-inner d-flex justify-content-space-between align-items-center">
+                <button data-trigger="#navbar_main" class="d-lg-none btn show-verticalmenu" type="button"> <i class="fa fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <form class="autosearch-form" method="GET" action="<%= erp_locyen.search_path %>">
+                        <input class="autosearch-input form-control" type="text" value="<%= @keyword %>" size="50"
+                            autocomplete="off" placeholder="Tìm kiếm theo từ khóa..." name="keyword">
+                        <button><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="top-cart-area">
+                    <% if @cart.cart_items.number_items > 0 %>
+                        <div class="maincart-wrap">
+                            <a href="<%= erp_locyen.shopping_cart_path %>"><i class="fa fa-shopping-basket"></i>
+                                <span><%= @cart.cart_items.number_items %></span>
+                            </a>
+                        </div>
+                    <% else %> 
+                        <div class="maincart-wrap">
+                            <a href="javascript:void(0);"><i class="fa fa-shopping-basket"></i>
+                                <span>0</span>
+                            </a>
+                        </div>
+                    <% end %>
                 </div>
             </div>
+            <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-dark">
+                <div class="offcanvas-header">
+                    <button class="btn btn-close float-right"><i class="fa fa-close"></i></button>
+                    <h5 class="py-2 text-white">Danh mục</h5>
+                </div>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item <%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
+                        <%= link_to 'Trang chủ', erp_locyen.root_path, class: 'nav-link' %>
+                    </li>
+                    <li class="nav-item <%= 'active' if params[:controller] == 'erp/locyen/frontend/about_us' %>">
+                        <%= link_to 'Giới thiệu', erp_locyen.about_us_path, class: 'nav-link' %>
+                    </li>
+                    <% Erp::Menus::Menu.get_menus.each do |category| %>
+                    <li class="nav-item <%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
+                                        (defined?(menu_id) and category.id == menu_id) ||
+                                        (category.id == params[:menu_id].to_i) %>">
+                        <%= link_to category.name, menu_link(category), class: 'nav-link' %>
+                    </li>
+                    <% end %>
+                    <li class="nav-item <%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
+                        <%= link_to 'Góc chia sẻ', erp_locyen.blog_path, class: 'nav-link' %>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </header>

@@ -1,0 +1,32 @@
+<div class="mobail-menu-area d-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-none d-sm-block d-md-none">
+                <% if true %>
+                <div class="mobail-menu-active">
+                    <nav>
+                        <ul>
+                            <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/home' %>">
+                                <%= link_to 'Trang chủ', erp_locyen.root_path %>
+                            </li>
+                            <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/about_us' %>">
+                                <%= link_to 'Giới thiệu', erp_locyen.about_us_path %>
+                            </li>
+                            <% Erp::Menus::Menu.get_menus.each do |category| %>
+                            <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/product' &&
+                                                (defined?(menu_id) and category.id == menu_id) ||
+                                                (category.id == params[:menu_id].to_i) %>">
+                                <%= link_to category.name, menu_link(category) %>
+                            </li>
+                            <% end %>
+                            <li class="<%= 'active' if params[:controller] == 'erp/locyen/frontend/blog' %>">
+                                <%= link_to 'Góc chia sẻ', erp_locyen.blog_path %>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
