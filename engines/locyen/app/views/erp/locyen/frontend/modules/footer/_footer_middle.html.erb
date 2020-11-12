@@ -13,6 +13,19 @@
                             <%= raw @footer_about.content %>
                         </span>
                     </div>
+                    <div class="footer-socials mt-10">
+                        <a href="https://www.facebook.com/locyenchungtuoi/" target="_blank">
+                            <img src="/frontend/images/socials/facebook.png" alt="Facebook"
+                                title="Follow us on Facebook">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCUMTAbMsRTkpe2-QbFdxoEw/" target="_blank">
+                            <img src="frontend/images/socials/youtube.png" alt="Youtube"
+                                title="Follow us on Youtube">
+                        </a><a href="https://www.instagram.com/locyenchungtuoi//" target="_blank">
+                            <img src="/frontend/images/socials/instagram.png" alt="Instagram"
+                                title="Follow us on Instagram">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -23,9 +36,12 @@
                     <div class="footer-menu contact-info">
                         <ul>
                             <li><i class="fa fa-home"></i> CÔNG TY TNHH XNK YẾN SÀO LỘC PHÁT</li>
-                            <li><i class="fa fa-map-marker"></i> Số 240/7 Lê Thánh Tôn, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam</li>
-                            <li><i class="fa fa-phone"></i> <a href="tel:0896 995 686">0896 995 686</a> - <a href="tel:0906 998 865">0906 998 865</a></li>
-                            <li><i class="fa fa-envelope-o"></i> <a href="mailto:contact@locyennest.com">contact@locyennest.com</a></li>
+                            <li><i class="fa fa-map-marker"></i> Số 240/7 Lê Thánh Tôn, Phường Bến Thành, Quận 1, Thành
+                                phố Hồ Chí Minh, Việt Nam</li>
+                            <li><i class="fa fa-phone"></i> <a href="tel:0896 995 686">0896 995 686</a> - <a
+                                    href="tel:0906 998 865">0906 998 865</a></li>
+                            <li><i class="fa fa-envelope-o"></i> <a
+                                    href="mailto:contact@locyennest.com">contact@locyennest.com</a></li>
                             <li><i class="fa fa-globe"></i> <a href="http://locyennest.com">locyennest.com</a></li>
                             <li><i class="fa fa-clock-o"></i> Giờ mở cửa: 9:00AM - 8:00PM hàng ngày</li>
                         </ul>
@@ -42,9 +58,9 @@
                             <li><a href="<%= erp_locyen.root_path %>">Trang chủ</a></li>
                             <li><a href="<%= erp_locyen.about_us_path %>">Giới thiệu</a></li>
                             <% Erp::Menus::Menu.get_menus.each do |category| %>
-                                <li>
-                                    <%= link_to category.name, menu_link(category) %>
-                                </li>
+                            <li>
+                                <%= link_to category.name, menu_link(category) %>
+                            </li>
                             <% end %>
                             <li><a href="<%= erp_locyen.blog_path %>"> Góc chia sẻ </a></li>
                         </ul>
@@ -63,7 +79,10 @@
                             <li><a href="<%= erp_locyen.contact_us_path %>">Liên hệ và góp ý</a></li>
                             <li><a href="<%= erp_locyen.faq_path %>">Câu hỏi thường gặp</a></li>
                         </ul>
-                        <iframe class="mt-2" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Flocyenchungtuoi&tabs&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=436021563647671" width="340" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                        <iframe class="mt-2"
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Flocyenchungtuoi&tabs&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=436021563647671"
+                            width="340" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                            allowTransparency="true" allow="encrypted-media"></iframe>
                     </div>
                 </div>
             </div>

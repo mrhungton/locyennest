@@ -1390,3 +1390,7 @@ body.offcanvas-active {
         margin: 0;
     }
 }
+.footer-socials img {
+    width: 45px;
+    padding: 5px;
+}

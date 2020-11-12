@@ -14,7 +14,7 @@ module Erp::QuickOrders
     
     def sending_customer_email_order_confirmation(quick_order)
       @quick_order = quick_order
-      send_email(@quick_order.email, '', '', "#{Time.current.strftime('%Y%m%d')} - Xác nhận đặt hàng tại Locyennest.com")
+      send_email(@quick_order.email, '', '', "Xác nhận đơn hàng ##{quick_order.code} tại Locyennest.com")
     end
   end
 end
