@@ -1389,6 +1389,10 @@ body.offcanvas-active {
     .maincart-wrap a {
         margin: 0;
     }
+    .new-arrivals-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
 }
 .footer-socials img {
     width: 45px;
