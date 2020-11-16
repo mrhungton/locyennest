@@ -39,8 +39,22 @@
     font-family: "SVN-Corki-Tuscan-Rounded";
     src: url(../fonts/SVN-Corki-Regular.otf);
 }
+body {
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: 500;
+}
 h1, h2, h3 {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: "Roboto Slab", sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #142850;
+}
+a:hover {
+    color: #ce9d4b;
+}
+.form-control {
+    font-size: 100%;
+    font-weight: 500;
 }
 .align-items-flex-start {
     align-items: flex-start;
@@ -177,10 +191,10 @@ h1, h2, h3 {
 }
 .offer-area .single-offer p {
 	margin-bottom: 0;
-    color: #5c5c5c;
+    color: #142850;
     font-size: 15px;
     line-height: 25px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto Slab", sans-serif;
 }
 .offer-area .single-offer p.highlight {
     font-weight: 600;
@@ -252,7 +266,10 @@ h1, h2, h3 {
 }
 .test-info a {
     color: #fff;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto Slab", sans-serif;
+}
+.test-content p {
+    font-style: italic;
 }
 .test-content::before {
     background-size: 30px;
@@ -272,6 +289,7 @@ h1, h2, h3 {
 }
 .newsletter button {
     color: #142850;
+    font-weight: 500;
 }
 .newsletter button:hover {
     background: #142850;
@@ -280,12 +298,15 @@ h1, h2, h3 {
     outline: none;
     border-radius: 5px;
     text-transform: none;
+    font-weight: 500;
 }
 .search form input, .search-box input {
     outline: none;
 }
 .search-box input {
     border-radius: 20px;
+    font-size: 100%;
+    font-weight: 500;
 }
 .brand-area {
     background: #142850 url(../img/bg/pattern-02.svg);
@@ -308,6 +329,7 @@ h1, h2, h3 {
 .blog-info h3 a {
     font-family: inherit;
     font-size: 22px;
+    text-transform: inherit;
 }
 .blog-content {
     padding-top: 0;
@@ -333,6 +355,12 @@ h1, h2, h3 {
     margin-top: 5px;
     margin-bottom: 15px;
 }
+.blog-info p {
+    font-size: 15px;
+}
+.readmore-btn a {
+    color: #142850;
+}
 .single-blog-content.blog-content p {
     font-size: 15px;
     margin: 0 0 10px;
@@ -352,9 +380,10 @@ h1, h2, h3 {
     color: #ce9d4b;
 }
 .tab-menu ul li a {
-    font-family: Lobster;
-    font-size: 30px;
-    font-weight: 500;
+    font-family: "Roboto Slab", Lobster, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 .tab-menu ul li a::after {
     left: 15px;
@@ -374,6 +403,7 @@ a#scrollUp:hover {
 }
 .maincart-wrap span {
     background: #cfb157 none repeat scroll 0 0;
+    font-family: monospace;
 }
 .footer-medil-area {
     background: #142850;
@@ -437,12 +467,16 @@ a#scrollUp:hover {
 .news-taitle h3,
 .news-taitle h2,
 .our-history h3 {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
     font-style: normal;
+    text-transform: uppercase;
 }
 .new-arrivals-content h3 {
     border-bottom: 2px solid #c78829;
     font-weight: 600;
+}
+.news-taitle h2 {
+    font-size: 35px;
 }
 .about-main-area {
     color: #142850;
@@ -475,10 +509,11 @@ a#scrollUp:hover {
     background: #142850;
 }
 .about-title h2 {
-    font-family: "Lobster", sans-serif;
+    font-family: "Roboto Slab", Lobster, sans-serif;
     background: linear-gradient(#f7ec7d, #ab761c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 500;
 }
 .about-heading h1 {
     font-family: "Roboto Slab", sans-serif;
@@ -528,9 +563,17 @@ a#scrollUp:hover {
 }
 .btn-link {
     color: #142850;
+    font-weight: 500;
+}
+.blog-details .related-articles .box-title {
+    font-weight: 600;
 }
 .blog-details .related-articles ul li {
     list-style: inside;
+    margin-bottom: 5px;
+}
+.contact-area {
+    font-size: 15px;
 }
 .contact-title h2 {
     background: linear-gradient(#f7ec7d, #ab761c);
@@ -538,8 +581,14 @@ a#scrollUp:hover {
     -webkit-text-fill-color: transparent;
     font-size: 23px;
 }
+.contact-area .contact-title h2 {
+    font-weight: 600;
+}
 .contact-area h5 {
     color: #a9a9a9;
+}
+.contact-form input {
+    font-size: 100%;
 }
 .contact-form textarea {
     height: 64px;
@@ -552,6 +601,7 @@ a#scrollUp:hover {
 }
 .contact-form span {
     font-size: 14px;
+    display: inline;
 }
 .about-area.about-bg {
     padding: 50px 0;
@@ -630,6 +680,8 @@ a.locyen-btn {
 .new-arrivals-content p {
     color: #fff;
     margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 .mb-30 {
     margin-bottom: 30px;
@@ -668,6 +720,7 @@ a.locyen-btn {
     padding: 10px 20px;
     background: transparent;
     color: #142850;
+    font-weight: 600;
 }
 .simple-product-tab-menu ul li a.active {
     background: #142850 none repeat scroll 0 0;
@@ -716,6 +769,10 @@ a.locyen-btn {
 .product-description ul {
     list-style: outside;
     padding: 0 15px;
+}
+.product-description p > *,
+.product-description ul li > * {
+    font-weight: 500 !important;
 }
 .single-product-tab {
     border: 1px solid #ffce82;
@@ -1008,6 +1065,7 @@ a.btn.btn-complete {
     position: relative;
 }
 .maincart-wrap-fixed span {
+    font-family: monospace;
     background: linear-gradient(#ffffa5, #ab761c);
     border-radius: 50%;
     color: #fff;
@@ -1029,8 +1087,8 @@ a.btn.btn-complete {
     margin-top: 24px;
 }
 .checkout_form .bank-card-body .block-title {
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 1.54;
     color: rgb(13, 92, 182);
     display: flex;
@@ -1053,7 +1111,8 @@ a.btn.btn-complete {
     cursor: pointer;
 }
 .checkout_form .bank-card-body .bank-list .bank-item span {
-    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.5;
     color: rgb(13, 92, 182);
@@ -1112,8 +1171,8 @@ button.add-to-cart {
     margin: 0;
 }
 .head-logo {
-    font-family: SVN-Corki-Rounded;
-    font-weight: 600;
+    /* font-family: SVN-Corki-Rounded;
+    font-weight: 600; */
     color: #142850;
 }
 .head-logo::before {
@@ -1163,6 +1222,13 @@ button.add-to-cart {
     text-decoration-line: line-through;
     color: #999 !important;
 } */
+.symple-product h3 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.simple-product-area .product-short-description ul li span {
+    font-weight: 500 !important;
+}
 .symple-product .product-price {
     flex-direction: column;
     border-radius: 4px;
@@ -1204,8 +1270,8 @@ button.add-to-cart {
     width: 100%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem .375rem 0rem;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 100%;
+    font-weight: 500;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
@@ -1218,7 +1284,7 @@ button.add-to-cart {
     height: 34px;
 }
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: 25px;
+    line-height: 20px;
 }
 .select2-selection.select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-selection__rendered:focus {
     outline: none;
@@ -1232,6 +1298,9 @@ button.add-to-cart {
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+[class*="icheck-material"]>label {
+    font-weight: 500;
 }
 /* .loading__spinner {
     position: absolute;

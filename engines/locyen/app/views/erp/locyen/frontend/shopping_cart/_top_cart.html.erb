@@ -17,8 +17,8 @@
                     <strong><%= format_price(@cart.total_order) %></strong>
                 </span>
             </div>
-            <div class="cart-btn mt-15">
-                <button>Thanh toán</button>
+            <div class="locyen-btn mt-15">
+                <%= link_to 'Thanh toán', erp_locyen.quick_order_path, class: "w-100 text-center" %>
             </div>
         </div>
         <div class="cart-items clear mb-15">

@@ -21,28 +21,44 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="contact mb-50 bg-loc-yen p-20">
+                <div class="contact mb-50 p-20">
                     <div class="contact-title">
                         <h2>Liên hệ với chúng tôi</h2>
                     </div>
                     <div class="contact-form form-style">
                         <form id="contact-form" action="mail.php" method="post">
-                            <span>Họ và tên (*)</span>
-                            <input name="subject" type="text" />
+                            <div class="form-group has-feedback has-success">
+                                <label class="control-label">Họ và tên <span>(*)</span></label>
+                                <input type="text" id="input-lastname" name="contact[name]"
+                                    class="form-control required" placeholder="Nhập họ và tên...">
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <span>Email (*)</span>
-                                    <input name="email" type="email" />
+                                    <div class="form-group has-feedback has-success">
+                                        <label class="control-label">Số điện thoại <span>(*)</span></label>
+                                        <input type="text" id="input-lastname" name="contact[phone]"
+                                            class="form-control required" placeholder="Nhập số điện thoại...">
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <span>Số điện thoại (*)</span>
-                                    <input name="name" type="text" />
+                                    <div class="form-group has-feedback has-success">
+                                        <label class="control-label">Email <span>(*)</span></label>
+                                        <input type="email" id="input-lastname" name="contact[email]"
+                                            class="form-control required" placeholder="Nhập địa chỉ email...">
+                                    </div>
                                 </div>
                             </div>
-                            <span>Chủ đề (*)</span>
-                            <input name="subject" type="text" />
-                            <span>Nội dung tin nhắn (*)</span>
-                            <textarea name="message" id="#" cols="30" rows="2"></textarea>
+                            <div class="form-group has-feedback has-success">
+                                <label class="control-label">Chủ đề <span>(*)</span></label>
+                                <input type="text" id="input-lastname" name="contact[subject]"
+                                    class="form-control required" placeholder="Nhập chủ đề quan tâm...">
+                            </div>
+                            <div class="form-group has-feedback has-success" style="padding:5px 0;">
+                                <label class="control-label">Nội dung tin nhắn (*)</label>
+                                <textarea class="form-control" name="msg[message]"
+                                    placeholder="Nhập nội dung lời nhắn..."></textarea>
+                            </div>
+
                             <button type="submit">gửi đi</button>
                         </form>
                         <p class="form-messege"></p>
@@ -50,20 +66,20 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="contact-detail mb-50 p-20 bg-loc-yen">
+                <div class="contact-detail mb-50 p-20">
                     <div class="contact-title">
-                        <h2>THƯƠNG HIỆU LỘC YẾN THUỘC ĐƠN VỊ SẢN XUẤT CÔNG TY TNHH XNK YẾN SÀO LỘC PHÁT</h2>
+                        <h2>LỘC YẾN</h2>
                     </div>
-                    <h5>ĐỊA CHỈ CỬA HÀNG</h5>
-                    <p>Số 240/7 Lê Thánh Tôn, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam</p>
-                    <h5>EMAIL</h5>
-                    <p>contact@locyennest.com</p>
-                    <h5>HOTLINE</h5>
-                    <p>0896 995 686 <br> 0906 998 865</p>
-                    <h5>WEBSITE</h5>
-                    <p>https://locyennest.com</p>
-                    <h5>GIỜ MỞ CỬA</h5>
-                    <p>Hàng ngày: 9:00AM - 8:00PM</p>
+                    <h6>ĐỊA CHỈ CỬA HÀNG</h6>
+                    <p class="mb-20">Số 240/7 Lê Thánh Tôn, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam</p>
+                    <h6>EMAIL</h6>
+                    <p class="mb-20">contact@locyennest.com</p>
+                    <h6>HOTLINE</h6>
+                    <p class="mb-20">0896 995 686 <br> 0906 998 865</p>
+                    <h6>WEBSITE</h6>
+                    <p class="mb-20">https://locyennest.com</p>
+                    <h6>GIỜ MỞ CỬA</h6>
+                    <p class="mb-20">Hàng ngày: 9:00AM - 8:00PM</p>
                 </div>
             </div>
         </div>
