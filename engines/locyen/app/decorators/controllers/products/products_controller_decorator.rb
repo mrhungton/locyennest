@@ -1,6 +1,7 @@
 Erp::Products::Backend::ProductsController.class_eval do
   before_action :set_product, only: [:check_is_published, :uncheck_is_published, :check_is_bestseller, :uncheck_is_bestseller, 
-    :check_is_new, :uncheck_is_new, :check_is_call, :uncheck_is_call, :product_details, :archive, :unarchive, :show, :edit, :update]
+    :check_is_new, :uncheck_is_new, :check_is_call, :uncheck_is_call, :product_details, :archive, :unarchive, :show, :edit, :update,
+    :move_up, :move_down]
   before_action :set_products, only: [:delete_all, :archive_all, :unarchive_all, :check_is_bestseller_all, :uncheck_is_bestseller_all, 
     :check_is_new_all, :uncheck_is_new_all, :check_is_call_all, :uncheck_is_call_all, :check_is_published_all, :uncheck_is_published_all]
     

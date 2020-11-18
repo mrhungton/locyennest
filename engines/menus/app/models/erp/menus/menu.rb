@@ -263,7 +263,8 @@ module Erp::Menus
 				end
 
 				if params[:sort_by].present?
-					records = records.order(params[:sort_by].gsub('_', ' '))
+					# records = records.order(params[:sort_by].gsub('_', ' ')) ///old code
+					records = records.order(params[:sort_by])
 				else
 					records = records.order("created_at DESC")
 				end				

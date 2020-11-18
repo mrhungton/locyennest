@@ -153,6 +153,9 @@ Erp::Products::Engine.routes.draw do
           put 'uncheck_is_call'
           put 'check_is_call_all'
           put 'uncheck_is_call_all'
+          
+          put 'move_up'
+          put 'move_down'
         end
       end
       resources :categories do

@@ -88,6 +88,9 @@ Erp::Products::Engine.routes.draw do
           post 'import_export_table' # @todo if qdeliveries available
           get 'product_details'
           get 'xlsx'
+          
+					put 'move_up'
+					put 'move_down'
         end
       end
       resources :states do

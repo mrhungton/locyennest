@@ -1,5 +1,7 @@
 module Erp::Products
   class Product < ApplicationRecord
+    include Erp::CustomOrder
+
 		attr_accessor :product_property_values
 		#validates :name, :uniqueness => true
     validates :category_id, :presence => true
@@ -819,6 +821,11 @@ module Erp::Products
 
 		def values_by_property(property)
 			self.products_properties.where(property_id: property.id).first.products_values #values.joins(:products_property).where(erp_products_products_properties: {property_id: property.id})
+    end
+    
+    # init custom order
+    def init_custom_order
+			self.update_column(:custom_order, self.class.maximum("custom_order").to_i + 1)
 		end
 
     # Filters

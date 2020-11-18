@@ -95,7 +95,7 @@
 
     <%= yield(:javascript) %>
 
-    <div class="hotline-home-left">
+    <!-- <div class="hotline-home-left">
         <ul>
             <a href="https://zalo.me/0896995686" rel="noopener">
                 <i class="fa fa-comments" aria-hidden="true"></i>Zalo<p></p>
@@ -104,7 +104,35 @@
                 <i class="fa fa-phone-square" aria-hidden="true"></i>0906.998.865<p></p>
             </a>
         </ul>
+    </div> -->
+
+    <div class="social-button">
+        <div class="social-button-content">
+            <a href="tel:0906998865" class="call-icon" rel="nofollow">
+                <i class="fa" aria-hidden="true"></i>
+                <div class="animated alo-circle"></div>
+                <!-- <span>Hotline: 0906 998 865</span> -->
+            </a>
+            <a href="http://zalo.me/0896995686" class="zalo">
+                <i class="fa" aria-hidden="true"></i>
+                <!-- <span>Zalo: 0896 995 686</span> -->
+            </a>
+        </div>
+
+        <a class="user-support">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <div class="animated alo-circle"></div>
+            <div class="animated alo-circle-fill"></div>
+        </a>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.user-support').click(function (event) {
+                $('.social-button-content').slideToggle();
+            });
+        });
+    </script>
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>

@@ -1467,6 +1467,9 @@ body.offcanvas-active {
     width: 45px;
     padding: 5px;
 }
+.home5-section-title.section-title h2:before {
+    background: #ce9d4b;
+}
 /* start call me  */
 .hotline-home-left {
     position: fixed;
@@ -1506,3 +1509,136 @@ body.offcanvas-active {
     color: #d33;
 }
 /* end call me  */
+
+
+.social-button{
+  display: inline-grid;
+    position: fixed;
+    bottom: 25px;
+    left: 15px;
+    min-width: 45px;
+    text-align: center;
+    z-index: 99999;
+}
+.social-button-content {
+  display: inline-grid;   
+}
+.social-button a {
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+}
+.social-button a.user-support {
+    margin-top: 10px;
+}
+.social-button i {
+    width: 40px;
+    height: 40px;
+    background: #43a1f3;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.9;
+    position: relative;
+    z-index: 999;
+}
+.social-button span{
+  display: none;
+}
+.alo-circle {
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: zoomIn;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: transparent;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid rgba(30, 30, 30, 0.4);
+    opacity: .1;
+    border-color: #0089B9;
+    opacity: .5;
+}
+.alo-circle-fill {
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: pulse;
+    width: 60px;
+    height: 60px;
+    top: -5px;
+    left: -4px;
+    position: absolute;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    background-color: rgba(0, 175, 242, 0.5);
+    opacity: .75;
+}
+.zalo > i {
+    background-image: url(../images/widget/zalo.svg);
+    background-size: cover;
+    background-color: #fff;
+}
+.call-icon > i {
+    background-image: url(../images/widget/phone-call.svg);
+    background-size: cover;
+    background-color: #fff;
+}
+.call-icon:hover > span,
+.mes:hover > span, 
+.sms:hover > span, 
+.zalo:hover > span {
+    display: block
+}
+.social-button a span {
+    border-radius: 2px;
+    text-align: center;
+    background: rgb(103, 182, 52);
+    padding: 9px;
+    display: none;
+    width: auto;
+    white-space: nowrap;
+    margin-left: 10px;
+    position: absolute;
+    color: #ffffff;
+    z-index: 999;
+    top: 5px;
+    left: 45px;
+    /* transition: all 0.2s ease-in-out 0s; */
+    /* -moz-animation: headerAnimation 0.7s 1;
+    -webkit-animation: headerAnimation 0.7s 1;
+    -o-animation: headerAnimation 0.7s 1;
+    animation: headerAnimation 0.7s 1; */
+}
+@-webkit-keyframes "headerAnimation" {
+    0% { margin-top: -70px; }
+    100% { margin-top: 0; }
+}
+@keyframes "headerAnimation" {
+    0% { margin-top: -70px; }
+    100% { margin-top: 0; }
+}
+.social-button a span:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent rgb(103, 182, 52) transparent transparent;
+  position: absolute;
+  left: -10px;
+  top: 10px;
+}

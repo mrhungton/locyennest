@@ -7,7 +7,7 @@ module Erp
           @certificates = Erp::Banners::Banner.get_certificates.order('erp_banners_banners.custom_order asc')
           @about = Erp::Articles::Article.get_all_home_abouts.last
           @testimonials = Erp::Testimonials::Testimonial.get_testimonials
-          @bestseller_products = Erp::Products::Product.get_bestseller_products.order(:created_at)
+          @bestseller_products = Erp::Products::Product.get_bestseller_products.order('custom_order desc')
           # @newest_products = Erp::Products::Product.get_newest_products.order(:created_at)
           @newest_blogs = Erp::Articles::Article.newest_articles(5).order(:created_at)
           @categories = Erp::Menus::Menu.get_menus.order(:custom_order)

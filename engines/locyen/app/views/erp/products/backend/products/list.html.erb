@@ -45,6 +45,9 @@
                         <%= t('created_at') %>
                     </th>
                 <% end %>
+                <th width="7%" class="sortable text-nowrap" sort-by='erp_products_products.custom_order'>
+                    <%= 'Sắp xếp' %>
+                </th>
                 <th width="7%"><%= t('actions') %></th>
             </tr>
         </thead>
@@ -106,7 +109,15 @@
                     <% if get_columns(params).include?("created_at") %>
                         <td><%= product.created_at.strftime("%d/%m/%Y") %></td>
                     <% end %>
-                    <td>
+                    <td class="text-center text-semibold">
+                        <%= erp_datalist_order_column({
+                            item: product,
+                            move_up_url: erp_products.move_up_backend_products_path(id: product),
+                            move_down_url: erp_products.move_down_backend_products_path(id: product),
+                            sort_by: 'erp_products_products.custom_order'
+                        }) %>
+                    </td>
+                    <td class="text-right">
                         <!-- {
                             text: '<i class="fa fa-check-square-o"></i> '+t('.check_is_published'),
                             url: erp_products.check_is_published_backend_products_path(id: product),

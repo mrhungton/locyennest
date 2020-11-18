@@ -60,6 +60,9 @@
                     <%= t('created_at') %>
                 </th>
             <% end %>
+            <th width="7%" class="sortable text-nowrap" sort-by='erp_products_products.custom_order'>
+                <%= t('custom_order') %>
+            </th>
             <th width="7%"><%= t('actions') %></th>
         </tr>
     </thead>
@@ -115,7 +118,15 @@
                 <% if get_columns(params).include?("created_at") %>
                     <td><%= format_date(product.created_at) %></td>
                 <% end %>
-                <td>
+                <td class="text-center text-semibold">
+                    <%= erp_datalist_order_column({
+                        item: product,
+                        move_up_url: erp_products.move_up_backend_products_path(id: product),
+                        move_down_url: erp_products.move_down_backend_products_path(id: product),
+                        sort_by: 'erp_products_products.custom_order'
+                    }) %>
+                </td>
+                <td class="text-right">
                     <%= product_dropdown_actions(product) %>
                 </td>
             </tr>
