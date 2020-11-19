@@ -88,17 +88,18 @@
         <div id="googleMap"></div>
     </div>
 </div>
+</div>
 <!-- contact-us-area end -->
 
 <% content_for :javascript do %>
     <!-- Google Map js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1cZtqidvg0m-f8Hd3S6RHx1mY-omuLS4 "></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN2VnsyHJW93xpLFJNVfXJ8c4sLGl9qEU"></script>
     <script>
         function initialize() {
             var mapOptions = {
+                center: new google.maps.LatLng(10.772760, 106.696361),
                 zoom: 15,
                 scrollwheel: false,
-                center: new google.maps.LatLng(23.810332, 90.412518)
             };
 
             var map = new google.maps.Map(document.getElementById('googleMap'),
@@ -107,13 +108,26 @@
 
             var marker = new google.maps.Marker({
                 position: map.getCenter(),
-                animation: google.maps.Animation.BOUNCE,
                 icon: '/frontend/images/map.png',
                 map: map
             });
-
+            const contentString =
+            '<div id="content">' +
+            '<div id="siteNotice">' +
+            "</div>" +
+            '<h4 style="text-align: center;">LỘC YẾN NEST</h4>' +
+            '<div id="bodyContent"><p>' +
+            '<b>Địa chỉ:</b> 240/7 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, Hồ Chí Minh, Việt Nam</p>' +
+            '<p><b>Điện thoại:</b> <a href="tel:0896 995 686">0896 995 686</a> - <a href="tel:0906 998 865">0906 998 865</a> | <b>Email:</b> <a href="mailto:contact@locyennest.com">contact@locyennest.com</a></p>' +
+            '</div></div>';
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            infowindow.open(map, marker);
+            marker.addListener("click", () => {
+                infowindow.open(map, marker);
+            });
         }
-
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 <% end %>
