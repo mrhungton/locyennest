@@ -11,10 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/frontend/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/frontend/favicon.ico" type="image/x-icon">
-    <!-- Place favicon.ico in the root directory -->
-    <!-- all css here -->
+    <link rel="shortcut icon" href="/frontend/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/frontend/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/frontend/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/frontend/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/frontend/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/frontend/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/frontend/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/frontend/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/frontend/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/frontend/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/frontend/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/frontend/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/frontend/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
     <!-- bootstrap v3.3.7 css -->
     <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
     <!-- animate css -->
@@ -33,6 +48,7 @@
     <link rel="stylesheet" href="/frontend/css/jquery.fancybox.min.css" />
     <!-- jquery.jgrowl -->
     <link rel="stylesheet" href="/frontend/css/jquery.jgrowl.min.css" />
+    <!-- icheck -->
     <link rel="stylesheet" href="/frontend/css/icheck-material.min.css" />
     <link rel="stylesheet" href="/frontend/css/icheck-material-custom.min.css" />
     <!-- font-awesome v4.6.3 css -->
@@ -52,14 +68,13 @@
 <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <![endif]-->
     <%= render "erp/locyen/frontend/modules/header/header" %>
 
     <%= yield %>
 
     <%= render "erp/locyen/frontend/modules/footer/footer" %>
 
-    <!-- all js here -->
     <!-- jquery latest version -->
     <script src="/frontend/js/vendor/jquery-v3.4.1.min.js"></script>
     <!-- bootstrap js -->
@@ -95,27 +110,14 @@
 
     <%= yield(:javascript) %>
 
-    <!-- <div class="hotline-home-left">
-        <ul>
-            <a href="https://zalo.me/0896995686" rel="noopener">
-                <i class="fa fa-comments" aria-hidden="true"></i>Zalo<p></p>
-            </a>
-            <a href="tel:0906998865" rel="noopener">
-                <i class="fa fa-phone-square" aria-hidden="true"></i>0906.998.865<p></p>
-            </a>
-        </ul>
-    </div> -->
-
     <div class="social-button">
         <div class="social-button-content">
             <a href="tel:0906998865" class="call-icon" rel="nofollow">
                 <i class="fa" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
-                <!-- <span>Hotline: 0906 998 865</span> -->
             </a>
             <a href="http://zalo.me/0896995686" class="zalo">
                 <i class="fa" aria-hidden="true"></i>
-                <!-- <span>Zalo: 0896 995 686</span> -->
             </a>
         </div>
 
