@@ -38,7 +38,7 @@ module Erp
 
         private
           def quick_order_params
-            params.fetch(:quick_order, {}).permit(:customer_name, :phone, :email, :address, :state_id, :district_id, :note, :invoice)
+            params.fetch(:quick_order, {}).permit(:customer_name, :phone, :email, :address, :state_id, :district_id, :note, :invoice, :shipping_method, :payment_method)
           end
       end
     end

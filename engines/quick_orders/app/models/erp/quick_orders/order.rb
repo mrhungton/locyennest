@@ -16,7 +16,13 @@ module Erp::QuickOrders
 			def district_name
 				district.present? ? district.name : ''
 			end
-		end
+    end
+    
+    SHIPPING_METHOD_DELIVERY = 'delivery'
+    SHIPPING_METHOD_PICKUP = 'pickup'
+    
+    PAYMENT_METHOD_COD = 'cod'
+    PAYMENT_METHOD_TRANSFER = 'transfer'
     
     #save cart
     def save_from_cart(cart)

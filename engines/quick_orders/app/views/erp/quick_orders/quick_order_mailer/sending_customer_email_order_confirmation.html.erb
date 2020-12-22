@@ -61,7 +61,7 @@
 
                                     <div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center">
                                         <a href="#" target="_blank">
-                                            <img src="http://locyennest.com/logo.png" border="0" width="100" alt="" />
+                                            <img src="http://locyennest.com/frontend/img/logo/main-logo.png" border="0" height="120" alt="" />
                                         </a>
                                     </div>
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
@@ -92,7 +92,7 @@
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 
-                                                            <div class="h3-2-center" style="color:#c1a349; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:26px; text-align:center; letter-spacing:5px">CẢM ƠN QUÝ KHÁCH ĐÃ ĐẶT HÀNG TẠI LỘC YẾN!</div>
+                                                            <div class="h3-2-center" style="color:#c1a349; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:26px; text-align:center">CẢM ƠN QUÝ KHÁCH ĐÃ ĐẶT HÀNG TẠI LỘC YẾN!</div>
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr>
                                                             </table>
 
@@ -131,6 +131,23 @@
                                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
                                                                                     <div class="text-1" style="color:#00635a; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+                                                                                        <strong>MÃ ĐƠN HÀNG:</strong> <span style="color: #1e1e1e;">#<%= @quick_order.code %></span>
+                                                                                    </div>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                                </td>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+                                                                            <tr>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                                <td>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                                    <div class="text-1" style="color:#00635a; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
                                                                                         <strong>THÔNG TIN KHÁCH HÀNG:</strong>
                                                                                     </div>
                                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
@@ -146,14 +163,14 @@
                                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
                                                                                     <div class="text" style="color:#1e1e1e; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
-                                                                                        <strong><%= @quick_order.customer_name %></strong>
+                                                                                        - Họ tên: <strong><%= @quick_order.customer_name %></strong>
                                                                                         <br>
-                                                                                        <%= @quick_order.email %>
+                                                                                        - Email: <%= @quick_order.email %>
                                                                                         <br>
-                                                                                        <%= @quick_order.phone %>
+                                                                                        - SĐT: <%= @quick_order.phone %>
                                                                                         <br>
-                                                                                        <%= @quick_order.address + ', ' + @quick_order.district_name + ', ' + @quick_order.state_name %><br>
-                                                                                        <% if @quick_order.invoice == true %>Có xuất hóa đơn<% else %>Không xuất hóa đơn<% end %>
+                                                                                        - Địa chỉ: <%= @quick_order.address + ', ' + @quick_order.district_name + ', ' + @quick_order.state_name %><br>
+                                                                                        - Hóa đơn: <% if @quick_order.invoice == true %>Có xuất hóa đơn<% else %>Không xuất hóa đơn<% end %>
                                                                                     </div>
                                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
@@ -176,24 +193,6 @@
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                 <tr>
                                                                     <td>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-                                                                            <tr>
-                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                                                                                <td>
-                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-                                                                                    <div class="text-1" style="color:#00635a; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
-                                                                                        <strong>MÃ ĐƠN HÀNG:</strong> <span style="color: #1e1e1e;">#<%= @quick_order.code %></span>
-                                                                                    </div>
-                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-                                                                                </td>
-                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                                                                            </tr>
-                                                                        </table>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-
                                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
                                                                             <tr>
                                                                                 <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
@@ -225,6 +224,63 @@
 
                                                                                     <div class="text" style="color:#1e1e1e; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
                                                                                         <%= @quick_order.created_at.utc.in_time_zone("Hanoi").strftime("%H:%M") %> - <%= @quick_order.created_at.utc.in_time_zone("Hanoi").strftime("%d/%m/%Y") %>
+                                                                                    </div>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                                </td>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+                                                                            <tr>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                                <td>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+                                                                                    <div class="text-1" style="color:#00635a; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+                                                                                        <strong>THÔNG TIN KHÁC:</strong>
+                                                                                    </div>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                                        <tr>
+                                                                                            <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+                                                                                        </tr>
+                                                                                    </table>
+
+                                                                                </td>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fafafa">
+                                                                            <tr>
+                                                                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+                                                                                <td>
+                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                                        <tr>
+                                                                                            <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+                                                                                        </tr>
+                                                                                    </table>
+
+                                                                                    <div class="text" style="color:#1e1e1e; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+                                                                                        <!-- Phương thức giao hàng -->
+                                                                                        - Giao hàng:
+                                                                                        <% if @quick_order.shipping_method == Erp::QuickOrders::Order::SHIPPING_METHOD_DELIVERY %>
+                                                                                            Tận nơi<br>
+                                                                                        <% elsif @quick_order.shipping_method == Erp::QuickOrders::Order::SHIPPING_METHOD_PICKUP %>
+                                                                                            Tự đến lấy tại cửa hàng của Lộc Yến<br>
+                                                                                        <% end %>
+
+                                                                                        <!-- Hình thức thanh toán -->
+                                                                                        - Thanh toán: 
+                                                                                        <% if @quick_order.payment_method == Erp::QuickOrders::Order::PAYMENT_METHOD_COD %>
+                                                                                            Khi nhận hàng (COD - thu hộ)<br>
+                                                                                        <% elsif @quick_order.payment_method == Erp::QuickOrders::Order::PAYMENT_METHOD_TRANSFER %>
+                                                                                            Chuyển khoản (Internet Banking)<br>
+                                                                                        <% end %>
+
+                                                                                        <!-- Ghi chú -->
+                                                                                        - Ghi chú: <%= @quick_order.note %>
                                                                                     </div>
                                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
@@ -375,7 +431,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td height="35" style="color:#1e1e1e; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left;padding: 0 20px">
-                                                                Mọi thắc mắc và góp ý, quý khách vui lòng liên hệ với Lộc Yến qua các kênh hỗ trợ tại https://locyennest.com. Đội ngũ Lộc Yến luôn sẵn sàng hỗ trợ bạn.
+                                                                Mọi thắc mắc và góp ý, quý khách vui lòng liên hệ với Lộc Yến qua các kênh hỗ trợ tại https://locyennest.com, hoặc thông qua <a href="https://zalo.me/0896995686" target="_blank">Zalo Lộc Yến (0896 995 686)</a>. Đội ngũ Lộc Yến luôn sẵn sàng hỗ trợ bạn.
                                                             </td>
                                                         </tr>
                                                     </tbody>
