@@ -407,6 +407,8 @@ a:hover {
 .blog-content .blog-title {
   margin-top: 5px;
   margin-bottom: 15px;
+  font-weight: 600;
+  margin-bottom: 20px !important;
 }
 .blog-info p {
   font-size: 15px;
@@ -416,7 +418,29 @@ a:hover {
 }
 .single-blog-content.blog-content p {
   font-size: 15px;
-  margin: 0 0 10px;
+  margin: 0 0 .5rem;
+  line-height: 1.8;
+}
+.single-blog-content.blog-content dl, 
+.single-blog-content.blog-content ol, 
+.single-blog-content.blog-content ul {
+  padding-left: 15px;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+.single-blog-content.blog-content li {
+  line-height: 1.8;
+  font-size: 15px;
+}
+.single-blog-content.blog-content dl li::marker, .single-blog-content.blog-content ol li::marker, .single-blog-content.blog-content ul li::marker {
+  font-weight: 700;
+}
+.single-blog-content.blog-content>h2, 
+.single-blog-content.blog-content>h3, 
+.single-blog-content.blog-content>h4, 
+.single-blog-content.blog-content>h5, 
+.single-blog-content.blog-content>h6 {
+  margin: 1.2rem 0 1rem;
 }
 .comment-info {
   font-size: 15px;
@@ -477,6 +501,7 @@ a#scrollUp:hover {
 }
 .footer-logo img {
   margin-right: 10px;
+  height: 110px;
 }
 .footer-logo span {
   line-height: 1.6;
@@ -624,6 +649,7 @@ a#scrollUp:hover {
 .blog-details .related-articles ul li {
   list-style: inside;
   margin-bottom: 5px;
+  font-size: 16px;
 }
 .contact-area {
   font-size: 15px;
