@@ -203,19 +203,19 @@ $(document).ready(function () {
         var method = form.attr('method');
   
         $.ajax({
-              url: url,
-              method: method,
-              data: form.serialize()
+            url: url,
+            method: method,
+            data: form.serialize()
         }).done(function() {
-              var url = $('.shopping-cart-area').attr('data-url');
-              $.ajax({
-                  url: url
-              }).done(function( html ) {
-                  console.log(html);
-                  showNotice('success', 'Thành công', 'Giỏ hàng đã được cập nhật');
-                  $('.shopping-cart-area .cart-table').html($('<div>').html(html).find('.shopping-cart-area .cart-table').html());
-                  loadTopCart();
-              });
+            var url = $('.shopping-cart-area').attr('data-url');
+            $.ajax({
+                url: url
+            }).done(function( html ) {
+                console.log(html);
+                showNotice('success', 'Thành công', 'Giỏ hàng đã được cập nhật');
+                $('.shopping-cart-area .cart-table').html($('<div>').html(html).find('.shopping-cart-area .cart-table').html());
+                loadTopCart();
+            });
         });
   
         return false;
